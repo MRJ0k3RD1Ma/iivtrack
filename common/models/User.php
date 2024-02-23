@@ -3,31 +3,36 @@
 namespace common\models;
 
 use Yii;
-use yii\base\NotSupportedException;
-use yii\behaviors\TimestampBehavior;
-use yii\db\ActiveRecord;
+use yii\base\Exception;
+use yii\base\ExitException;
 use yii\web\IdentityInterface;
 
 /**
- * User model
+ * This is the model class for table "user".
  *
- * @property integer $id
+ * @property int $id
+ * @property string $name
  * @property string $username
- * @property string $password_hash
- * @property string $password_reset_token
- * @property string $verification_token
- * @property string $email
- * @property string $auth_key
- * @property integer $status
- * @property integer $created_at
- * @property integer $updated_at
- * @property string $password write-only password
+ * @property string|null $password
+ * @property string|null $auth_key
+ * @property string|null $token
+ * @property string|null $code
+ * @property string|null $access_token
+ * @property string|null $created
+ * @property string|null $updated
+ * @property string|null $image
+ * @property int|null $status
+ * @property int|null $role_id
+ *
+ * @property UserRole $role
+ * @property integer $companyid
  */
-class User extends ActiveRecord implements IdentityInterface
+class User extends \yii\db\ActiveRecord implements IdentityInterface
 {
-    const STATUS_DELETED = 0;
-    const STATUS_INACTIVE = 9;
-    const STATUS_ACTIVE = 10;
+
+    const STATUS_DELETED = -1;
+    const STATUS_INACTIVE = 0;
+    const STATUS_ACTIVE = 1;
 
 
     /**
@@ -35,17 +40,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public static function tableName()
     {
-        return '{{%user}}';
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function behaviors()
-    {
-        return [
-            TimestampBehavior::class,
-        ];
+        return 'user';
     }
 
     /**
@@ -54,10 +49,60 @@ class User extends ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
-            ['status', 'default', 'value' => self::STATUS_INACTIVE],
-            ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_INACTIVE, self::STATUS_DELETED]],
+            [['created', 'updated'], 'safe'],
+            [['status', 'role_id'], 'integer'],
+            [['image'],'file','extensions'=>['jpg','png','jpeg']],
+            [['name', 'auth_key', 'token', 'code','image'], 'string', 'max' => 255],
+            [['password', 'access_token'], 'string', 'max' => 500],
+            [['username'],'string','length'=>12],
+            [['username','name'],'required'],
+            ['username','unique','message'=>'Bunday telefon raqamidan foydalanilgan'],
+            [['password'],'required','on'=>'insert'],
+            [['role_id'], 'exist', 'skipOnError' => true, 'targetClass' => UserRole::class, 'targetAttribute' => ['role_id' => 'id']],
         ];
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function attributeLabels()
+    {
+        return [
+            'id' => 'ID',
+            'name' => 'FIO',
+            'username' => 'Telefon',
+            'password' => 'Parol',
+            'auth_key' => 'Auth Key',
+            'image' => 'Rasm',
+            'token' => 'Token',
+            'code' => 'SMS Kod',
+            'access_token' => 'Access Token',
+            'created' => 'Yaratildi',
+            'updated' => 'O`zgartirildi',
+            'status' => 'Status',
+            'role_id' => 'Role',
+        ];
+    }
+
+    /**
+     * Gets query for [[Role]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getRole()
+    {
+        return $this->hasOne(UserRole::class, ['id' => 'role_id']);
+    }
+
+
+/*    public function getCompanyid(){
+        $com = UserCompany::findOne(['user_id'=>$this->id]);
+        if($com){
+            return $com->company_id;
+        }else{
+            throw new ExitException("404",'Bunday Restoran/kafe topilmadi');
+        }
+    }*/
 
     /**
      * {@inheritdoc}
@@ -72,7 +117,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public static function findIdentityByAccessToken($token, $type = null)
     {
-        throw new NotSupportedException('"findIdentityByAccessToken" is not implemented.');
+        return static::findOne(['token' => $token, 'status' => self::STATUS_ACTIVE]);
     }
 
     /**
@@ -147,7 +192,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public function getAuthKey()
     {
-        return $this->auth_key;
+        return $this->password;
     }
 
     /**
@@ -166,21 +211,23 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public function validatePassword($password)
     {
-        return Yii::$app->security->validatePassword($password, $this->password_hash);
+        return Yii::$app->security->validatePassword($password, $this->password);
     }
 
     /**
      * Generates password hash from password and sets it to the model
      *
      * @param string $password
+     * @throws Exception
      */
     public function setPassword($password)
     {
-        $this->password_hash = Yii::$app->security->generatePasswordHash($password);
+        $this->password = Yii::$app->security->generatePasswordHash($password);
     }
 
     /**
      * Generates "remember me" authentication key
+     * @throws Exception
      */
     public function generateAuthKey()
     {
