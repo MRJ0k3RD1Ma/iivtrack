@@ -2,6 +2,8 @@
 
 namespace frontend\modules\cc\controllers;
 
+use common\models\Address;
+use common\models\Call;
 use common\models\DistrictView;
 use common\models\User;
 use yii\web\Controller;
@@ -19,7 +21,36 @@ class DefaultController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $markers = [];
+
+        $model = Address::find()->all();
+        /* @var $item Address*/
+        foreach ($model as $item){
+            $c = Call::find()->where(['address'=>$item->address])->andWhere(['<>','status',4])->one();
+            $status = 0;
+            if($c){
+                $status = $c->status;
+            }
+            $markers[] = [$item->address,$item->lat, $item->long,$status];
+        }
+        $model = new Call();
+        if($model->load($this->request->post())){
+
+            $model->user_id = Yii::$app->user->id;
+
+            if($model->save()){
+                Yii::$app->session->setFlash('success','Ushbu murojaat qabul qilindi.');
+            }else{
+                Yii::$app->session->setFlash('error','Murojaatni saqlashda xatolik.');
+            }
+
+            return $this->redirect(['index']);
+        }
+
+        return $this->render('index',[
+            'markers'=>json_encode($markers),
+            'model'=>$model
+        ]);
     }
 
     public function actionProfile(){

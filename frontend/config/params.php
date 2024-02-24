@@ -24,4 +24,8 @@ return [
         1=>'Yuborilgan',
         2=>'Javob berilgan'
     ],
+    'gender'=>[
+        0=>'Ayol',
+        1=>'Erkak'
+    ]
 ];
