@@ -82,7 +82,6 @@ class SiteController extends Controller
 
                 $token = $this->generateToken($user);
 
-
                 return [
                     'token' => (string) $token,
                 ];
