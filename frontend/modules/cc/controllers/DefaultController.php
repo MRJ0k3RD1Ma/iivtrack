@@ -36,7 +36,15 @@ class DefaultController extends Controller
         $model = new Call();
         if($model->load($this->request->post())){
 
-            $model->user_id = Yii::$app->user->id;
+            $code_id = Call::find()->filterWhere(['like','created',date('Y')])->max('code_id');
+            if(!$code_id){
+                $code_id = 0;
+            }
+            $code_id++;
+            $code = substr(date('Y'),2,2).'/'.$code_id;
+            $model->code = $code;
+            $model->code_id = $code_id;
+//            $model->user_id = Yii::$app->user->id;
 
             if($model->save()){
                 Yii::$app->session->setFlash('success','Ushbu murojaat qabul qilindi.');
@@ -97,4 +105,17 @@ class DefaultController extends Controller
         }
         return $res;
     }
+
+
+    public function actionPolice()
+    {
+        $model = User::find()->where(['>','active',0])->all();
+        $markers = [];
+        foreach ($model as $item){
+            $status = 0;
+            $markers[] = [$item->name,$item->lat, $item->long,$status];
+        }
+        return json_encode($markers);
+    }
+
 }

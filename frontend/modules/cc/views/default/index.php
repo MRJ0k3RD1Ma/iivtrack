@@ -28,6 +28,7 @@ use yii\widgets\ActiveForm;
 
 <?php
 //
+$url = Yii::$app->urlManager->createUrl(['/cc/default/police']);
 $this->registerJs("
         // init map
     var map = L.map('map').setView([41.552269, 60.631571], 12);
@@ -48,27 +49,39 @@ $this->registerJs("
             iconUrl: icn,
             iconSize: [26, 36],
             iconAnchor: [15, 35],
-            popupAnchor: [-3, -76],
-            shadowAnchor: [15, 35]
+            popupAnchor: [-3, -30],
+//            shadowAnchor: [15, 35]
         });
       marker = new L.marker([locations[i][1], locations[i][2]],{icon: myIcon})
         .bindPopup(locations[i][0])
         .addTo(map);
     }
     
-    var iconDotGreen = L.icon({
-            iconUrl: '/icon/dot_green.png',
-            iconSize: [26, 26],
-            iconAnchor: [15, 15],
-            popupAnchor: [-3, -76],
-            shadowAnchor: [15, 15]
-        });
+ 
+    setInterval(function(){
     
-    var circleMarker = new L.circleMarker([41.550864667292245, 60.63274706148625],{color: '#564ab1'})
-        .bindPopup('Mayor Dilmurod Allabergenov')
-        .addTo(map);
+        $.get('{$url}').done(function(data){
+            var locations = JSON.parse(data);
         
-     
+            for (var i = 0; i < locations.length; i++) {
+              
+              var icn = '/icon/police.png';
+              
+              var myIcon = L.icon({
+                    iconUrl: icn,
+                    iconSize: [33, 46],
+                    iconAnchor: [15, 45],
+                    popupAnchor: [-3, -40],
+//                    shadowAnchor: [15, 35]
+                });
+              marker = new L.marker([locations[i][1], locations[i][2]],{icon: myIcon})
+                .bindPopup(locations[i][0])
+                .addTo(map);
+            }
+        })
+        
+    }, 5000)
+       
     ")
 
 ?>
