@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Хост: 127.0.0.1
--- Время создания: Фев 24 2024 г., 23:03
--- Версия сервера: 10.4.27-MariaDB
--- Версия PHP: 7.4.33
+-- Host: 127.0.0.1
+-- Generation Time: Feb 25, 2024 at 07:20 PM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 7.4.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- База данных: `itrack`
+-- Database: `mbos_itrack`
 --
 
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `address`
+-- Table structure for table `address`
 --
 
 CREATE TABLE `address` (
@@ -38,17 +38,19 @@ CREATE TABLE `address` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Дамп данных таблицы `address`
+-- Dumping data for table `address`
 --
 
 INSERT INTO `address` (`address`, `lat`, `long`, `created`, `updated`, `user_id`, `soato_id`) VALUES
+('Ozero', '41.55257828249837', '60.61355614571813', NULL, NULL, 4, NULL),
 ('Sevinch klinikasi', '41.549473530377426', '60.636231482390826', NULL, NULL, 4, NULL),
+('Urganch shahar xalqaro airaporti', '41.58531116985703', '60.632868011900094', NULL, NULL, 4, NULL),
 ('Xorazm viloyati hokimligi', '41.54912838152944', '60.63035863957408', NULL, NULL, 4, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `call`
+-- Table structure for table `call`
 --
 
 CREATE TABLE `call` (
@@ -68,16 +70,17 @@ CREATE TABLE `call` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Дамп данных таблицы `call`
+-- Dumping data for table `call`
 --
 
 INSERT INTO `call` (`id`, `code`, `code_id`, `name`, `phone`, `gender`, `type_id`, `detail`, `address`, `user_id`, `created`, `updated`, `status`) VALUES
-(1, NULL, NULL, 'Dilmurod', '+998999670395', 1, 1, 'Ikki kishi janjallashmoqda sevinch klinikani orqa tomonida', 'Sevinch klinikasi', 4, '2024-02-25 03:02:02', '2024-02-25 03:02:02', 1);
+(1, NULL, NULL, 'Dilmurod', '+998999670395', 1, 1, 'Ikki kishi janjallashmoqda sevinch klinikani orqa tomonida', 'Sevinch klinikasi', 4, '2024-02-25 03:02:02', '2024-02-25 03:02:02', 1),
+(2, NULL, NULL, 'asdasd', 'asdasd', 1, 1, 'asdasd', 'Ozero', 4, '2024-02-25 15:34:32', '2024-02-25 15:34:32', 1);
 
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `call_type`
+-- Table structure for table `call_type`
 --
 
 CREATE TABLE `call_type` (
@@ -86,7 +89,7 @@ CREATE TABLE `call_type` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Дамп данных таблицы `call_type`
+-- Dumping data for table `call_type`
 --
 
 INSERT INTO `call_type` (`id`, `name`) VALUES
@@ -96,7 +99,7 @@ INSERT INTO `call_type` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `company`
+-- Table structure for table `company`
 --
 
 CREATE TABLE `company` (
@@ -123,7 +126,7 @@ CREATE TABLE `company` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Дамп данных таблицы `company`
+-- Dumping data for table `company`
 --
 
 INSERT INTO `company` (`id`, `name`, `logo`, `location`, `lat`, `long`, `phone`, `phone2`, `wifi`, `work_begin`, `work_end`, `status`, `work_status`, `theme_id`, `created`, `updated`, `address`, `target`, `alias`, `soato_id`) VALUES
@@ -132,8 +135,8 @@ INSERT INTO `company` (`id`, `name`, `logo`, `location`, `lat`, `long`, `phone`,
 -- --------------------------------------------------------
 
 --
--- Дублирующая структура для представления `district_view`
--- (См. Ниже фактическое представление)
+-- Stand-in structure for view `district_view`
+-- (See below for the actual view)
 --
 CREATE TABLE `district_view` (
 `id` bigint(20)
@@ -151,8 +154,8 @@ CREATE TABLE `district_view` (
 -- --------------------------------------------------------
 
 --
--- Дублирующая структура для представления `region_view`
--- (См. Ниже фактическое представление)
+-- Stand-in structure for view `region_view`
+-- (See below for the actual view)
 --
 CREATE TABLE `region_view` (
 `id` bigint(20)
@@ -170,7 +173,7 @@ CREATE TABLE `region_view` (
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `soato`
+-- Table structure for table `soato`
 --
 
 CREATE TABLE `soato` (
@@ -190,7 +193,7 @@ CREATE TABLE `soato` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Дамп данных таблицы `soato`
+-- Dumping data for table `soato`
 --
 
 INSERT INTO `soato` (`id`, `res_id`, `region_id`, `district_id`, `qfi_id`, `mahalla_id`, `name_lot`, `center_lot`, `name_cyr`, `center_cyr`, `name_ru`, `center_ru`, `sector`) VALUES
@@ -419,7 +422,7 @@ INSERT INTO `soato` (`id`, `res_id`, `region_id`, `district_id`, `qfi_id`, `maha
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
@@ -435,22 +438,26 @@ CREATE TABLE `user` (
   `updated` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `status` int(11) DEFAULT 1,
   `role_id` int(11) DEFAULT NULL,
-  `image` varchar(255) DEFAULT 'default/avatar.png'
+  `image` varchar(255) DEFAULT 'default/avatar.png',
+  `lat` varchar(255) DEFAULT NULL,
+  `long` varchar(255) DEFAULT NULL,
+  `active_date` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `active` int(11) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Дамп данных таблицы `user`
+-- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `name`, `username`, `password`, `auth_key`, `token`, `code`, `access_token`, `created`, `updated`, `status`, `role_id`, `image`) VALUES
-(1, 'Dilmurod Allabergenov', '(99)967-0395', '$2y$13$VPNOwR3oHhP6FP4vneeUW.dLx6WRtLH4hx3hqV2kC9FeClMAvg2Ii', NULL, NULL, NULL, NULL, '2023-10-07 13:52:47', '2023-10-09 17:12:20', 1, 100, 'image/1696669348.7323png'),
-(4, 'Mansur', '(91)912-1101', '$2y$13$9aVxQzZBzidOoT5Yj8PjP.iKfq9SLmK6zqfEDNaS8bJYLIuXRX1US', NULL, NULL, NULL, NULL, '2024-02-23 11:41:31', '2024-02-23 11:41:31', 1, 30, 'default/avatar.png'),
-(5, 'Inspektor', '(99)967-1234', '$2y$13$X/AIQaGRj.BuO7gI.75aleElkgb/28/aGNc6VyT9Wmy5AF1g9Yoty', NULL, NULL, NULL, NULL, '2024-02-25 03:00:08', '2024-02-25 03:00:08', 1, 20, 'default/avatar.png');
+INSERT INTO `user` (`id`, `name`, `username`, `password`, `auth_key`, `token`, `code`, `access_token`, `created`, `updated`, `status`, `role_id`, `image`, `lat`, `long`, `active_date`, `active`) VALUES
+(1, 'Dilmurod Allabergenov', '(99)967-0395', '$2y$13$VPNOwR3oHhP6FP4vneeUW.dLx6WRtLH4hx3hqV2kC9FeClMAvg2Ii', NULL, NULL, NULL, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiaWF0IjoxNzA4ODc4NzQ0LCJuYmYiOjE3MDg5NjUxNDQsIm5hbWUiOiJEaWxtdXJvZCBBbGxhYmVyZ2Vub3YifQ.JVExrYaNt3mNy4iRZS98uRP3r5bywHd_r2miCDT_Z70', '2023-10-07 13:52:47', '2024-02-25 21:41:55', 1, 100, 'default/avatar.png', '41.552269', '60.631571', '2024-02-25 05:41:55', 1),
+(4, 'Mansur', '(91)912-1101', '$2y$13$9aVxQzZBzidOoT5Yj8PjP.iKfq9SLmK6zqfEDNaS8bJYLIuXRX1US', NULL, NULL, NULL, NULL, '2024-02-23 11:41:31', '2024-02-23 11:41:31', 1, 30, 'default/avatar.png', NULL, NULL, '2024-02-25 14:22:18', 0),
+(5, 'Inspektor', '(99)967-1234', '$2y$13$X/AIQaGRj.BuO7gI.75aleElkgb/28/aGNc6VyT9Wmy5AF1g9Yoty', NULL, NULL, NULL, NULL, '2024-02-25 03:00:08', '2024-02-25 03:00:08', 1, 20, 'default/avatar.png', NULL, NULL, '2024-02-25 14:22:18', 0);
 
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `user_role`
+-- Table structure for table `user_role`
 --
 
 CREATE TABLE `user_role` (
@@ -461,7 +468,7 @@ CREATE TABLE `user_role` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Дамп данных таблицы `user_role`
+-- Dumping data for table `user_role`
 --
 
 INSERT INTO `user_role` (`id`, `name`, `url`, `status`) VALUES
@@ -473,60 +480,60 @@ INSERT INTO `user_role` (`id`, `name`, `url`, `status`) VALUES
 -- --------------------------------------------------------
 
 --
--- Структура для представления `district_view`
+-- Structure for view `district_view`
 --
 DROP TABLE IF EXISTS `district_view`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `district_view`  AS SELECT `s`.`id` AS `id`, `s`.`region_id` AS `region_id`, `s`.`district_id` AS `district_id`, `s`.`name_lot` AS `name_lot`, `s`.`center_lot` AS `center_lot`, `s`.`name_cyr` AS `name_cyr`, `s`.`center_cyr` AS `center_cyr`, `s`.`name_ru` AS `name_ru`, `s`.`center_ru` AS `center_ru`, `s`.`sector` AS `sector` FROM `soato` AS `s` WHERE `s`.`qfi_id` is null AND `s`.`district_id` is not null;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `district_view`  AS SELECT `s`.`id` AS `id`, `s`.`region_id` AS `region_id`, `s`.`district_id` AS `district_id`, `s`.`name_lot` AS `name_lot`, `s`.`center_lot` AS `center_lot`, `s`.`name_cyr` AS `name_cyr`, `s`.`center_cyr` AS `center_cyr`, `s`.`name_ru` AS `name_ru`, `s`.`center_ru` AS `center_ru`, `s`.`sector` AS `sector` FROM `soato` AS `s` WHERE `s`.`qfi_id` is null AND `s`.`district_id` is not nullnot null  ;
 
 -- --------------------------------------------------------
 
 --
--- Структура для представления `region_view`
+-- Structure for view `region_view`
 --
 DROP TABLE IF EXISTS `region_view`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `region_view`  AS SELECT `s`.`id` AS `id`, `s`.`region_id` AS `region_id`, `s`.`district_id` AS `district_id`, `s`.`name_lot` AS `name_lot`, `s`.`center_lot` AS `center_lot`, `s`.`name_cyr` AS `name_cyr`, `s`.`center_cyr` AS `center_cyr`, `s`.`name_ru` AS `name_ru`, `s`.`center_ru` AS `center_ru`, `s`.`sector` AS `sector` FROM `soato` AS `s` WHERE `s`.`district_id` is null AND `s`.`region_id` is not null;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `region_view`  AS SELECT `s`.`id` AS `id`, `s`.`region_id` AS `region_id`, `s`.`district_id` AS `district_id`, `s`.`name_lot` AS `name_lot`, `s`.`center_lot` AS `center_lot`, `s`.`name_cyr` AS `name_cyr`, `s`.`center_cyr` AS `center_cyr`, `s`.`name_ru` AS `name_ru`, `s`.`center_ru` AS `center_ru`, `s`.`sector` AS `sector` FROM `soato` AS `s` WHERE `s`.`district_id` is null AND `s`.`region_id` is not nullnot null  ;
 
 --
--- Индексы сохранённых таблиц
+-- Indexes for dumped tables
 --
 
 --
--- Индексы таблицы `address`
+-- Indexes for table `address`
 --
 ALTER TABLE `address`
   ADD PRIMARY KEY (`address`),
   ADD KEY `FK_address_user_id` (`user_id`);
 
 --
--- Индексы таблицы `call`
+-- Indexes for table `call`
 --
 ALTER TABLE `call`
   ADD PRIMARY KEY (`id`),
   ADD KEY `FK_call_address` (`address`);
 
 --
--- Индексы таблицы `call_type`
+-- Indexes for table `call_type`
 --
 ALTER TABLE `call_type`
   ADD PRIMARY KEY (`id`);
 
 --
--- Индексы таблицы `company`
+-- Indexes for table `company`
 --
 ALTER TABLE `company`
   ADD PRIMARY KEY (`id`),
   ADD KEY `FK_company_soato_id` (`soato_id`);
 
 --
--- Индексы таблицы `soato`
+-- Indexes for table `soato`
 --
 ALTER TABLE `soato`
   ADD PRIMARY KEY (`id`);
 
 --
--- Индексы таблицы `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`),
@@ -534,69 +541,69 @@ ALTER TABLE `user`
   ADD KEY `FK_user_role_id` (`role_id`);
 
 --
--- Индексы таблицы `user_role`
+-- Indexes for table `user_role`
 --
 ALTER TABLE `user_role`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT для сохранённых таблиц
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT для таблицы `call`
+-- AUTO_INCREMENT for table `call`
 --
 ALTER TABLE `call`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT для таблицы `call_type`
+-- AUTO_INCREMENT for table `call_type`
 --
 ALTER TABLE `call_type`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT для таблицы `company`
+-- AUTO_INCREMENT for table `company`
 --
 ALTER TABLE `company`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT для таблицы `user`
+-- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT для таблицы `user_role`
+-- AUTO_INCREMENT for table `user_role`
 --
 ALTER TABLE `user_role`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 
 --
--- Ограничения внешнего ключа сохраненных таблиц
+-- Constraints for dumped tables
 --
 
 --
--- Ограничения внешнего ключа таблицы `address`
+-- Constraints for table `address`
 --
 ALTER TABLE `address`
   ADD CONSTRAINT `FK_address_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Ограничения внешнего ключа таблицы `call`
+-- Constraints for table `call`
 --
 ALTER TABLE `call`
   ADD CONSTRAINT `FK_call_address` FOREIGN KEY (`address`) REFERENCES `address` (`address`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Ограничения внешнего ключа таблицы `company`
+-- Constraints for table `company`
 --
 ALTER TABLE `company`
   ADD CONSTRAINT `FK_company_soato_id` FOREIGN KEY (`soato_id`) REFERENCES `soato` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Ограничения внешнего ключа таблицы `user`
+-- Constraints for table `user`
 --
 ALTER TABLE `user`
   ADD CONSTRAINT `FK_user_role_id` FOREIGN KEY (`role_id`) REFERENCES `user_role` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
