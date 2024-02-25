@@ -58,9 +58,12 @@ class UserController extends Controller
         $user->long = $long;
         $user->active_date = date('Y-m-d h:i:s');
         $user->active = 1;
-        $user->save(false);
+        if($user->save(false)){
+            return ['success'=>true];
+        }else{
+            return ['success'=>false];
+        }
 
-        return ['success'=>true];
     }
 
 

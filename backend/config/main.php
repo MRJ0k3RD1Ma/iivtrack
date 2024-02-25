@@ -62,6 +62,7 @@ return [
                     'pluralize' => false,
                     'extraPatterns'=>[
                         'GET me'=>'me',
+                        'GET track'=>'track',
                     ]
                 ],
             ],
