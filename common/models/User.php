@@ -49,10 +49,10 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
-            [['created', 'updated'], 'safe'],
-            [['status', 'role_id'], 'integer'],
+            [['created', 'updated','active_date'], 'safe'],
+            [['status', 'role_id','active'], 'integer'],
             [['image'],'file','extensions'=>['jpg','png','jpeg']],
-            [['name', 'auth_key', 'token', 'code','image'], 'string', 'max' => 255],
+            [['name', 'auth_key', 'token', 'code','image','lat','long'], 'string', 'max' => 255],
             [['password', 'access_token'], 'string', 'max' => 500],
             [['username'],'string','length'=>12],
             [['username','name'],'required'],
@@ -81,6 +81,10 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
             'updated' => 'O`zgartirildi',
             'status' => 'Status',
             'role_id' => 'Role',
+            'lat'=>'Kenglik',
+            'long'=>'Uzunlik',
+            'active'=>'Aktiv',
+            'active_date'=>'So`ngi aktivlik'
         ];
     }
 

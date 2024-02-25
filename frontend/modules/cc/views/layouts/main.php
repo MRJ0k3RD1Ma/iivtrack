@@ -81,11 +81,11 @@ MapAsset::register($this);
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-sm-6">
-                        <script>document.write(new Date().getFullYear())</script> © KAFE24.
+                        <script>document.write(new Date().getFullYear())</script> © iTrack.
                     </div>
                     <div class="col-sm-6">
                         <div class="text-sm-end d-none d-sm-block">
-                            Design & Develop by <a href="http://infobase24.uz" class="text-decoration-underline">INFOBASE24 LLC</a>
+                            Design & Develop by <a href="" class="text-decoration-underline">Dilmurod Allabergenov</a>
                         </div>
                     </div>
                 </div>

@@ -5,7 +5,7 @@
         <div class="d-flex">
             <!-- LOGO -->
             <div class="navbar-brand-box">
-                <a href="<?= Yii::$app->urlManager->createUrl(['/profi/'])?>" class="logo logo-dark">
+                <a href="/" class="logo logo-dark">
                                 <span class="logo-sm">
                                     <img src="/default/assets/images/logo-sm.svg" alt="" height="30">
                                 </span>
@@ -14,7 +14,7 @@
                                 </span>
                 </a>
 
-                <a href="<?= Yii::$app->urlManager->createUrl(['/profi/'])?>" class="logo logo-light">
+                <a href="/" class="logo logo-light">
                                 <span class="logo-sm">
                                     <img src="/default/assets/images/logo-sm.svg" alt="" height="30">
                                 </span>

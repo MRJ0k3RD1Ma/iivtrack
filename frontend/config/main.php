@@ -18,6 +18,9 @@ return [
         'cc' => [
             'class' => 'frontend\modules\cc\Module',
         ],
+        'profi' => [
+            'class' => 'frontend\modules\profi\Module',
+        ],
     ],
     'components' => [
         'request' => [
