@@ -15,15 +15,23 @@ return [
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-backend',
+            'enableCookieValidation' => false,
+            'enableCsrfValidation'   => false,
+            'baseUrl'=>'/api',
+            'parsers' => [
+                'application/json' => 'yii\web\JsonParser',
+            ]
         ],
         'user' => [
-            'identityClass' => 'common\models\User',
+            'class' => yii\web\User::class,
+            'identityClass' => backend\models\User::class,
+            'loginUrl' => null,
             'enableAutoLogin' => true,
-            'identityCookie' => ['name' => '_identity-backend', 'httpOnly' => true],
+            'enableSession'=>false,
+            'identityCookie'=>['name'=>'_identity-backend','httpOnly'=>true],
         ],
-        'session' => [
-            // this is the name of the session cookie used for login on the backend
-            'name' => 'advanced-backend',
+        'authenticator' => [
+            'class' => \yii\filters\auth\HttpBearerAuth::class,
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -34,17 +42,31 @@ return [
                 ],
             ],
         ],
-        'errorHandler' => [
-            'errorAction' => 'site/error',
+        'jwt' => [
+            'class' => 'backend\components\JwtCom',
+            'key' => 'sdfjlskdjgflkdsfhglkwejropkjsdlsdfsd2334213fds',
         ],
-        /*
+
         'urlManager' => [
             'enablePrettyUrl' => true,
+            'enableStrictParsing' => true,
             'showScriptName' => false,
             'rules' => [
+                'auth'=>'site/login',
+                'refresh-token'=>'site/refresh-token',
+                'site/check'=>'site/check',
+                'OPTIONS' => 'site/index',
+                [
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => 'user',
+                    'pluralize' => false,
+                    'extraPatterns'=>[
+                        'GET me'=>'me',
+                    ]
+                ],
             ],
-        ],
-        */
+        ]
+
     ],
     'params' => $params,
 ];
