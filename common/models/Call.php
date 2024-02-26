@@ -81,6 +81,10 @@ class Call extends \yii\db\ActiveRecord
         return $this->hasOne(Address::class, ['address' => 'address']);
     }
 
+    public function getUser()
+    {
+        return $this->hasOne(User::class,['id'=>'user_id']);
+    }
     /**
      * Gets query for [[Type]].
      *
