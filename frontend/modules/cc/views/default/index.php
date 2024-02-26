@@ -60,7 +60,7 @@ $this->registerJs("
     setInterval(function(){
     
         $.get('{$url}').done(function(data){
-            osm.clearLayers();
+            
             var locations = JSON.parse(data);
             for (var i = 0; i < locations.length; i++) {
               var icn = '/icon/marker-blue.png';
