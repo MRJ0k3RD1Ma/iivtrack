@@ -133,7 +133,7 @@ if(Yii::$app->session->hasFlash('success')){
            if (navigator.geolocation) {
                navigator.geolocation.getCurrentPosition(showPosition);
            }
-         },5000);
+         },10000);
     ")
 ?>
 
