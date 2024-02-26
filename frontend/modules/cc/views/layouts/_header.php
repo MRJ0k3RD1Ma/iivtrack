@@ -33,6 +33,27 @@
             <div class="dropdown d-none d-sm-inline-block">
                 <button type="button" class="btn header-item"
                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Tadbirlar
+                </button>
+                <div class="dropdown-menu dropdown-menu-end">
+
+                    <!-- item-->
+                    <a href="#" class="dropdown-item notify-item language">
+                        <span class="fa fa-plus"></span> Jarayonda
+                    </a>
+                    <!-- item-->
+                    <a href="#" class="dropdown-item notify-item language">
+                        <span class="fa fa-location-arrow"></span> Tugallangan
+                    </a>
+                    <!-- item-->
+                    <a href="#" class="dropdown-item notify-item language">
+                        <span class="fa fa-plus"></span> Barchasi
+                    </a>
+                </div>
+            </div>
+            <div class="dropdown d-none d-sm-inline-block">
+                <button type="button" class="btn header-item"
+                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <span class="fa fa-phone-square"></span> Chaqiruvlar
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">
