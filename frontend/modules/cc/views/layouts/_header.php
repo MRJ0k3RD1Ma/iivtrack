@@ -38,12 +38,12 @@
                 <div class="dropdown-menu dropdown-menu-end">
 
                     <!-- item-->
-                    <a href="#" class="dropdown-item notify-item language">
-                        <span class="fa fa-plus"></span> Jarayonda
+                    <a href="<?= Yii::$app->urlManager->createUrl(['/cc/default/event'])?>" class="dropdown-item notify-item language">
+                        <span class="fa fa-plus"></span> Tadbir qo'shish
                     </a>
                     <!-- item-->
                     <a href="#" class="dropdown-item notify-item language">
-                        <span class="fa fa-location-arrow"></span> Tugallangan
+                        <span class="fa fa-location-arrow"></span> Jarayonda
                     </a>
                     <!-- item-->
                     <a href="#" class="dropdown-item notify-item language">

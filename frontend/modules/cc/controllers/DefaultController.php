@@ -64,6 +64,11 @@ class DefaultController extends Controller
         ]);
     }
 
+    public function actionEvent()
+    {
+        return $this->render('event');
+    }
+
     public function actionProfile(){
         $model = User::findOne(Yii::$app->user->id);
         $pas = $model->password;
