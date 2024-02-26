@@ -45,7 +45,7 @@ class DefaultController extends Controller
             $code = substr(date('Y'),2,2).'/'.$code_id;
             $model->code = $code;
             $model->code_id = $code_id;
-            $res = Sms::send($model->phone,'Sizning chaqiruvingizga asosan sizga profilaktika inspektori '.$model->user->name.' yuborildi');
+            $res = Sms::send($model->phone,'Sizning chaqiruvingizga asosan sizga profilaktika inspektori '.$model->user->name.' yuborildi. Tel:'. $model->user->username);
             $res = Sms::send($model->user->username,$model->address.' manzilda yashovchi '.$model->name.' tomonidan '.$model->type->name.' sabab bilan chaqiruv. Tel:'.$model->phone);
 
 
