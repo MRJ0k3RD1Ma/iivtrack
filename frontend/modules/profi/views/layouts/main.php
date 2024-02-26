@@ -118,6 +118,24 @@ if(Yii::$app->session->hasFlash('success')){
 
 ?>
 
+<?php
+    $url = Yii::$app->urlManager->createUrl(['/profi/default/location']);
+    $this->registerJs("
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            }
+        }
+    
+        function showPosition(position) {
+            $.get('{$url}?lat='+position.coords.latitude+'&long='+position.coords.longitude).done(function(data){
+                alert(data);
+            })
+            
+            
+        }
+    ")
+?>
 
 <?php $this->endBody() ?>
 </body>

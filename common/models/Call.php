@@ -56,7 +56,7 @@ class Call extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'code' => 'Code',
+            'code' => 'Kod',
             'code_id' => 'Code ID',
             'name' => 'FIO',
             'phone' => 'Telefon',

@@ -10,7 +10,7 @@
                                     <img src="/default/assets/images/logo-sm.svg" alt="" height="30">
                                 </span>
                     <span class="logo-lg">
-                                    <img src="/default/assets/images/logo-sm.svg" alt="" height="24"> <span class="logo-txt">iTrack</span>
+                                    <img src="/default/assets/images/logo-sm.svg" alt="" height="24"> <span class="logo-txt">Urganch shahar IIB</span>
                                 </span>
                 </a>
 
@@ -19,7 +19,7 @@
                                     <img src="/default/assets/images/logo-sm.svg" alt="" height="30">
                                 </span>
                     <span class="logo-lg">
-                                    <img src="/default/assets/images/logo-sm.svg" alt="" height="24"> <span class="logo-txt">iTrack</span>
+                                    <img src="/default/assets/images/logo-sm.svg" alt="" height="24"> <span class="logo-txt">Urganch shahar IIB</span>
                                 </span>
                 </a>
             </div>
