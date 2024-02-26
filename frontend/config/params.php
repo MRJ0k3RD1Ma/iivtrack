@@ -27,5 +27,31 @@ return [
     'gender'=>[
         0=>'Ayol',
         1=>'Erkak'
+    ],
+    'sms'=>[
+        'email'=>'online.software.it.v2@mail.ru',
+        'password'=>'5AQc6WqxisH7KSc7xKvR0yz8yYo7reFOkVhaKeJ7',
+        'url'=>[
+            'auth'=>[
+                'url'=>'notify.eskiz.uz/api/auth/login',
+                'method'=>'POST',
+            ],
+            'refresh'=>[
+                'url'=>'notify.eskiz.uz/api/auth/refresh',
+                'method'=>'PATCH'
+            ],
+            'delete'=>[
+                'url'=>'notify.eskiz.uz/api/auth/invalidate',
+                'method'=>'DELETE'
+            ],
+            'user'=>[
+                'url'=>'notify.eskiz.uz/api/auth/user',
+                'method'=>'GET'
+            ],
+            'send'=>[
+                'url'=>'notify.eskiz.uz/api/message/sms/send',
+                'method'=>'POST',
+            ]
+        ]
     ]
 ];

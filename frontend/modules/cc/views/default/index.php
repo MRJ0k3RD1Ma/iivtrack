@@ -50,7 +50,6 @@ $this->registerJs("
             iconSize: [26, 36],
             iconAnchor: [15, 35],
             popupAnchor: [-3, -30],
-//            shadowAnchor: [15, 35]
         });
       marker = new L.marker([locations[i][1], locations[i][2]],{icon: myIcon})
         .bindPopup(locations[i][0])
@@ -72,7 +71,6 @@ $this->registerJs("
                     iconSize: [33, 46],
                     iconAnchor: [15, 45],
                     popupAnchor: [-3, -40],
-//                    shadowAnchor: [15, 35]
                 });
               marker = new L.marker([locations[i][1], locations[i][2]],{icon: myIcon})
                 .bindPopup(locations[i][0])

@@ -6,6 +6,7 @@ use common\models\Address;
 use common\models\Call;
 use common\models\DistrictView;
 use common\models\User;
+use frontend\components\Sms;
 use yii\web\Controller;
 use yii\web\UploadedFile;
 use function common\models\Soato;
@@ -45,7 +46,7 @@ class DefaultController extends Controller
             $model->code = $code;
             $model->code_id = $code_id;
 //            $model->user_id = Yii::$app->user->id;
-
+//            Sms::send($model->phone,'');
             if($model->save()){
                 Yii::$app->session->setFlash('success','Ushbu murojaat qabul qilindi.');
             }else{
