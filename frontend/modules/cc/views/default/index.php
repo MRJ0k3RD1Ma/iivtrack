@@ -60,8 +60,23 @@ $this->registerJs("
     setInterval(function(){
     
         $.get('{$url}').done(function(data){
+            osm.clearLayers();
             var locations = JSON.parse(data);
-        
+            for (var i = 0; i < locations.length; i++) {
+              var icn = '/icon/marker-blue.png';
+              if(locations[i][3] != 0){
+                 icn = '/icon/marker-red.png';;
+              }
+              var myIcon = L.icon({
+                    iconUrl: icn,
+                    iconSize: [26, 36],
+                    iconAnchor: [15, 35],
+                    popupAnchor: [-3, -30],
+                });
+              marker = new L.marker([locations[i][1], locations[i][2]],{icon: myIcon})
+                .bindPopup(locations[i][0])
+                .addTo(map);
+            }
             for (var i = 0; i < locations.length; i++) {
               
               var icn = '/icon/police.png';
