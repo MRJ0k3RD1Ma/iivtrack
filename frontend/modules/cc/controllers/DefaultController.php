@@ -110,11 +110,23 @@ class DefaultController extends Controller
 
     public function actionPolice()
     {
-        $model = User::find()->where(['>','active',0])->all();
+        $model = Address::find()->all();
         $markers = [];
+        /* @var $item Address*/
+        foreach ($model as $item){
+            $c = Call::find()->where(['address'=>$item->address])->andWhere(['<>','status',4])->one();
+            $status = 0;
+            if($c){
+                $status = $c->status;
+            }
+            $markers[] = [$item->address,$item->lat, $item->long,$status,0];
+        }
+
+        $model = User::find()->where(['>','active',0])->all();
+
         foreach ($model as $item){
             $status = 0;
-            $markers[] = [$item->name,$item->lat, $item->long,$status];
+            $markers[] = [$item->name,$item->lat, $item->long,$status,1];
         }
         return json_encode($markers);
     }

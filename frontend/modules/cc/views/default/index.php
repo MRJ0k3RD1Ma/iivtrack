@@ -56,23 +56,41 @@ $this->registerJs("
         .addTo(map);
     }
     
- 
-    setInterval(function(){
     
+    setInterval(function(){
+        map.eachLayer((layer) => {
+             if(layer['_latlng']!=undefined)
+                 layer.remove();
+         });
+        
         $.get('{$url}').done(function(data){
             
             var locations = JSON.parse(data);
             
             for (var i = 0; i < locations.length; i++) {
-              
-              var icn = '/icon/police.png';
-              
-              var myIcon = L.icon({
+              var icn;
+              var myIcon;
+              if(locations[i][4] == 1){
+                 icn = '/icon/police.png';
+                 myIcon = L.icon({
                     iconUrl: icn,
                     iconSize: [33, 46],
                     iconAnchor: [15, 45],
                     popupAnchor: [-3, -40],
                 });
+              }else{
+                   icn = '/icon/marker-blue.png';
+                  if(locations[i][3] != 0){
+                     icn = '/icon/marker-red.png';;
+                  }
+                  myIcon = L.icon({
+                    iconUrl: icn,
+                    iconSize: [26, 36],
+                    iconAnchor: [15, 35],
+                    popupAnchor: [-3, -30],
+                });
+              }
+              
               marker = new L.marker([locations[i][1], locations[i][2]],{icon: myIcon})
                 .bindPopup(locations[i][0])
                 .addTo(map);
