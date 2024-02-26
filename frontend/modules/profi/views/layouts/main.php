@@ -125,7 +125,7 @@ if(Yii::$app->session->hasFlash('success')){
     
         function showPosition(position) {
             $.get('{$url}?lat='+position.coords.latitude+'&long='+position.coords.longitude).done(function(data){
-                alert(data);
+               console.log(data);
             })
         }
         
