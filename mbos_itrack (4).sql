@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 25, 2024 at 07:20 PM
+-- Generation Time: Feb 27, 2024 at 07:06 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 7.4.33
 
@@ -42,6 +42,9 @@ CREATE TABLE `address` (
 --
 
 INSERT INTO `address` (`address`, `lat`, `long`, `created`, `updated`, `user_id`, `soato_id`) VALUES
+('Markaziy buyum bozor', '41.56655804049308', '60.59450745597134', NULL, NULL, 4, NULL),
+('MVD kasalxonasi', '41.550931451979494', '60.62320703048607', NULL, NULL, 4, NULL),
+('Olimpia Stadion', '41.565941284180894', '60.606122016906745', NULL, NULL, 4, NULL),
 ('Ozero', '41.55257828249837', '60.61355614571813', NULL, NULL, 4, NULL),
 ('Sevinch klinikasi', '41.549473530377426', '60.636231482390826', NULL, NULL, 4, NULL),
 ('Urganch shahar xalqaro airaporti', '41.58531116985703', '60.632868011900094', NULL, NULL, 4, NULL),
@@ -74,8 +77,17 @@ CREATE TABLE `call` (
 --
 
 INSERT INTO `call` (`id`, `code`, `code_id`, `name`, `phone`, `gender`, `type_id`, `detail`, `address`, `user_id`, `created`, `updated`, `status`) VALUES
-(1, NULL, NULL, 'Dilmurod', '+998999670395', 1, 1, 'Ikki kishi janjallashmoqda sevinch klinikani orqa tomonida', 'Sevinch klinikasi', 4, '2024-02-25 03:02:02', '2024-02-25 03:02:02', 1),
-(2, NULL, NULL, 'asdasd', 'asdasd', 1, 1, 'asdasd', 'Ozero', 4, '2024-02-25 15:34:32', '2024-02-25 15:34:32', 1);
+(1, NULL, NULL, 'Dilmurod', '+998999670395', 1, 1, 'Ikki kishi janjallashmoqda sevinch klinikani orqa tomonida', 'Sevinch klinikasi', 4, '2024-02-25 03:02:02', '2024-02-26 12:23:11', 4),
+(2, NULL, NULL, 'asdasd', 'asdasd', 1, 1, 'asdasd', 'Ozero', 4, '2024-02-25 15:34:32', '2024-02-26 12:23:14', 4),
+(3, NULL, NULL, 'Dilmurod', '+99899670395', 1, 2, 'MVD kasalxonasini aldin ikki kishi urishib duribdi birsinda pichoq bor', 'MVD kasalxonasi', 4, '2024-02-25 16:22:20', '2024-02-26 12:23:18', 4),
+(4, '24/1', 1, 'Sardor', '993127706', 1, 1, '2 kishid 1 bolani uroq', 'Urganch shahar xalqaro airaporti', 7, '2024-02-26 10:39:11', '2024-02-26 12:23:20', 4),
+(5, '24/2', 2, 'Mansur', '+998919121101', 1, 1, 'test', 'Urganch shahar xalqaro airaporti', 10, '2024-02-26 11:10:39', '2024-02-26 12:23:24', 4),
+(6, '24/3', 3, 'Mansur Yusupov', '+998919121101', 1, 1, 'test', 'Markaziy buyum bozor', 9, '2024-02-26 11:15:08', '2024-02-26 12:23:27', 4),
+(7, '24/4', 4, 'Mansur', '+998999657534', 1, 1, 'kasalxonada janjal/ ', 'MVD kasalxonasi', 8, '2024-02-26 11:23:37', '2024-02-26 12:23:31', 4),
+(8, '24/5', 5, 'Mansur', '+998914326868', 1, 1, '445456454545456', 'Ozero', 12, '2024-02-26 11:30:10', '2024-02-26 12:23:33', 4),
+(9, '24/6', 6, 'Mansur', '+998914326868', 1, 1, 'dd', 'Ozero', 8, '2024-02-26 11:32:55', '2024-02-26 12:23:35', 4),
+(10, '24/7', 7, '', '+998919121101', 1, 2, 'Test jarayoni', 'MVD kasalxonasi', 8, '2024-02-26 11:38:12', '2024-02-26 12:23:38', 4),
+(11, '24/8', 8, 'Mansur', '+998919121101', 1, 1, 'test', 'Sevinch klinikasi', 13, '2024-02-26 11:41:58', '2024-02-26 12:23:41', 4);
 
 -- --------------------------------------------------------
 
@@ -150,6 +162,68 @@ CREATE TABLE `district_view` (
 ,`center_ru` varchar(50)
 ,`sector` int(11)
 );
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `event`
+--
+
+CREATE TABLE `event` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `date_start` date DEFAULT NULL,
+  `date_end` date DEFAULT NULL,
+  `radius` varchar(255) DEFAULT NULL,
+  `detail` text DEFAULT NULL,
+  `type_id` int(11) NOT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `lat` varchar(255) DEFAULT NULL,
+  `long` varchar(255) DEFAULT NULL,
+  `created` datetime DEFAULT current_timestamp(),
+  `updated` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `status` int(11) DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `event`
+--
+
+INSERT INTO `event` (`id`, `user_id`, `date_start`, `date_end`, `radius`, `detail`, `type_id`, `address`, `lat`, `long`, `created`, `updated`, `status`) VALUES
+(1, 4, '2024-02-28', '2024-02-29', '118', 'Test uchun', 3, 'Jaloladdin manguberdi xiyobonida', '41.551013714884064', '60.63146838866898', '2024-02-27 23:04:25', '2024-02-27 23:04:25', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `event_dot`
+--
+
+CREATE TABLE `event_dot` (
+  `id` int(11) NOT NULL,
+  `event_id` int(11) NOT NULL,
+  `lat` varchar(255) DEFAULT NULL,
+  `long` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `event_type`
+--
+
+CREATE TABLE `event_type` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `event_type`
+--
+
+INSERT INTO `event_type` (`id`, `name`) VALUES
+(1, 'Prezident tashrifi'),
+(2, 'Vazirlar tashrifi'),
+(3, 'Bayramlar');
 
 -- --------------------------------------------------------
 
@@ -450,9 +524,23 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `name`, `username`, `password`, `auth_key`, `token`, `code`, `access_token`, `created`, `updated`, `status`, `role_id`, `image`, `lat`, `long`, `active_date`, `active`) VALUES
-(1, 'Dilmurod Allabergenov', '(99)967-0395', '$2y$13$VPNOwR3oHhP6FP4vneeUW.dLx6WRtLH4hx3hqV2kC9FeClMAvg2Ii', NULL, NULL, NULL, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiaWF0IjoxNzA4ODc4NzQ0LCJuYmYiOjE3MDg5NjUxNDQsIm5hbWUiOiJEaWxtdXJvZCBBbGxhYmVyZ2Vub3YifQ.JVExrYaNt3mNy4iRZS98uRP3r5bywHd_r2miCDT_Z70', '2023-10-07 13:52:47', '2024-02-25 21:41:55', 1, 100, 'default/avatar.png', '41.552269', '60.631571', '2024-02-25 05:41:55', 1),
+(1, 'Dilmurod Allabergenov', '(99)967-0395', '$2y$13$VPNOwR3oHhP6FP4vneeUW.dLx6WRtLH4hx3hqV2kC9FeClMAvg2Ii', NULL, NULL, NULL, 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiaWF0IjoxNzA5MDEwNjA4LCJuYmYiOjE3MDkwOTcwMDgsIm5hbWUiOiJEaWxtdXJvZCBBbGxhYmVyZ2Vub3YifQ.KJeSIiZQ1sUNgiIVPkc7SCOrEvOFYAVUUUMod7Cl8fs', '2023-10-07 13:52:47', '2024-02-27 13:06:42', 1, 100, 'image/1696669348.7323png', '41.5700234', '60.6075322', '2024-02-27 01:06:42', 1),
 (4, 'Mansur', '(91)912-1101', '$2y$13$9aVxQzZBzidOoT5Yj8PjP.iKfq9SLmK6zqfEDNaS8bJYLIuXRX1US', NULL, NULL, NULL, NULL, '2024-02-23 11:41:31', '2024-02-23 11:41:31', 1, 30, 'default/avatar.png', NULL, NULL, '2024-02-25 14:22:18', 0),
-(5, 'Inspektor', '(99)967-1234', '$2y$13$X/AIQaGRj.BuO7gI.75aleElkgb/28/aGNc6VyT9Wmy5AF1g9Yoty', NULL, NULL, NULL, NULL, '2024-02-25 03:00:08', '2024-02-25 03:00:08', 1, 20, 'default/avatar.png', NULL, NULL, '2024-02-25 14:22:18', 0);
+(5, 'Inspektor', '(99)967-1234', '$2y$13$X/AIQaGRj.BuO7gI.75aleElkgb/28/aGNc6VyT9Wmy5AF1g9Yoty', NULL, NULL, NULL, NULL, '2024-02-25 03:00:08', '2024-02-26 10:27:51', 1, 20, 'default/avatar.png', '41.5604928', '60.6252556', '2024-02-26 10:27:51', 1),
+(6, 'Yusupov Mansu', '(94)388-1101', '$2y$13$fECylod2DcbrsV9sOwSMNe1jhc8HYpTLTykoR03XhXDW1pjPCClm6', NULL, NULL, NULL, NULL, '2024-02-25 16:24:10', '2024-02-25 16:24:10', 1, 20, 'default/avatar.png', NULL, NULL, '2024-02-25 16:24:10', 0),
+(7, 'Dusnazarov Quvondiq', '(99)115-3004', '$2y$13$XTvDFet9MOl0k92w..Rc8.mYz8u4O/MhOazRg3DEbzFg3TKI5rW6W', NULL, NULL, NULL, NULL, '2024-02-26 10:15:52', '2024-02-27 11:57:33', 1, 20, 'default/avatar.png', '41.5721899', '60.6080838', '2024-02-27 11:57:33', 1),
+(8, 'Iskandarov Doniyor', '(99)115-3053', '$2y$13$SZFjxwvPTPfGXfWSCoi/L.lYfiqV/XeusFB401eJRSTh0ZRAujmTO', NULL, NULL, NULL, NULL, '2024-02-26 10:19:48', '2024-02-26 15:51:33', 1, 20, 'default/avatar.png', '41.5591055', '60.6196182', '2024-02-26 03:51:33', 1),
+(9, 'Masharipov Odilbek', '(99)115-3019', '$2y$13$3avI/1HY48TWnhvIB4KoW.MQc6GxrC/Pn31JV0v5Lclk4chpj8o2K', NULL, NULL, NULL, NULL, '2024-02-26 10:21:43', '2024-02-26 10:48:54', 1, 20, 'default/avatar.png', '41.5604941', '60.6252749', '2024-02-26 10:48:54', 1),
+(10, 'Qalandarov Askar', '(99)115-3052', '$2y$13$y4B1DMVIzdSVL/6Pk1Oy6.8l1uNGUp.7J2iA5B9yBpfnZ4ZY7varC', NULL, NULL, NULL, NULL, '2024-02-26 10:27:02', '2024-02-26 10:56:02', 1, 20, 'default/avatar.png', '41.5598895', '60.6266741', '2024-02-26 10:56:02', 1),
+(11, 'Kuronboyev Javlon', '(99)115-3071', '$2y$13$8aWxdH/2V/KFdnItHFxbmeMiDX9oYDzXjRSifGbe0kCSEUQyHVFY.', NULL, NULL, NULL, NULL, '2024-02-26 10:50:16', '2024-02-26 12:51:39', 1, 20, 'default/avatar.png', '41.54248', '60.6340311', '2024-02-26 12:51:39', 1),
+(12, 'Rajapov Usmonbek', '(99)115-3059', '$2y$13$Vc8D0dln7MYLB8D.61JPauid6T1OjMQGdC3IeCgKwVyrbA3mWnFDG', NULL, NULL, NULL, NULL, '2024-02-26 10:56:31', '2024-02-26 16:33:19', 1, 20, 'default/avatar.png', '41.540472', '60.647338', '2024-02-26 04:33:19', 1),
+(13, 'Saidov Temur', '(99)115-3008', '$2y$13$O/LHjQZx.T6TVuxBSZqRCezCX92gjIYTp1wxarWlf87P3jnWXonAC', NULL, NULL, NULL, NULL, '2024-02-26 11:29:20', '2024-02-26 11:31:34', 1, 20, 'default/avatar.png', '41.5604886', '60.6252776', '2024-02-26 11:31:34', 1),
+(14, 'Qurbonboyev Sardor', '(99)115-3018', '$2y$13$8wWClVsvO4TWWvHwyBHluOMd0K1U0edsYYKGQey.8c3izFuO2PjdC', NULL, NULL, NULL, NULL, '2024-02-26 11:43:46', '2024-02-26 12:55:54', 1, 20, 'default/avatar.png', '41.5589068', '60.6406915', '2024-02-26 12:55:54', 1),
+(15, 'Egamov Rasulbek', '(99)115-3063', '$2y$13$RCuBLnyG8mK8nVg.QmjmUOWvj221K/M0.rGPs55Q6rSaU/ZBCGJXK', NULL, NULL, NULL, NULL, '2024-02-26 11:47:38', '2024-02-26 12:30:22', 1, 20, 'default/avatar.png', '41.54879092696578', '60.63563023320881', '2024-02-26 12:30:22', 1),
+(16, 'Shokirov Sirojbek', '(99)115-3051', '$2y$13$fUhNLs3tg7tHsVMUqimKfuFHGzS5Byyn0FIKJsyBJs5H59KeH.bnO', NULL, NULL, NULL, NULL, '2024-02-26 11:51:36', '2024-02-26 12:33:56', 1, 20, 'default/avatar.png', '41.5642925', '60.6360893', '2024-02-26 12:33:56', 1),
+(17, 'Matchanov Jur`at', '(99)115-3034', '$2y$13$IO6WMXDPQVTji.BcpuF.eOjuk01gPW2fjusM/.Ny3d3GoY6Ry2.wq', NULL, NULL, NULL, NULL, '2024-02-26 11:57:14', '2024-02-26 11:58:41', 1, 20, 'default/avatar.png', '41.5605118', '60.6252795', '2024-02-26 11:58:41', 1),
+(18, 'Sapayev Doniyor', '(91)434-2333', '$2y$13$YAo3EufMN306slu.2yf69evysBsL6wl2YQJXH2j2p3bqu9W7NcuMq', NULL, NULL, NULL, NULL, '2024-02-26 12:09:02', '2024-02-26 12:13:00', 1, 20, 'default/avatar.png', '41.560486', '60.6252435', '2024-02-26 12:13:00', 1),
+(19, 'Olimov Ro`zmatboy', '(99)115-3064', '$2y$13$JIoNvznD8t/DqXik489z7O5t3c5Vu8UMK9iyvlrjs8JNnfvUX2Kw.', NULL, NULL, NULL, NULL, '2024-02-26 12:36:24', '2024-02-26 12:38:53', 1, 20, 'default/avatar.png', '41.5604882', '60.6252615', '2024-02-26 12:38:53', 1);
 
 -- --------------------------------------------------------
 
@@ -527,6 +615,26 @@ ALTER TABLE `company`
   ADD KEY `FK_company_soato_id` (`soato_id`);
 
 --
+-- Indexes for table `event`
+--
+ALTER TABLE `event`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FK_event_user_id` (`user_id`),
+  ADD KEY `FK_event_type_id` (`type_id`);
+
+--
+-- Indexes for table `event_dot`
+--
+ALTER TABLE `event_dot`
+  ADD PRIMARY KEY (`event_id`,`id`);
+
+--
+-- Indexes for table `event_type`
+--
+ALTER TABLE `event_type`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `soato`
 --
 ALTER TABLE `soato`
@@ -554,7 +662,7 @@ ALTER TABLE `user_role`
 -- AUTO_INCREMENT for table `call`
 --
 ALTER TABLE `call`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `call_type`
@@ -569,10 +677,22 @@ ALTER TABLE `company`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `event`
+--
+ALTER TABLE `event`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `event_type`
+--
+ALTER TABLE `event_type`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `user_role`
@@ -601,6 +721,13 @@ ALTER TABLE `call`
 --
 ALTER TABLE `company`
   ADD CONSTRAINT `FK_company_soato_id` FOREIGN KEY (`soato_id`) REFERENCES `soato` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `event`
+--
+ALTER TABLE `event`
+  ADD CONSTRAINT `FK_event_type_id` FOREIGN KEY (`type_id`) REFERENCES `event_type` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `FK_event_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `user`

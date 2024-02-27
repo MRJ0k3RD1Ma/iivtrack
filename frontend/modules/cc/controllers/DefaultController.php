@@ -142,11 +142,16 @@ class DefaultController extends Controller
     {
         $model = new Event();
 
-
         if($model->load($this->request->post())){
-            echo "<pre>";
-            var_dump($model);
-            exit;
+            $model->user_id = Yii::$app->user->id;
+            $model->status = 1;
+            if($model->save()){
+                Yii::$app->session->setFlash('success','Tadbir joyi muvoffaqiyatli saqlandi');
+                return $this->redirect(['/cc/event/view','id'=>$model->id]);
+            }else{
+                Yii::$app->session->setFlash('error','Tadbir joyini saqlashda xatolik');
+                return $this->redirect(['event']);
+            }
         }
 
         return $this->render('event',[

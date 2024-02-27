@@ -21,16 +21,15 @@ use yii\widgets\ActiveForm;
 
             <?php $form = ActiveForm::begin()?>
 
-                <?= $form->field($model,'date_start')->textInput(['type'=>'datetime-local'])?>
+                <?= $form->field($model,'date_start')->textInput(['type'=>'date'])?>
 
-                <?= $form->field($model,'date_end')->textInput(['type'=>'datetime-local'])?>
+                <?= $form->field($model,'date_end')->textInput(['type'=>'date'])?>
 
                 <?= $form->field($model,'type_id')->dropDownList(\yii\helpers\ArrayHelper::map(\common\models\EventType::find()->all(),'id','name'),['prompt'=>'Tadbir turini tanlang']) ?>
 
                 <?= $form->field($model,'detail')->textarea()?>
 
                 <?= $form->field($model,'address')->textInput()?>
-
 
                 <div hidden="hidden" class="hidden">
                     <?= $form->field($model,'radius')->textInput()?>
@@ -107,8 +106,16 @@ use yii\widgets\ActiveForm;
             console.log(layer)
           }
           
-          
+           
         });
+  
+        $('.leaflet-draw-draw-circle').click(function(){
+            map.eachLayer((layer) => {
+             if(layer['_latlng']!=undefined)
+                 layer.remove();
+            });
+        })
+  
   
     ")
 

@@ -41,7 +41,7 @@ class Event extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id', 'type_id'], 'required'],
+            [['type_id','date_start', 'date_end','detail','radius', 'lat', 'long'], 'required'],
             [['id', 'user_id', 'type_id', 'status'], 'integer'],
             [['date_start', 'date_end', 'created', 'updated'], 'safe'],
             [['detail'], 'string'],
@@ -59,17 +59,17 @@ class Event extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'user_id' => 'User ID',
-            'date_start' => 'Date Start',
-            'date_end' => 'Date End',
+            'user_id' => 'Registrator',
+            'date_start' => 'Tadbir boshlash sanasi',
+            'date_end' => 'Tadbir tugash sanasi',
             'radius' => 'Radius',
-            'detail' => 'Detail',
-            'type_id' => 'Type ID',
-            'address' => 'Address',
+            'detail' => 'Batafsil',
+            'type_id' => 'Tadbir turi',
+            'address' => 'Manzil',
             'lat' => 'Lat',
             'long' => 'Long',
-            'created' => 'Created',
-            'updated' => 'Updated',
+            'created' => 'Kiritildi',
+            'updated' => 'O`zgartirildi',
             'status' => 'Status',
         ];
     }
