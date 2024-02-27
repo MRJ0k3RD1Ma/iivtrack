@@ -19,11 +19,30 @@ use yii\widgets\ActiveForm;
 
         <div class="col-md-3" id="coords">
 
-            <input type="text" id="center-lat">
-            <br>
-            <input type="text" id="center-long">
-            <br>
-            <input type="text" id="radius">
+            <?php $form = ActiveForm::begin()?>
+
+                <?= $form->field($model,'date_start')->textInput(['type'=>'datetime-local'])?>
+
+                <?= $form->field($model,'date_end')->textInput(['type'=>'datetime-local'])?>
+
+                <?= $form->field($model,'type_id')->dropDownList(\yii\helpers\ArrayHelper::map(\common\models\EventType::find()->all(),'id','name'),['prompt'=>'Tadbir turini tanlang']) ?>
+
+                <?= $form->field($model,'detail')->textarea()?>
+
+                <?= $form->field($model,'address')->textInput()?>
+
+
+                <div hidden="hidden" class="hidden">
+                    <?= $form->field($model,'radius')->textInput()?>
+
+                    <?= $form->field($model,'lat')->textInput()?>
+
+                    <?= $form->field($model,'long')->textInput()?>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Saqlash</button>
+
+            <?php ActiveForm::end()?>
 
         </div>
 
@@ -76,9 +95,9 @@ use yii\widgets\ActiveForm;
           
           if (type == 'marker' || type == 'circle' || type == 'circlemarker'){
             console.log([layer.getLatLng().lat, layer.getLatLng().lng]);
-            $('#center-lat').val(layer.getLatLng().lat);
-            $('#center-long').val(layer.getLatLng().lng);
-            $('#radius').val(parseInt(layer.getRadius()));
+            $('#event-lat').val(layer.getLatLng().lat);
+            $('#event-long').val(layer.getLatLng().lng);
+            $('#event-radius').val(parseInt(layer.getRadius()));
           }
           else {
             var objects = layer.getLatLngs()[0];

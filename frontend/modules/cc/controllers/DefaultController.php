@@ -5,6 +5,7 @@ namespace frontend\modules\cc\controllers;
 use common\models\Address;
 use common\models\Call;
 use common\models\DistrictView;
+use common\models\Event;
 use common\models\User;
 use frontend\components\Sms;
 use yii\web\Controller;
@@ -139,7 +140,18 @@ class DefaultController extends Controller
 
     public function actionEvent()
     {
-        return $this->render('event');
+        $model = new Event();
+
+
+        if($model->load($this->request->post())){
+            echo "<pre>";
+            var_dump($model);
+            exit;
+        }
+
+        return $this->render('event',[
+            'model'=>$model
+        ]);
     }
 
 }
