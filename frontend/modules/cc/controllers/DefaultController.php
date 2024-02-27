@@ -64,10 +64,7 @@ class DefaultController extends Controller
         ]);
     }
 
-    public function actionEvent()
-    {
-        return $this->render('event');
-    }
+
 
     public function actionProfile(){
         $model = User::findOne(Yii::$app->user->id);
@@ -136,6 +133,13 @@ class DefaultController extends Controller
             $markers[] = [$item->name,$item->lat, $item->long,$status,1];
         }
         return json_encode($markers);
+    }
+
+
+
+    public function actionEvent()
+    {
+        return $this->render('event');
     }
 
 }
