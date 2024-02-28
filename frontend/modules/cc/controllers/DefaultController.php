@@ -143,6 +143,14 @@ class DefaultController extends Controller
             $status = 0;
             $markers[] = [$item->name,$item->lat, $item->long,$status,1];
         }
+
+        $event = Event::find()->where(['status'=>2])->all();
+
+        foreach ($event as $item){
+            $markers[] = [$item->lat,$item->long,$item->radius,$item->address,2];
+        }
+
+
         return json_encode($markers);
     }
 

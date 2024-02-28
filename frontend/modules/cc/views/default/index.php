@@ -84,7 +84,10 @@ $this->registerJs("
                     iconAnchor: [15, 45],
                     popupAnchor: [-3, -40],
                 });
-              }else{
+                 marker = new L.marker([locations[i][1], locations[i][2]],{icon: myIcon})
+                .bindPopup(locations[i][0])
+                .addTo(map);
+              }else if(locations[i][4] == 0){
                    icn = '/icon/marker-blue.png';
                   if(locations[i][3] != 0){
                      icn = '/icon/marker-red.png';;
@@ -95,11 +98,15 @@ $this->registerJs("
                     iconAnchor: [15, 35],
                     popupAnchor: [-3, -30],
                 });
-              }
-              
-              marker = new L.marker([locations[i][1], locations[i][2]],{icon: myIcon})
+                 marker = new L.marker([locations[i][1], locations[i][2]],{icon: myIcon})
                 .bindPopup(locations[i][0])
                 .addTo(map);
+              }else if(locations[i][4] == 2){
+                marker = new L.circle([locations[i][0], locations[i][1]],parseInt(locations[i][2]));
+                marker.addTo(map);
+              }
+              
+             
             }
         })
         
