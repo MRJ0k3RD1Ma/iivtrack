@@ -39,7 +39,7 @@ $this->registerJs("
     });
     osm.addTo(map);
     var locations = {$markers};
-    
+   
     for (var i = 0; i < locations.length; i++) {
       var icn = '/icon/marker-blue.png';
       if(locations[i][3] != 0){
@@ -56,6 +56,12 @@ $this->registerJs("
         .addTo(map);
     }
     
+    locations = {$ev_marker};
+   
+    for (var i = 0; i < locations.length; i++) {
+      marker = new L.circle([locations[i][0], locations[i][1]],parseInt(locations[i][2]));
+        marker.addTo(map);
+    }
     
     setInterval(function(){
         map.eachLayer((layer) => {

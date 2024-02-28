@@ -35,6 +35,15 @@ class DefaultController extends Controller
             }
             $markers[] = [$item->address,$item->lat, $item->long,$status];
         }
+
+        $event = Event::find()->where(['status'=>2])->all();
+
+        $ev_marker = [];
+        foreach ($event as $item){
+            $ev_marker[] = [$item->lat,$item->long,$item->radius,$item->address];
+        }
+
+
         $model = new Call();
         if($model->load($this->request->post())){
 
@@ -61,7 +70,8 @@ class DefaultController extends Controller
 
         return $this->render('index',[
             'markers'=>json_encode($markers),
-            'model'=>$model
+            'model'=>$model,
+            'ev_marker'=>json_encode($ev_marker)
         ]);
     }
 

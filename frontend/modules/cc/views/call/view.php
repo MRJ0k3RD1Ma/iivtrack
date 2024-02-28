@@ -13,9 +13,6 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="call-view">
 
-
-
-
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
@@ -34,5 +31,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'status',
         ],
     ]) ?>
+
 
 </div>

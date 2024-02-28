@@ -42,11 +42,11 @@
                         <span class="fa fa-plus"></span> Tadbir qo'shish
                     </a>
                     <!-- item-->
-                    <a href="#" class="dropdown-item notify-item language">
+                    <a href="<?= Yii::$app->urlManager->createUrl(['/cc/event/'])?>" class="dropdown-item notify-item language">
                         <span class="fa fa-location-arrow"></span> Jarayonda
                     </a>
                     <!-- item-->
-                    <a href="#" class="dropdown-item notify-item language">
+                    <a href="<?= Yii::$app->urlManager->createUrl(['/cc/event/'])?>" class="dropdown-item notify-item language">
                         <span class="fa fa-plus"></span> Barchasi
                     </a>
                 </div>
