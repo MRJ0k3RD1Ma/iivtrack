@@ -141,7 +141,6 @@ class DefaultController extends Controller
             $type = 1;
             if($event_user){
                 $event = $event_user->event;
-//                Sqrt(sqr(x1-x2)+sqr(y1-y2))
                 $r = sqrt(($event->lat - $item->lat)*($event->lat - $item->lat) + ($event->long - $item->long)*($event->long - $item->long));
                 if($r <= $event->radius){
                     $type = 0;

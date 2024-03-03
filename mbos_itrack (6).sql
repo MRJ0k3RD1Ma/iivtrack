@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 27, 2024 at 07:06 PM
+-- Generation Time: Mar 03, 2024 at 07:36 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 7.4.33
 
@@ -88,6 +88,29 @@ INSERT INTO `call` (`id`, `code`, `code_id`, `name`, `phone`, `gender`, `type_id
 (9, '24/6', 6, 'Mansur', '+998914326868', 1, 1, 'dd', 'Ozero', 8, '2024-02-26 11:32:55', '2024-02-26 12:23:35', 4),
 (10, '24/7', 7, '', '+998919121101', 1, 2, 'Test jarayoni', 'MVD kasalxonasi', 8, '2024-02-26 11:38:12', '2024-02-26 12:23:38', 4),
 (11, '24/8', 8, 'Mansur', '+998919121101', 1, 1, 'test', 'Sevinch klinikasi', 13, '2024-02-26 11:41:58', '2024-02-26 12:23:41', 4);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `call_result`
+--
+
+CREATE TABLE `call_result` (
+  `id` int(11) NOT NULL,
+  `call_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `result` text DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `image1` varchar(255) DEFAULT NULL,
+  `image2` varchar(255) DEFAULT NULL,
+  `image4` varchar(255) DEFAULT NULL,
+  `consept_id` int(11) DEFAULT NULL,
+  `created` datetime DEFAULT NULL,
+  `updated` datetime DEFAULT NULL,
+  `status` int(11) DEFAULT 1,
+  `lat` varchar(255) DEFAULT NULL,
+  `long` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -190,7 +213,7 @@ CREATE TABLE `event` (
 --
 
 INSERT INTO `event` (`id`, `user_id`, `date_start`, `date_end`, `radius`, `detail`, `type_id`, `address`, `lat`, `long`, `created`, `updated`, `status`) VALUES
-(1, 4, '2024-02-28', '2024-02-29', '118', 'Test uchun', 3, 'Jaloladdin manguberdi xiyobonida', '41.551013714884064', '60.63146838866898', '2024-02-27 23:04:25', '2024-02-27 23:04:25', 1);
+(1, 4, '2024-02-28', '2024-02-29', '118', 'Test uchun', 3, 'Jaloladdin manguberdi xiyobonida', '41.551013714884064', '60.63146838866898', '2024-02-27 23:04:25', '2024-02-28 16:31:23', 2);
 
 -- --------------------------------------------------------
 
@@ -224,6 +247,30 @@ INSERT INTO `event_type` (`id`, `name`) VALUES
 (1, 'Prezident tashrifi'),
 (2, 'Vazirlar tashrifi'),
 (3, 'Bayramlar');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `event_user`
+--
+
+CREATE TABLE `event_user` (
+  `id` int(11) NOT NULL,
+  `event_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `created` datetime DEFAULT current_timestamp(),
+  `updated` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `time_start` varchar(255) NOT NULL,
+  `time_end` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `event_user`
+--
+
+INSERT INTO `event_user` (`id`, `event_id`, `user_id`, `created`, `updated`, `time_start`, `time_end`) VALUES
+(1, 1, 7, '2024-02-28 16:41:54', '2024-02-28 16:41:54', '19:42', '20:46'),
+(2, 1, 14, '2024-02-28 16:42:19', '2024-02-28 16:42:19', '08:00', '20:00');
 
 -- --------------------------------------------------------
 
@@ -545,6 +592,26 @@ INSERT INTO `user` (`id`, `name`, `username`, `password`, `auth_key`, `token`, `
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `user_history`
+--
+
+CREATE TABLE `user_history` (
+  `user_id` int(11) NOT NULL,
+  `year` int(11) NOT NULL,
+  `month` int(11) NOT NULL,
+  `day` int(11) NOT NULL,
+  `hour` int(11) NOT NULL,
+  `minute` int(11) NOT NULL,
+  `second` int(11) NOT NULL,
+  `lat` varchar(255) DEFAULT NULL,
+  `long` varchar(255) DEFAULT NULL,
+  `created` datetime DEFAULT current_timestamp(),
+  `updated` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user_role`
 --
 
@@ -602,6 +669,15 @@ ALTER TABLE `call`
   ADD KEY `FK_call_address` (`address`);
 
 --
+-- Indexes for table `call_result`
+--
+ALTER TABLE `call_result`
+  ADD PRIMARY KEY (`id`,`call_id`,`user_id`),
+  ADD KEY `FK_call_result_call_id` (`call_id`),
+  ADD KEY `FK_call_result_user_id` (`user_id`),
+  ADD KEY `FK_call_result_consept_id` (`consept_id`);
+
+--
 -- Indexes for table `call_type`
 --
 ALTER TABLE `call_type`
@@ -635,6 +711,12 @@ ALTER TABLE `event_type`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `event_user`
+--
+ALTER TABLE `event_user`
+  ADD PRIMARY KEY (`event_id`,`id`);
+
+--
 -- Indexes for table `soato`
 --
 ALTER TABLE `soato`
@@ -647,6 +729,12 @@ ALTER TABLE `user`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `username` (`username`),
   ADD KEY `FK_user_role_id` (`role_id`);
+
+--
+-- Indexes for table `user_history`
+--
+ALTER TABLE `user_history`
+  ADD PRIMARY KEY (`user_id`,`year`,`month`,`day`,`hour`,`minute`,`second`);
 
 --
 -- Indexes for table `user_role`
@@ -715,6 +803,14 @@ ALTER TABLE `address`
 --
 ALTER TABLE `call`
   ADD CONSTRAINT `FK_call_address` FOREIGN KEY (`address`) REFERENCES `address` (`address`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `call_result`
+--
+ALTER TABLE `call_result`
+  ADD CONSTRAINT `FK_call_result_call_id` FOREIGN KEY (`call_id`) REFERENCES `call` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `FK_call_result_consept_id` FOREIGN KEY (`consept_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `FK_call_result_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `company`
