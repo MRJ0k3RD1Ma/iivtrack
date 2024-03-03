@@ -4,6 +4,7 @@ namespace backend\controllers;
 
 
 use backend\models\User;
+use common\models\UserHistory;
 use Yii;
 use yii\filters\AccessControl;
 use yii\filters\auth\CompositeAuth;
@@ -58,13 +59,27 @@ class UserController extends Controller
         $user->long = $long;
         $user->active_date = date('Y-m-d h:i:s');
         $user->active = 1;
+
+        $his = new UserHistory();
+        $his->year = date('Y');
+        $his->month = date('m');
+        $his->day = date('d');
+        $his->hour = date('h');
+        $his->minute = date('i');
+        $his->second = date('s');
+        $his->user_id = $user->id;
+        $his->lat = $user->lat;
+        $his->long = $user->long;
+        $his->save(false);
+
         if($user->save(false)){
             return ['success'=>true];
         }else{
             return ['success'=>false];
         }
-
     }
+
+
 
 
 }

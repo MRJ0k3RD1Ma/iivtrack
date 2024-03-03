@@ -30,6 +30,9 @@ use yii\widgets\ActiveForm;
             </div>
 
             <?php ActiveForm::end(); ?>
+
+
+            <button class="btn btn-danger remove" type="button">Remove marker</button>
         </div>
     </div>
 
@@ -53,16 +56,25 @@ use yii\widgets\ActiveForm;
         var myIcon = L.icon({
             iconUrl: '/icon/marker-blue.png',
             iconSize: [26, 36],
-            iconAnchor: [15, 35],
+            iconAnchor: [13, 36],
             popupAnchor: [-3, -76],
-//            shadowSize: [68, 50],
             shadowAnchor: [15, 35]
         });
         if(singleMarker){
             map.removeLayer(singleMarker)
         }
         singleMarker = L.marker([e.latlng.lat, e.latlng.lng],{icon: myIcon});
+        singleMarker._leaflet_id = 'a10';
         singleMarker.addTo(map);
+        console.log(singleMarker)
+    })
+    
+    
+    $('.remove').click(function(){
+        
+        if (map.hasLayerId('a10')) {
+            alert('topildi')
+        }
     })
     ")
 

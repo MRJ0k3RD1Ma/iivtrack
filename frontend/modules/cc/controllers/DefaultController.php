@@ -6,6 +6,7 @@ use common\models\Address;
 use common\models\Call;
 use common\models\DistrictView;
 use common\models\Event;
+use common\models\EventUser;
 use common\models\User;
 use frontend\components\Sms;
 use yii\web\Controller;
@@ -36,11 +37,13 @@ class DefaultController extends Controller
             $markers[] = [$item->address,$item->lat, $item->long,$status];
         }
 
-        $event = Event::find()->where(['status'=>2])->all();
+        $event = Event::find()->where(['status'=>2])
+            ->andWhere('"'.date('Y-m-d').'" BETWEEN date_start AND date_end')
+            ->all();
 
         $ev_marker = [];
         foreach ($event as $item){
-            $ev_marker[] = [$item->lat,$item->long,$item->radius,$item->address];
+            $ev_marker[] = [$item->lat,$item->long,$item->radius,$item->address,$item->id];
         }
 
 
@@ -69,9 +72,9 @@ class DefaultController extends Controller
         }
 
         return $this->render('index',[
-            'markers'=>json_encode($markers),
+            'locs'=>json_encode($markers),
             'model'=>$model,
-            'ev_marker'=>json_encode($ev_marker)
+            'ev_locs'=>json_encode($ev_marker)
         ]);
     }
 
@@ -127,29 +130,27 @@ class DefaultController extends Controller
     {
         $model = Address::find()->all();
         $markers = [];
-        /* @var $item Address*/
-        foreach ($model as $item){
-            $c = Call::find()->where(['address'=>$item->address])->andWhere(['<>','status',4])->one();
-            $status = 0;
-            if($c){
-                $status = $c->status;
-            }
-            $markers[] = [$item->address,$item->lat, $item->long,$status,0];
-        }
+
 
         $model = User::find()->where(['>','active',0])->all();
 
         foreach ($model as $item){
             $status = 0;
-            $markers[] = [$item->name,$item->lat, $item->long,$status,1];
+            $event_user = EventUser::find()->where('event_id in (select event.id from event where event.status = 2 and "'.date('Y-m-d').'" BETWEEN event.date_start AND event.date_end )')
+                ->andWhere(['user_id'=>$item->id])->one();
+            $type = 1;
+            if($event_user){
+                $event = $event_user->event;
+//                Sqrt(sqr(x1-x2)+sqr(y1-y2))
+                $r = sqrt(($event->lat - $item->lat)*($event->lat - $item->lat) + ($event->long - $item->long)*($event->long - $item->long));
+                if($r <= $event->radius){
+                    $type = 0;
+                }else{
+                    $type = 1;
+                }
+            }
+            $markers[] = [$item->name,$item->lat, $item->long,$status,$type,$item->id];
         }
-
-        $event = Event::find()->where(['status'=>2])->all();
-
-        foreach ($event as $item){
-            $markers[] = [$item->lat,$item->long,$item->radius,$item->address,2];
-        }
-
 
         return json_encode($markers);
     }

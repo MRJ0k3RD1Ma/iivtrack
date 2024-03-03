@@ -60,4 +60,9 @@ class EventUser extends \yii\db\ActiveRecord
     {
         return $this->hasOne(User::class,['id'=>'user_id']);
     }
+
+    public function getEvent()
+    {
+        return $this->hasOne(Event::class,['id'=>'event_id']);
+    }
 }

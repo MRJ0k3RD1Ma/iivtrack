@@ -32,7 +32,7 @@ $url = Yii::$app->urlManager->createUrl(['/cc/default/police']);
 $this->registerJs("
         // init map
         
-    var markers = [];    
+        
     var map = L.map('map').setView([41.552269, 60.631571], 12);
     var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
@@ -40,8 +40,9 @@ $this->registerJs("
         attribution: '&copy; <a href=\"http://www.openstreetmap.org/copyright\">OpenStreetMap</a>'
     });
     osm.addTo(map);
-    var locations = {$locs};
-     for (var i = 0; i < locations.length; i++) {
+    var locations = {$markers};
+   
+    for (var i = 0; i < locations.length; i++) {
       var icn = '/icon/marker-blue.png';
       if(locations[i][3] != 0){
          icn = '/icon/marker-red.png';;
@@ -49,56 +50,69 @@ $this->registerJs("
       var myIcon = L.icon({
             iconUrl: icn,
             iconSize: [26, 36],
-            iconAnchor: [13, 36],
+            iconAnchor: [15, 35],
             popupAnchor: [-3, -30],
         });
       marker = new L.marker([locations[i][1], locations[i][2]],{icon: myIcon})
         .bindPopup(locations[i][0])
         .addTo(map);
     }
-    locations = {$ev_locs};
-    var events = [];
+    
+    locations = {$ev_marker};
+   
     for (var i = 0; i < locations.length; i++) {
       marker = new L.circle([locations[i][0], locations[i][1]],parseInt(locations[i][2]));
-      marker.addTo(map);
+        marker.addTo(map);
     }
     
-    function polices(){
+    setInterval(function(){
+        map.eachLayer((layer) => {
+             if(layer['_latlng']!=undefined)
+                 layer.remove();
+        });
+        
         $.get('{$url}').done(function(data){
             
             var locations = JSON.parse(data);
             
             for (var i = 0; i < locations.length; i++) {
-            
-            if(markers[locations[i][5]]){
-               map.removeLayer(markers[locations[i][5]]);
-            }
-            var icn = '/icon/police.png';
-            if(locations[i][4] == 0){
-                icn = '/icon/police_red.png';
-            }
-            
-            myIcon = L.icon({
-               iconUrl: icn,
-               iconSize: [34, 46],
-               iconAnchor: [17, 46],
-               popupAnchor: [-3, -40],
-            });
-            marker = new L.marker([locations[i][1], locations[i][2]],{icon: myIcon})
-            .bindPopup(locations[i][0])
-            .addTo(map);
+              var icn;
+              var myIcon;
+              if(locations[i][4] == 1){
+                 icn = '/icon/police.png';
+                 myIcon = L.icon({
+                    iconUrl: icn,
+                    iconSize: [33, 46],
+                    iconAnchor: [15, 45],
+                    popupAnchor: [-3, -40],
+                });
+                 marker = new L.marker([locations[i][1], locations[i][2]],{icon: myIcon})
+                .bindPopup(locations[i][0])
+                .addTo(map);
+              }else if(locations[i][4] == 0){
+                   icn = '/icon/marker-blue.png';
+                  if(locations[i][3] != 0){
+                     icn = '/icon/marker-red.png';;
+                  }
+                  myIcon = L.icon({
+                    iconUrl: icn,
+                    iconSize: [26, 36],
+                    iconAnchor: [15, 35],
+                    popupAnchor: [-3, -30],
+                });
+                 marker = new L.marker([locations[i][1], locations[i][2]],{icon: myIcon})
+                .bindPopup(locations[i][0])
+                .addTo(map);
+              }else if(locations[i][4] == 2){
+                marker = new L.circle([locations[i][0], locations[i][1]],parseInt(locations[i][2]));
+                marker.addTo(map);
+              }
               
-            markers[locations[i][5]] = marker; 
+             
             }
         })
-    }
-    
-    polices();
-    
-     
-    setInterval(function(){
-         polices();
-     },10000);
+        
+    }, 10000)   
        
     ")
 

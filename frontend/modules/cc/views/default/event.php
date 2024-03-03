@@ -94,6 +94,7 @@ use yii\widgets\ActiveForm;
           
           if (type == 'marker' || type == 'circle' || type == 'circlemarker'){
             console.log([layer.getLatLng().lat, layer.getLatLng().lng]);
+            console.log(layer);
             $('#event-lat').val(layer.getLatLng().lat);
             $('#event-long').val(layer.getLatLng().lng);
             $('#event-radius').val(parseInt(layer.getRadius()));
