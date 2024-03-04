@@ -136,19 +136,42 @@ class DefaultController extends Controller
 
         foreach ($model as $item){
             $status = 0;
-            $event_user = EventUser::find()->where('event_id in (select event.id from event where event.status = 2 and "'.date('Y-m-d').'" BETWEEN event.date_start AND event.date_end )')
-                ->andWhere(['user_id'=>$item->id])->one();
+            $event_user = EventUser::find()
+                ->where('event_id in (select event.id from event where event.status = 2 and "'.date('Y-m-d').'" BETWEEN event.date_start AND event.date_end )')
+                ->andWhere(['user_id'=>$item->id])
+                ->one();
             $type = 1;
+            $txt = "";
             if($event_user){
                 $event = $event_user->event;
-                $r = sqrt(($event->lat - $item->lat)*($event->lat - $item->lat) + ($event->long - $item->long)*($event->long - $item->long));
-                if($r <= $event->radius){
-                    $type = 0;
-                }else{
-                    $type = 1;
+                $start = explode(':',$event_user->time_start);
+                $end = explode(':',$event_user->time_end);
+
+                $now = date('h:i');
+                $now = explode(':',$now);
+                $startMin = $start[0]*60+$start[1];
+                $endMin = $end[0]*60+$end[1];
+                $nowMin = $now[0]*60+$now[1];
+
+                if($start[0]>=$end[0]){
+                    $endMin += 24*60;
+                    if($now[0] <= $end[0]){
+                        $nowMin += 24*60;
+                    }
                 }
+
+                if($startMin <= $nowMin and $nowMin <= $endMin){
+                    $r = sqrt(($event->lat - $item->lat)*($event->lat - $item->lat) + ($event->long - $item->long)*($event->long - $item->long));
+                    if($r <= $event->radius){
+                        $txt = '<b><br>'.$event->address.' manzilda bo`lishi kerak</b>';
+                        $type = 0;
+                    }else{
+                        $type = 1;
+                    }
+                }
+
             }
-            $markers[] = [$item->name,$item->lat, $item->long,$status,$type,$item->id];
+            $markers[] = [$item->name.$txt,$item->lat, $item->long,$status,$type,$item->id];
         }
 
         return json_encode($markers);
