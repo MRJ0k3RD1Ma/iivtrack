@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 03, 2024 at 07:36 PM
+-- Generation Time: Mar 04, 2024 at 06:44 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 7.4.33
 
@@ -213,7 +213,8 @@ CREATE TABLE `event` (
 --
 
 INSERT INTO `event` (`id`, `user_id`, `date_start`, `date_end`, `radius`, `detail`, `type_id`, `address`, `lat`, `long`, `created`, `updated`, `status`) VALUES
-(1, 4, '2024-02-28', '2024-02-29', '118', 'Test uchun', 3, 'Jaloladdin manguberdi xiyobonida', '41.551013714884064', '60.63146838866898', '2024-02-27 23:04:25', '2024-02-28 16:31:23', 2);
+(1, 4, '2024-02-28', '2024-02-29', '118', 'Test uchun', 3, 'Jaloladdin manguberdi xiyobonida', '41.551013714884064', '60.63146838866898', '2024-02-27 23:04:25', '2024-02-28 16:31:23', 2),
+(2, 4, '2024-03-04', '2024-03-12', '337', 'Test', 3, 'test', '41.55795585437983', '60.61631394258755', '2024-03-04 22:05:04', '2024-03-04 22:13:24', 2);
 
 -- --------------------------------------------------------
 
@@ -270,7 +271,11 @@ CREATE TABLE `event_user` (
 
 INSERT INTO `event_user` (`id`, `event_id`, `user_id`, `created`, `updated`, `time_start`, `time_end`) VALUES
 (1, 1, 7, '2024-02-28 16:41:54', '2024-02-28 16:41:54', '19:42', '20:46'),
-(2, 1, 14, '2024-02-28 16:42:19', '2024-02-28 16:42:19', '08:00', '20:00');
+(2, 1, 14, '2024-02-28 16:42:19', '2024-02-28 16:42:19', '08:00', '20:00'),
+(1, 2, 7, '2024-03-04 22:05:33', '2024-03-04 22:05:33', '08:00', '20:00'),
+(2, 2, 10, '2024-03-04 22:12:53', '2024-03-04 22:12:53', '08:00', '20:00'),
+(3, 2, 19, '2024-03-04 22:13:06', '2024-03-04 22:13:06', '20:00', '08:00'),
+(4, 2, 16, '2024-03-04 22:13:15', '2024-03-04 22:13:15', '20:00', '08:00');
 
 -- --------------------------------------------------------
 
@@ -714,7 +719,8 @@ ALTER TABLE `event_type`
 -- Indexes for table `event_user`
 --
 ALTER TABLE `event_user`
-  ADD PRIMARY KEY (`event_id`,`id`);
+  ADD PRIMARY KEY (`event_id`,`id`),
+  ADD KEY `FK_event_user_user_id` (`user_id`);
 
 --
 -- Indexes for table `soato`
@@ -768,7 +774,7 @@ ALTER TABLE `company`
 -- AUTO_INCREMENT for table `event`
 --
 ALTER TABLE `event`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `event_type`
@@ -826,10 +832,23 @@ ALTER TABLE `event`
   ADD CONSTRAINT `FK_event_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
+-- Constraints for table `event_user`
+--
+ALTER TABLE `event_user`
+  ADD CONSTRAINT `FK_event_user_event_id` FOREIGN KEY (`event_id`) REFERENCES `event` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `FK_event_user_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
 -- Constraints for table `user`
 --
 ALTER TABLE `user`
   ADD CONSTRAINT `FK_user_role_id` FOREIGN KEY (`role_id`) REFERENCES `user_role` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `user_history`
+--
+ALTER TABLE `user_history`
+  ADD CONSTRAINT `FK_user_history_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
