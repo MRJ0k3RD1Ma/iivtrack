@@ -68,11 +68,12 @@ $this->registerJs("
             
             var locations = JSON.parse(data);
             
+            markers.forEach((marker) => {
+                map.removeLayer(marker);
+            });
+            
             for (var i = 0; i < locations.length; i++) {
             
-            if(markers[locations[i][5]]){
-               map.removeLayer(markers[locations[i][5]]);
-            }
             var icn = '/icon/police.png';
             if(locations[i][4] == 0){
                 icn = '/icon/police_red.png';
