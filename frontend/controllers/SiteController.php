@@ -100,7 +100,7 @@ class SiteController extends Controller
     {
         $model = User::find()->where(['>','active',0])->all();
         /* @var $item User*/
-        $date = date('Y-m-d h:i:s');
+        $date = date('Y-m-d H:i:s');
         foreach ($model as $item){
             if(strtotime($date) - strtotime($item->active_date) >= 60){
                 $item->active = 0;
