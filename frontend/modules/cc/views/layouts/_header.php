@@ -33,6 +33,21 @@
             <div class="dropdown d-none d-sm-inline-block">
                 <button type="button" class="btn header-item"
                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Hodimlar
+                </button>
+                <div class="dropdown-menu dropdown-menu-end">
+
+                    <!-- item-->
+                    <a href="<?= Yii::$app->urlManager->createUrl(['/cc/default/nonactive'])?>" class="dropdown-item notify-item language">
+                        <span class="fa fa-location-arrow"></span> Offline hodimlar
+                    </a>
+                    <!-- item-->
+
+                </div>
+            </div>
+            <div class="dropdown d-none d-sm-inline-block">
+                <button type="button" class="btn header-item"
+                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Tadbirlar
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">

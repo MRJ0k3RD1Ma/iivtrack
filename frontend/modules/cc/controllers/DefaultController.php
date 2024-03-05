@@ -200,4 +200,11 @@ class DefaultController extends Controller
         ]);
     }
 
+
+    public function actionNonactive()
+    {
+        $model = User::find()->where(['status'=>0])->all();
+        return $this->render('nonactive',['model'=>$model]);
+    }
+
 }
