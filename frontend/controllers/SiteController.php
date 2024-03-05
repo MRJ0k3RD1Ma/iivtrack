@@ -98,12 +98,12 @@ class SiteController extends Controller
 
     public function actionActivePolice()
     {
-        $model = User::find()->where(['>','status',0])->all();
+        $model = User::find()->where(['>','active',0])->all();
         /* @var $item User*/
         $date = date('Y-m-d h:i:s');
         foreach ($model as $item){
             if(strtotime($date) - strtotime($item->active_date) >= 60){
-                $item->status = 0;
+                $item->active = 0;
                 if($item->save(false)){
                     echo "OK";
                 }else{
