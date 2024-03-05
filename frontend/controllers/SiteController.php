@@ -139,6 +139,8 @@ class SiteController extends Controller
             if($model->login()){
                 return $this->goBack();
             }else{
+                echo "<pre>";
+                var_dump($model->errors);
                 echo "asdsa";
                 exit;
             }
