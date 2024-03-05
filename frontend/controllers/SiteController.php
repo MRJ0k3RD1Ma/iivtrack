@@ -122,7 +122,27 @@ class SiteController extends Controller
     {
         return $this->render('index');
     }
+    public function getphone($phone){
+        $phone_new = "";
+        if(strlen($phone) < 9 ){
+            return false;
+        }
+        for ($i=0; $i<strlen($phone);  $i++){
+            if('0'<=$phone[$i] and $phone[$i] <= '9'){
+                $phone_new.= $phone[$i];
+            }
+        }
+        if(strlen($phone_new) > 9){
+            if($phone_new[0]=='9' and $phone_new[1]=='9' and $phone_new[2]=='8'){
+                $phone_new = substr($phone_new,3,strlen($phone_new));
+            }else{
+                return false;
+            }
+        }
+//        (99)967-0395
 
+        return '('.substr($phone_new,0,2).')'.substr($phone_new,2,3).'-'.substr($phone_new,5,4);
+    }
     /**
      * Logs in a user.
      *
@@ -136,6 +156,8 @@ class SiteController extends Controller
         $this->layout = "login";
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post())) {
+            $phone = $this->getphone($model->username);
+            $model->username = $phone;
             if($model->login()){
                 return $this->goBack();
             }else{
