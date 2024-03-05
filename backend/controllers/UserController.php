@@ -57,14 +57,14 @@ class UserController extends Controller
         $user = User::findOne(Yii::$app->user->id);
         $user->lat = $lat;
         $user->long = $long;
-        $user->active_date = date('Y-m-d h:i:s');
+        $user->active_date = date('Y-m-d H:i:s');
         $user->active = 1;
 
         $his = new UserHistory();
         $his->year = date('Y');
         $his->month = date('m');
         $his->day = date('d');
-        $his->hour = date('h');
+        $his->hour = date('H');
         $his->minute = date('i');
         $his->second = date('s');
         $his->user_id = $user->id;
