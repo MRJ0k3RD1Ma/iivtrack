@@ -29,6 +29,7 @@ use yii\widgets\ActiveForm;
 <?php
 //
 $url = Yii::$app->urlManager->createUrl(['/cc/default/police']);
+$active_url = Yii::$app->urlManager->createUrl(['/site/active-police']);
 $this->registerJs("
         // init map
         
@@ -100,6 +101,19 @@ $this->registerJs("
     setInterval(function(){
          polices();
      },10000);
+     
+     function police_active(){
+        $.ajax({
+            url: '{$active_url}',
+        });
+     }
+     police_active();
+     setInterval(function(){
+         police_active();
+     },60000);
+       
+       
+       
        
     ")
 

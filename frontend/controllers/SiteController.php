@@ -106,11 +106,7 @@ class SiteController extends Controller
                 $item->active = 0;
                 if($item->save(false)){
                     echo "OK";
-                }else{
-                    echo "NO";
                 }
-            }else{
-                echo "ko-".(strtotime($date) .'-'. strtotime($item->active_date)).':'.$date.':'.$item->active_date.'<br>';
             }
         }
     }
