@@ -122,6 +122,8 @@ class SiteController extends Controller
     {
         return $this->render('index');
     }
+
+
     public function getphone($phone){
         $phone_new = "";
         if(strlen($phone) < 9 ){
@@ -161,7 +163,7 @@ class SiteController extends Controller
             $model->username = $phone;
 
             if($model->login()){
-                return $this->goBack();
+                return $this->redirect([Yii::$app->user->identity->role->url]);
             }
         }
 
