@@ -109,6 +109,8 @@ class SiteController extends Controller
                 }else{
                     echo "NO";
                 }
+            }else{
+                echo "ko";
             }
         }
     }
