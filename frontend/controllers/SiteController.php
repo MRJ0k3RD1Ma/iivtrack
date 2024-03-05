@@ -104,7 +104,11 @@ class SiteController extends Controller
         foreach ($model as $item){
             if(strtotime($date) - strtotime($item->active_date) >= 60){
                 $item->status = 0;
-                $item->save(false);
+                if($item->save(false)){
+                    echo "OK";
+                }else{
+                    echo "NO";
+                }
             }
         }
     }
