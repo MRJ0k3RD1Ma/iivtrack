@@ -110,7 +110,7 @@ class SiteController extends Controller
                     echo "NO";
                 }
             }else{
-                echo "ko".(strtotime($date) .'-'. strtotime($item->active_date));
+                echo "ko-".(strtotime($date) .'-'. strtotime($item->active_date)).'<br>';
             }
         }
     }
