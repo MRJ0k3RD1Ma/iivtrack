@@ -156,15 +156,12 @@ class SiteController extends Controller
         $this->layout = "login";
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post())) {
+
             $phone = $this->getphone($model->username);
             $model->username = $phone;
+
             if($model->login()){
                 return $this->goBack();
-            }else{
-                echo "<pre>";
-                var_dump($model->errors);
-                echo "asdsa";
-                exit;
             }
         }
 
