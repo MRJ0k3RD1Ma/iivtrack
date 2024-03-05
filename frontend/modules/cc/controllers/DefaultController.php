@@ -203,7 +203,7 @@ class DefaultController extends Controller
 
     public function actionNonactive()
     {
-        $model = User::find()->where(['active'=>0])->all();
+        $model = User::find()->where(['active'=>0])->orderBy(['active_date'=>SORT_DESC])->all();
         return $this->render('nonactive',['model'=>$model]);
     }
 
