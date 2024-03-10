@@ -148,7 +148,7 @@ class UserController extends Controller
     {
         $_7 = date('Y-m-d',strtotime('-7 days'));
         $model = Call::find()
-
+            ->where(['>=','created',$_7])
 //            ->andWhere(['user_id'=>Yii::$app->user->id])
             ->orderBy(['id' => SORT_DESC]);
 
