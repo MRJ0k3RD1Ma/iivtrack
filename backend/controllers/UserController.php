@@ -184,12 +184,13 @@ class UserController extends Controller
         }
         return [
             'success'=>true,
+            '_7'=>$_7,
             'totalcount'=>$count,
             'page'=>$page,
             'prev'=>$prev,
             'next'=>$next,
             'data'=>$data,
-            '_7'=>$_7
+
         ];
     }
 
