@@ -12,6 +12,8 @@
                     <th>#</th>
                     <th>FIO</th>
                     <th>Tel</th>
+                    <th>Hudud</th>
+                    <th>Позивной</th>
                     <th>So'ngi aktivlik</th>
                 </tr>
                 </thead>
@@ -21,7 +23,10 @@
                         <td><?= $key+1?></td>
                         <td><?= $item->name ?></td>
                         <td><?= $item->username ?></td>
+                        <td><?= $item->hudud ?></td>
+                        <td><?= $item->pozivnoy ?></td>
                         <td><?= $item->active_date ?></td>
+
                     </tr>
                 <?php endforeach;?>
                 </tbody>
