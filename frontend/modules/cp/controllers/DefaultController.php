@@ -34,10 +34,10 @@ class DefaultController extends Controller
             }
             if($model->image = UploadedFile::getInstance($model,'image')){
                 $name = "image/".microtime(true).'.'.$model->image->extension;
-                $model->image->saveAs(\Yii::$app->basePath.'/web/upload/'.$name);
+                $model->image->saveAs(\Yii::$app->basePath.'/web/upload/all/'.$name);
                 $model->image = $name;
-                if(file_exists(\Yii::$app->basePath.'/web/upload/'.$image) and $image!="default/avatar.png"){
-                    unlink(\Yii::$app->basePath.'/web/upload/'.$image);
+                if(file_exists(\Yii::$app->basePath.'/web/upload/all/'.$image) and $image!="default/avatar.png"){
+                    unlink(\Yii::$app->basePath.'/web/upload/all/'.$image);
                 }
             }else{
                 $model->image = $image;

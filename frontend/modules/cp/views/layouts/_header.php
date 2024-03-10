@@ -5,29 +5,24 @@
         <div class="d-flex">
             <!-- LOGO -->
             <div class="navbar-brand-box">
-                <a href="<?= Yii::$app->urlManager->createUrl(['/profi/'])?>" class="logo logo-dark">
+                <a href="<?= Yii::$app->urlManager->createUrl(['/cp/'])?>" class="logo logo-dark">
                                 <span class="logo-sm">
-                                    <img src="/default/assets/images/logo-sm.svg" alt="" height="30">
+                                    <img src="/logo.png" alt="" height="30">
                                 </span>
                     <span class="logo-lg">
-                                    <img src="/default/assets/images/logo-sm.svg" alt="" height="24"> <span class="logo-txt">Urganch shahar IIB</span>
+                                    <img src="/logo.png" alt="" height="24"> <span class="logo-txt">Urganch shahar IIO</span>
                                 </span>
                 </a>
 
-                <a href="<?= Yii::$app->urlManager->createUrl(['/profi/'])?>" class="logo logo-light">
+                <a href="<?= Yii::$app->urlManager->createUrl(['/cc/'])?>" class="logo logo-light">
                                 <span class="logo-sm">
-                                    <img src="/default/assets/images/logo-sm.svg" alt="" height="30">
+                                    <img src="/logo.png" alt="" height="30">
                                 </span>
                     <span class="logo-lg">
-                                    <img src="/default/assets/images/logo-sm.svg" alt="" height="24"> <span class="logo-txt">Urganch shahar IIB</span>
+                                    <img src="/logo.png" alt="" height="24"> <span class="logo-txt">Urganch shahar IIO</span>
                                 </span>
                 </a>
             </div>
-
-            <button type="button" class="btn btn-sm px-3 font-size-16 header-item" id="vertical-menu-btn">
-                <i class="fa fa-fw fa-bars"></i>
-            </button>
-
 
         </div>
 

@@ -7,19 +7,19 @@
             <div class="navbar-brand-box">
                 <a href="<?= Yii::$app->urlManager->createUrl(['/cc/'])?>" class="logo logo-dark">
                                 <span class="logo-sm">
-                                    <img src="/default/assets/images/logo-sm.svg" alt="" height="30">
+                                    <img src="/logo.png" alt="" height="30">
                                 </span>
                     <span class="logo-lg">
-                                    <img src="/default/assets/images/logo-sm.svg" alt="" height="24"> <span class="logo-txt">Urganch shahar IIB</span>
+                                    <img src="/logo.png" alt="" height="24"> <span class="logo-txt">Urganch shahar IIO</span>
                                 </span>
                 </a>
 
                 <a href="<?= Yii::$app->urlManager->createUrl(['/cc/'])?>" class="logo logo-light">
                                 <span class="logo-sm">
-                                    <img src="/default/assets/images/logo-sm.svg" alt="" height="30">
+                                    <img src="/logo.png" alt="" height="30">
                                 </span>
                     <span class="logo-lg">
-                                    <img src="/default/assets/images/logo-sm.svg" alt="" height="24"> <span class="logo-txt">Urganch shahar IIB</span>
+                                    <img src="/logo.png" alt="" height="24"> <span class="logo-txt">Urganch shahar IIO</span>
                                 </span>
                 </a>
             </div>
