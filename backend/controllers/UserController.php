@@ -85,6 +85,7 @@ class UserController extends Controller
                     'success'=>true,
                     'has_data'=>true,
                     'data'=>[
+                        'id'=>$model->id,
                         'address'=>$model->address,
                         'code'=>$model->code,
                         'name'=>$model->name,
@@ -93,6 +94,7 @@ class UserController extends Controller
                         'type'=>$model->type->name,
                         'detail'=>$model->detail,
                         'created'=>$model->created,
+                        'map'=>'https://www.google.com/maps/search/?api=1&query='.$model->lat.','.$model->long
                     ]
                 ];
             }
@@ -109,6 +111,36 @@ class UserController extends Controller
     }
 
 
+    public function actionView($id)
+    {
+        if($model = Call::findOne($id)){
+            $gender = [
+                0=>'Ayol',
+                1=>'Erkak',
+            ];
+            return [
+                'success'=>true,
+                'has_data'=>true,
+                'data'=>[
+                    'id'=>$model->id,
+                    'address'=>$model->address,
+                    'code'=>$model->code,
+                    'name'=>$model->name,
+                    'phone'=>$model->phone,
+                    'gender'=>$gender[$model->gender],
+                    'type'=>$model->type->name,
+                    'detail'=>$model->detail,
+                    'created'=>$model->created,
+                    'map'=>'https://www.google.com/maps/search/?api=1&query='.$model->lat.','.$model->long
+                ]
+            ];
+        }else{
+            return [
+                'success'=>false,
+                'has_data'=>false,
+            ];
+        }
+    }
 
 
 }
