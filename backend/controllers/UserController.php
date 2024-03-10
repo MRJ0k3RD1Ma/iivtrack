@@ -146,7 +146,9 @@ class UserController extends Controller
 
     public function actionWeek($page = 1)
     {
+        $_7 = date('Y-m-d',time().' -7 days');
         $model = Call::find()
+            ->where()
 //            ->andWhere(['user_id'=>Yii::$app->user->id])
             ->orderBy(['id' => SORT_DESC]);
 
@@ -186,7 +188,8 @@ class UserController extends Controller
             'page'=>$page,
             'prev'=>$prev,
             'next'=>$next,
-            'data'=>$data
+            'data'=>$data,
+            '_7'=>$_7
         ];
     }
 
