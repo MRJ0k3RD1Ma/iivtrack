@@ -40,7 +40,7 @@ class CallTypeSearch extends CallType
      */
     public function search($params)
     {
-        $query = CallType::find();
+        $query = CallType::find()->orderBy(['id'=>SORT_DESC]);
 
         // add conditions that should always apply here
 

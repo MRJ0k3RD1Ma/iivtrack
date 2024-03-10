@@ -40,7 +40,7 @@ class CallSearch extends Call
      */
     public function search($params)
     {
-        $query = Call::find();
+        $query = Call::find()->orderBy(['id'=>SORT_DESC]);
 
         // add conditions that should always apply here
 

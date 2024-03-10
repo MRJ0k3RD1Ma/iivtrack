@@ -3,11 +3,12 @@
 namespace frontend\modules\cc\controllers;
 
 use common\models\Call;
+use common\models\CallResult;
 use common\models\search\CallSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
+use Yii;
 /**
  * CallController implements the CRUD actions for Call model.
  */
@@ -40,8 +41,6 @@ class CallController extends Controller
     {
         $searchModel = new CallSearch();
 
-
-
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
@@ -58,8 +57,35 @@ class CallController extends Controller
      */
     public function actionView($id)
     {
+        $model = $this->findModel($id);
+        $result = new CallResult();
+        $results = CallResult::find()->where(['call_id'=>$id])->orderBy(['id'=>SORT_DESC])->all();
+
+        if($result->load($this->request->post())){
+            $result->status = 4;
+            $result->call_id = $model->id;
+            $result->user_id = Yii::$app->user->id;
+            $rid = CallResult::find()->where(['user_id'=>$result->user_id,'call_id'=>$result->call_id])->max('id');
+            if(!$rid){
+                $rid  =0;
+            }
+            $rid ++;
+            $result->id = $rid;
+            $result->consept_id = $result->user_id;
+            if($result->save()){
+                $model->status = 4;
+                $model->save(false);
+                Yii::$app->session->setFlash('success','Chaqiruv muvoffaqiyatli tugallandi');
+            }else{
+                Yii::$app->session->setFlash('error','Chaqiruv tugallashda xatolik');
+            }
+        }
+
+
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $model,
+            'result'=>$result,
+            'results'=>$results
         ]);
     }
 
