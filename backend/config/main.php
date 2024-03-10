@@ -63,6 +63,7 @@ return [
                     'extraPatterns'=>[
                         'GET me'=>'me',
                         'GET track'=>'track',
+                        'GET view'=>'view',
                     ]
                 ],
             ],
