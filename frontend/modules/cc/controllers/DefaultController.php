@@ -175,6 +175,7 @@ class DefaultController extends Controller
                 }
 
             }
+            $txt .= '<br>'.@$item->hudud.'<br>'.@$item->username.'<br>'.$item->pozivnoy;
             $markers[] = [$item->name.$txt,$item->lat, $item->long,$item->active,$type,$item->id];
         }
 
