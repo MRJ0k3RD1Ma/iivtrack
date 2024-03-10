@@ -184,7 +184,6 @@ class UserController extends Controller
         }
         return [
             'success'=>true,
-            '_7'=>$_7,
             'totalcount'=>$count,
             'page'=>$page,
             'prev'=>$prev,
