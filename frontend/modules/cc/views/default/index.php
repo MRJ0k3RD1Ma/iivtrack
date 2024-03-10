@@ -88,7 +88,7 @@ $this->registerJs("
             });
             
             for (var i = 0; i < locations.length; i++) {
-            all ++;
+          
             var icn = '/icon/police.png';
             if(locations[i][3] == 0){
                icn = '/icon/police_green.png';
