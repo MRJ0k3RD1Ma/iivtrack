@@ -64,6 +64,8 @@ return [
                         'GET me'=>'me',
                         'GET track'=>'track',
                         'GET view'=>'view',
+                        'GET week'=>'week',
+                        'GET month'=>'month',
                     ]
                 ],
             ],
