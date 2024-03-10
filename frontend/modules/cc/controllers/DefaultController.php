@@ -187,7 +187,6 @@ class DefaultController extends Controller
     }
 
 
-
     public function actionEvent()
     {
         $model = new Event();

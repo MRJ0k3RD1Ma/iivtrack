@@ -4,6 +4,7 @@ namespace backend\controllers;
 
 
 use backend\models\User;
+use common\models\Call;
 use common\models\UserHistory;
 use Yii;
 use yii\filters\AccessControl;
@@ -73,9 +74,37 @@ class UserController extends Controller
         $his->save(false);
 
         if($user->save(false)){
-            return ['success'=>true];
+            if($model = Call::find()->where(['user_id'=>$user->id,'status'=>1])->one()){
+                $gender = [
+                    0=>'Ayol',
+                    1=>'Erkak',
+                ];
+                $model->status = 2;
+                $model->save(false);
+                return [
+                    'success'=>true,
+                    'has_data'=>true,
+                    'data'=>[
+                        'address'=>$model->address,
+                        'code'=>$model->code,
+                        'name'=>$model->name,
+                        'phone'=>$model->phone,
+                        'gender'=>$gender[$model->gender],
+                        'type'=>$model->type->name,
+                        'detail'=>$model->detail,
+                        'created'=>$model->created,
+                    ]
+                ];
+            }
+            return [
+                'success'=>true,
+                'has_data'=>false,
+            ];
         }else{
-            return ['success'=>false];
+            return [
+                'success'=>true,
+                'has_data'=>false,
+            ];
         }
     }
 
