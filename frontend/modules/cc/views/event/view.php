@@ -72,7 +72,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             [
                                 'attribute'=>'status',
                                 'value'=>function ($d) {
-                                    return Yii::$app->params['ustatus'][$d->status];
+                                    return Yii::$app->params['estatus'][$d->status];
                                 },
                             ],
                         ],
@@ -81,7 +81,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <hr>
                     <?php if($model->status < 3){?>
                     <h4>Statusni yanglilash</h4>
-                    <a href="<?= Yii::$app->urlManager->createUrl(['/cc/event/changestatus','id'=>$model->id])?>" class="btn btn-primary">Keyingi status: <?= Yii::$app->params['ustatus'][$model->status+1]?></a>
+                    <a href="<?= Yii::$app->urlManager->createUrl(['/cc/event/changestatus','id'=>$model->id])?>" class="btn btn-primary">Keyingi status: <?= Yii::$app->params['estatus'][$model->status+1]?></a>
 
                     <?php }?>
                 </div>

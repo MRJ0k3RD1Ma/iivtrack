@@ -59,9 +59,9 @@ $this->params['breadcrumbs'][] = $this->title;
                     [
                         'attribute'=>'status',
                         'value'=>function ($d) {
-                            return Yii::$app->params['ustatus'][$d->status];
+                            return Yii::$app->params['estatus'][$d->status];
                         },
-                        'filter'=>Yii::$app->params['ustatus']
+                        'filter'=>Yii::$app->params['estatus']
                     ],
                 ],
             ]); ?>

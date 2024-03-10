@@ -7,6 +7,12 @@ return [
         3=>'Tasdiqlanishi kutilmoqda',
         4=>'Tugallangan'
     ],
+    'estatus'=>[
+        1=>'Yangi',
+        2=>'Jarayonda',
+        3=>'Tugallangan',
+        4=>'Tugallangan'
+    ],
     'user.status'=>[
         1=>'Aktiv',
         0=>'Deaktiv',
