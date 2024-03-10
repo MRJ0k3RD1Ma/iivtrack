@@ -75,13 +75,16 @@ class UserController extends Controller
         $his->save(false);
 
         if($user->save(false)){
-            if($model = Call::find()->where(['user_id'=>$user->id,'status'=>1])->one()){
+            if($model = Call::find()
+//                ->where(['user_id'=>$user->id])
+                ->andWhere(['status'=>1])
+                ->one()){
                 $gender = [
                     0=>'Ayol',
                     1=>'Erkak',
                 ];
-                $model->status = 2;
-                $model->save(false);
+               // $model->status = 2;
+               // $model->save(false);
                 return [
                     'success'=>true,
                     'has_data'=>true,
