@@ -81,7 +81,7 @@ $this->registerJs("
         $.get('{$url}').done(function(data){
             
             var locations = JSON.parse(data);
-            var all = 0;
+           
             var aktiv = 0;
             markers.forEach((marker) => {
                 map.removeLayer(marker);
@@ -113,8 +113,7 @@ $this->registerJs("
             
             $('#aktiv-hodim').empty();
             $('#aktiv-hodim').append(aktiv);
-            $('#barcha-hodim').empty();
-            $('#barcha-hodim').append(all);
+        
             }
         })
     }
