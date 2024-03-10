@@ -1,6 +1,7 @@
 <?php
 /* @var $model \common\models\User[]*/
-$this->title = "Hozrda offline bo`lgan hodimlar";
+
+    $this->title = "Barcha hodimlar ro`yhati";
 ?>
 <div class="card">
     <div class="card-body">
@@ -16,7 +17,7 @@ $this->title = "Hozrda offline bo`lgan hodimlar";
                 </thead>
                 <tbody>
                 <?php foreach ($model as $key=>$item): ?>
-                    <tr>
+                    <tr class="<?= $item->active == 1 ? 'bg-success' : 'bg-danger'?>">
                         <td><?= $key+1?></td>
                         <td><?= $item->name ?></td>
                         <td><?= $item->username ?></td>

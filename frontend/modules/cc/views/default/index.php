@@ -81,16 +81,19 @@ $this->registerJs("
         $.get('{$url}').done(function(data){
             
             var locations = JSON.parse(data);
-            
+            var all = 0;
+            var aktiv = 0;
             markers.forEach((marker) => {
                 map.removeLayer(marker);
             });
             
             for (var i = 0; i < locations.length; i++) {
-            
+            all ++;
             var icn = '/icon/police.png';
             if(locations[i][3] == 0){
                icn = '/icon/police_green.png';
+            }else{
+                aktiv ++;
             }
             if(locations[i][4] == 0){
                 icn = '/icon/police_red.png';
@@ -107,6 +110,11 @@ $this->registerJs("
             .addTo(map);
               
             markers[locations[i][5]] = marker; 
+            
+            $('#aktiv-hodim').empty();
+            $('#aktiv-hodim').append(aktiv);
+            $('#barcha-hodim').empty();
+            $('#barcha-hodim').append(all);
             }
         })
     }

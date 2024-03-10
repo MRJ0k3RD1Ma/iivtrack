@@ -30,20 +30,19 @@
 
 
         <div class="d-flex">
+            <?php if(Yii::$app->controller->id == 'default' and Yii::$app->controller->action->id == 'index'){?>
             <div class="dropdown d-none d-sm-inline-block">
-                <button type="button" class="btn header-item"
-                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button type="button" class="btn header-item" onclick="location.href = '<?= Yii::$app->urlManager->createUrl(['/cc/default/nonactive'])?>'">
+                    <span id="aktiv-hodim">0</span>/<span id="barcha-hodim">0</span>
+                </button>
+            </div>
+            <?php }?>
+
+            <div class="dropdown d-none d-sm-inline-block">
+                <button type="button" class="btn header-item" onclick="location.href = '<?= Yii::$app->urlManager->createUrl(['/cc/default/nonactive'])?>'">
                     Hodimlar
                 </button>
-                <div class="dropdown-menu dropdown-menu-end">
 
-                    <!-- item-->
-                    <a href="<?= Yii::$app->urlManager->createUrl(['/cc/default/nonactive'])?>" class="dropdown-item notify-item language">
-                        <span class="fa fa-location-arrow"></span> Offline hodimlar
-                    </a>
-                    <!-- item-->
-
-                </div>
             </div>
             <div class="dropdown d-none d-sm-inline-block">
                 <button type="button" class="btn header-item"
