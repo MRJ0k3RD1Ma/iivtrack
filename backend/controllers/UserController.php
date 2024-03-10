@@ -146,7 +146,7 @@ class UserController extends Controller
 
     public function actionWeek($page = 1)
     {
-        $_7 = date('Y-m-d',time().' -7 day');
+        $_7 = date('Y-m-d',strtotime('-7 days'));
         $model = Call::find()
 
 //            ->andWhere(['user_id'=>Yii::$app->user->id])
