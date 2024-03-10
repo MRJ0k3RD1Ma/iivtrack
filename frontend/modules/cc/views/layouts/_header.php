@@ -74,16 +74,16 @@
                 <div class="dropdown-menu dropdown-menu-end">
 
                     <!-- item-->
-                    <a href="<?= Yii::$app->urlManager->createUrl(['/cc/call'])?>" class="dropdown-item notify-item language">
-                        <span class="fa fa-plus"></span> Jarayonda
+                    <a href="<?= Yii::$app->urlManager->createUrl(['/cc'])?>" class="dropdown-item notify-item language">
+                        <span class="fa fa-plus"></span> Yangi chaqiruv
                     </a>
                     <!-- item-->
                     <a href="<?= Yii::$app->urlManager->createUrl(['/cc/call'])?>" class="dropdown-item notify-item language">
-                        <span class="fa fa-location-arrow"></span> Tugallangan
+                        <span class="fa fa-location-arrow"></span> Chaqiruvlar
                     </a>
                     <!-- item-->
-                    <a href="<?= Yii::$app->urlManager->createUrl(['/cc/call'])?>" class="dropdown-item notify-item language">
-                        <span class="fa fa-plus"></span> Barchasi
+                    <a href="<?= Yii::$app->urlManager->createUrl(['/cc/call-type'])?>" class="dropdown-item notify-item language">
+                        <span class="fa fa-list"></span> Chaqiruv turlari
                     </a>
                 </div>
             </div>

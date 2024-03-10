@@ -2,16 +2,16 @@
 
 namespace frontend\modules\cc\controllers;
 
-use common\models\Call;
-use common\models\search\CallSearch;
+use common\models\CallType;
+use common\models\search\CallTypeSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * CallController implements the CRUD actions for Call model.
+ * CallTypeController implements the CRUD actions for CallType model.
  */
-class CallController extends Controller
+class CallTypeController extends Controller
 {
     /**
      * @inheritDoc
@@ -32,16 +32,13 @@ class CallController extends Controller
     }
 
     /**
-     * Lists all Call models.
+     * Lists all CallType models.
      *
      * @return string
      */
     public function actionIndex()
     {
-        $searchModel = new CallSearch();
-
-
-
+        $searchModel = new CallTypeSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
@@ -51,7 +48,7 @@ class CallController extends Controller
     }
 
     /**
-     * Displays a single Call model.
+     * Displays a single CallType model.
      * @param int $id ID
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
@@ -64,13 +61,13 @@ class CallController extends Controller
     }
 
     /**
-     * Creates a new Call model.
+     * Creates a new CallType model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
     public function actionCreate()
     {
-        $model = new Call();
+        $model = new CallType();
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
@@ -86,7 +83,7 @@ class CallController extends Controller
     }
 
     /**
-     * Updates an existing Call model.
+     * Updates an existing CallType model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param int $id ID
      * @return string|\yii\web\Response
@@ -106,7 +103,7 @@ class CallController extends Controller
     }
 
     /**
-     * Deletes an existing Call model.
+     * Deletes an existing CallType model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param int $id ID
      * @return \yii\web\Response
@@ -120,21 +117,18 @@ class CallController extends Controller
     }
 
     /**
-     * Finds the Call model based on its primary key value.
+     * Finds the CallType model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param int $id ID
-     * @return Call the loaded model
+     * @return CallType the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Call::findOne(['id' => $id])) !== null) {
+        if (($model = CallType::findOne(['id' => $id])) !== null) {
             return $model;
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
-
-
-
 }
