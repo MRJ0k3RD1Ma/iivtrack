@@ -131,7 +131,7 @@ class UserController extends Controller
                     'type'=>$model->type->name,
                     'detail'=>$model->detail,
                     'created'=>$model->created,
-                    'map'=>'https://www.google.com/maps/search/?api=1&query='.$model->lat.','.$model->long
+                    'map'=>'https://www.google.com/maps/search/?api=1&query='.$model->address0->lat.','.$model->address0->long
                 ]
             ];
         }else{
