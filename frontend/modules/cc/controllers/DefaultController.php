@@ -135,7 +135,9 @@ class DefaultController extends Controller
         $model = User::find()->where(['is not','active_date',null])->andWhere(['is not','lat',null])->andWhere(['is not','long',null])->all();
 
         foreach ($model as $item){
-            $status = 0;
+
+            date_default_timezone_set('Asia/Tashkent');
+
             $event_user = EventUser::find()
                 ->where('event_id in (select event.id from event where event.status = 2 and "'.date('Y-m-d').'" BETWEEN event.date_start AND event.date_end )')
                 ->andWhere(['user_id'=>$item->id])
@@ -144,14 +146,16 @@ class DefaultController extends Controller
             $txt = "";
             if($event_user){
                 $event = $event_user->event;
+
                 $start = explode(':',$event_user->time_start);
                 $end = explode(':',$event_user->time_end);
 
-                $now = date('h:i');
+                $now = date('H:i');
                 $now = explode(':',$now);
+
                 $startMin = $start[0]*60+$start[1];
-                $endMin = $end[0]*60+$end[1];
-                $nowMin = $now[0]*60+$now[1];
+                $endMin = $end[0] * 60 + $end[1];
+                $nowMin = $now[0] * 60 + $now[1];
 
                 if($start[0]>=$end[0]){
                     $endMin += 24*60;
