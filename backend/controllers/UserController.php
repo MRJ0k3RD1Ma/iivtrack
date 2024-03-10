@@ -195,7 +195,7 @@ class UserController extends Controller
     public function actionMonth($page = 1)
     {
         $model = Call::find()
-            ->where(['like','created','%'.date('Y-m').'%'])
+            ->filterWhere(['like','created',date('Y-m')])
 //            ->andWhere(['user_id'=>Yii::$app->user->id])
             ->orderBy(['id' => SORT_DESC]);
 
