@@ -64,7 +64,9 @@ $this->params['breadcrumbs'][] = $this->title;
                                         'value'=>function($d){
                                             return $d->role->name;
                                         }
-                                    ]
+                                    ],
+                                    'hudud',
+                                    'pozivnoy'
 //                            'status',
 //                            'role_id',
                                 ],

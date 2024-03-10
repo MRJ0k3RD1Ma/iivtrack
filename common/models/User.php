@@ -21,6 +21,8 @@ use yii\web\IdentityInterface;
  * @property string|null $created
  * @property string|null $updated
  * @property string|null $image
+ * @property string|null $pozivnoy
+ * @property string|null $hudud
  * @property int|null $status
  * @property int|null $role_id
  *
@@ -52,7 +54,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
             [['created', 'updated','active_date'], 'safe'],
             [['status', 'role_id','active'], 'integer'],
             [['image'],'file','extensions'=>['jpg','png','jpeg']],
-            [['name', 'auth_key', 'token', 'code','image','lat','long'], 'string', 'max' => 255],
+            [['name', 'auth_key', 'token', 'code','image','lat','long','pozivnoy','hudud'], 'string', 'max' => 255],
             [['password', 'access_token'], 'string', 'max' => 500],
             [['username'],'string','length'=>12],
             [['username','name'],'required'],
@@ -84,7 +86,9 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
             'lat'=>'Kenglik',
             'long'=>'Uzunlik',
             'active'=>'Aktiv',
-            'active_date'=>'So`ngi aktivlik'
+            'active_date'=>'So`ngi aktivlik',
+            'hudud'=>'Hudud',
+            'pozivnoy'=>'Позивной',
         ];
     }
 

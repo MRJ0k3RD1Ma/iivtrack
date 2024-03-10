@@ -31,6 +31,10 @@ use yii\widgets\MaskedInput;
 
             <?= $form->field($model, 'role_id')->dropDownList(\yii\helpers\ArrayHelper::map(\common\models\UserRole::find()->all(),'id','name'),['prompt'=>'']) ?>
 
+            <?= $form->field($model, 'hudud')->textInput(['maxlength' => true]) ?>
+
+            <?= $form->field($model, 'pozivnoy')->textInput(['maxlength' => true]) ?>
+
         </div>
         <div class="col-md-5">
 
@@ -39,6 +43,9 @@ use yii\widgets\MaskedInput;
             </div>
             <br>
             <?= $form->field($model, 'image')->fileInput(['maxlength' => true]) ?>
+
+
+
 
         </div>
     </div>

@@ -39,6 +39,9 @@ class CallController extends Controller
     public function actionIndex()
     {
         $searchModel = new CallSearch();
+
+
+
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [

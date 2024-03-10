@@ -4,7 +4,8 @@ return [
     'ustatus'=>[
         1=>'Yangi',
         2=>'Jarayonda',
-        3=>'Tugallangan'
+        3=>'Tasdiqlanishi kutilmoqda',
+        4=>'Tugallangan'
     ],
     'user.status'=>[
         1=>'Aktiv',

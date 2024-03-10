@@ -26,6 +26,7 @@ use Yii;
  */
 class Call extends \yii\db\ActiveRecord
 {
+    public $to,$do;
     /**
      * {@inheritdoc}
      */
@@ -41,7 +42,7 @@ class Call extends \yii\db\ActiveRecord
     {
         return [
             [['id', 'code_id', 'gender', 'type_id', 'user_id', 'status'], 'integer'],
-            [['created', 'updated'], 'safe'],
+            [['created', 'updated','to','do'], 'safe'],
             [['code', 'name', 'phone', 'detail', 'address'], 'string', 'max' => 255],
             [['id'], 'unique'],
             [['address'], 'exist', 'skipOnError' => true, 'targetClass' => Address::class, 'targetAttribute' => ['address' => 'address']],
@@ -68,6 +69,8 @@ class Call extends \yii\db\ActiveRecord
             'created' => 'Kiritildi',
             'updated' => 'O`zgartirildi',
             'status' => 'Status',
+            'to' => 'Dan..',
+            'do' => '..Gacha',
         ];
     }
 

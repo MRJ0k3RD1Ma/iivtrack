@@ -19,11 +19,11 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="card-body">
 
 
-            <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+            <?php  echo $this->render('_search', ['model' => $searchModel]); ?>
 
             <?= GridView::widget([
                 'dataProvider' => $dataProvider,
-                'filterModel' => $searchModel,
+//                'filterModel' => $searchModel,
                 'columns' => [
                     ['class' => 'yii\grid\SerialColumn'],
 
@@ -50,6 +50,12 @@ $this->params['breadcrumbs'][] = $this->title;
                     'address',
                     //'user_id',
                     'created',
+                    [
+                        'attribute'=>'status',
+                        'value'=>function($d){
+                            return Yii::$app->params['ustatus'][$d->status];
+                        },
+                    ]
                     //'updated',
                     //'status',
                 ],

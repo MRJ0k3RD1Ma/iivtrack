@@ -18,7 +18,7 @@ class CallSearch extends Call
     {
         return [
             [['id', 'code_id', 'gender', 'type_id', 'user_id', 'status'], 'integer'],
-            [['code', 'name', 'phone', 'detail', 'address', 'created', 'updated'], 'safe'],
+            [['code', 'name', 'phone', 'detail', 'address', 'created', 'updated','to','do'], 'safe'],
         ];
     }
 
@@ -55,6 +55,13 @@ class CallSearch extends Call
             // $query->where('0=1');
             return $dataProvider;
         }
+        if(!$this->to){
+            $this->to = date('Y-m-d');
+        }
+        if(!$this->do){
+            $this->do = date('Y-m-d');
+        }
+        $query->andWhere(['>=','created',$this->to])->andWhere(['<=','created',$this->do]);
 
         // grid filtering conditions
         $query->andFilterWhere([
