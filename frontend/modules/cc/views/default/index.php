@@ -20,6 +20,19 @@ use yii\widgets\ActiveForm;
 
             <button class="btn btn-primary">Saqlash</button>
         <?php ActiveForm::end() ?>
+
+        <hr>
+        <h4 class="text text-danger">Izohlar</h4>
+        <p><img src="/icon/marker-blue.png" alt="" style="float: left; width: 20px;"> - Joy manzili</p>
+        <br>
+        <p><img src="/icon/marker-red.png" alt="" style="float: left; width: 20px;"> - Chaqiruv manzili</p>
+        <br>
+        <p><img src="/icon/police.png" alt="" style="float: left; width: 20px;"> - Inspektor</p>
+        <br>
+        <p><img src="/icon/police_red.png" alt="" style="float: left; width: 20px;"> - O`z joyida bo'lmagan Inspektor</p>
+        <br>
+        <p><img src="/icon/police_green.png" alt="" style="float: left; width: 20px;"> - Inspektor bilan aloqa yo'q</p>
+        <br>
     </div>
 
 </div>
@@ -45,7 +58,7 @@ $this->registerJs("
      for (var i = 0; i < locations.length; i++) {
       var icn = '/icon/marker-blue.png';
       if(locations[i][3] != 0){
-         icn = '/icon/marker-red.png';;
+         icn = '/icon/marker-red.png';
       }
       var myIcon = L.icon({
             iconUrl: icn,
@@ -76,6 +89,9 @@ $this->registerJs("
             for (var i = 0; i < locations.length; i++) {
             
             var icn = '/icon/police.png';
+            if(locations[i][3] == 0){
+               icn = '/icon/police_green.png';
+            }
             if(locations[i][4] == 0){
                 icn = '/icon/police_red.png';
             }

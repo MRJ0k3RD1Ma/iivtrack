@@ -132,7 +132,7 @@ class DefaultController extends Controller
         $markers = [];
 
 
-        $model = User::find()->where(['>','active',0])->all();
+        $model = User::find()->where(['is not','active_date',null])->andWhere(['is not','lat',null])->andWhere(['is not','long',null])->all();
 
         foreach ($model as $item){
             $status = 0;
@@ -171,7 +171,7 @@ class DefaultController extends Controller
                 }
 
             }
-            $markers[] = [$item->name.$txt,$item->lat, $item->long,$status,$type,$item->id];
+            $markers[] = [$item->name.$txt,$item->lat, $item->long,$item->active,$type,$item->id];
         }
 
         return json_encode($markers);
