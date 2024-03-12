@@ -102,10 +102,8 @@ $this->registerJs("
            
                 var radius = locations[i][6];
                 let distance = map.distance(_first,_second);
-                 console.log(radius, distance)
-                if(radius > distance){
+                if(radius < distance){
                     icn = '/icon/police_red.png';
-                   
                 }
             }
             
