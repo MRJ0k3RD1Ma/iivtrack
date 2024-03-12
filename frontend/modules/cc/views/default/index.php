@@ -96,8 +96,15 @@ $this->registerJs("
             }else{
                 aktiv ++;
             }
-            if(locations[i][4] == 0){
-                icn = '/icon/police_red.png';
+            if(locations[i][6] != -1){
+                var _first = new L.latLng(locations[i][1], locations[i][2]);
+                var _second = new L.latLng(locations[i][7], locations[i][8]);
+           
+                var radius = locations[i][6];
+                let distance = map.distance(_first,_second);
+                if(radius > distance){
+                    icn = '/icon/police_red.png';
+                }
             }
             
             myIcon = L.icon({
@@ -109,7 +116,7 @@ $this->registerJs("
             marker = new L.marker([locations[i][1], locations[i][2]],{icon: myIcon})
             .bindPopup(locations[i][0])
             .addTo(map);
-              
+
             markers[locations[i][5]] = marker; 
             
             $('#aktiv-hodim').empty();
