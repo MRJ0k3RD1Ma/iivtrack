@@ -57,10 +57,8 @@ $this->registerJs("
     osm.addTo(map);
     var locations = {$locs};
      for (var i = 0; i < locations.length; i++) {
-      var icn = '/icon/marker-blue.png';
-      if(locations[i][3] != 0){
-         icn = '/icon/marker-red.png';
-      }
+      var icn = '/icon/marker-red.png';
+      
       var myIcon = L.icon({
             iconUrl: icn,
             iconSize: [26, 36],

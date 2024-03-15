@@ -29,14 +29,19 @@ class DefaultController extends Controller
 
         $model = Address::find()->all();
         /* @var $item Address*/
-        foreach ($model as $item){
+        /*foreach ($model as $item){
             $c = Call::find()->where(['address'=>$item->address])->andWhere(['<>','status',4])->one();
             $status = 0;
             if($c){
                 $status = $c->status;
             }
-            $markers[] = [$item->address,$item->lat, $item->long,$status];
+        }*/
+
+        foreach (Call::find()->where(['<>','status',4])->groupBy('address')->all() as $item){
+            $adr = $item->address0;
+            $markers[] = [$item->address,$adr->lat, $adr->long,$item->status];
         }
+
 
         $event = Event::find()->where(['status'=>2])
             ->andWhere('"'.date('Y-m-d').'" BETWEEN date_start AND date_end')
