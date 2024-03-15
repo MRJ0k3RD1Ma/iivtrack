@@ -7,6 +7,10 @@ return [
         3=>'Tasdiqlanishi kutilmoqda',
         4=>'Tugallangan'
     ],
+    'active'=>[
+        1=>'Onlayn',
+        0=>'Oflayn'
+    ],
     'estatus'=>[
         1=>'Yangi',
         2=>'Jarayonda',

@@ -8,6 +8,7 @@ use common\models\DistrictView;
 use common\models\Event;
 use common\models\EventUser;
 use common\models\User;
+use common\models\UserHistory;
 use frontend\components\Sms;
 use yii\web\Controller;
 use yii\web\UploadedFile;
@@ -220,15 +221,51 @@ class DefaultController extends Controller
         return $this->render('nonactive',['model'=>$model]);
     }
 
+    public function actionView($id, $date=null)
+    {
+        $model = User::findOne($id);
+        if(!$date){
+            $date = date('Y-m-d');
+        }
+        $locations = [];
+
+
+
+
+        if($model){
+            $start = null;
+            $end = null;
+            $locs = UserHistory::find()->where(['user_id'=>$model->id])->andFilterWhere(['like','created',$date])->orderBy(['created'=>SORT_ASC])->all();
+            $n=0;
+            $cnt = count($locs);
+            foreach ($locs as $item){
+                $n++;
+                if($n==1){
+                    $start = [$item->lat,$item->long];
+                }
+                if($n == $cnt){
+                    $end = [$item->lat,$item->long];
+                }
+                $locations[] = [$item->lat,$item->long];
+            }
+
+            if(count($locations) == 0){
+                $locations = null;
+            }
+            return $this->render('view',[
+                'model'=>$model,
+                'date'=>$date,
+                'locations'=>json_encode($locations),
+                'start'=>json_encode($start),
+                'end'=>json_encode($end)
+            ]);
+        }else{
+            Yii::$app->session->setFlash('error','Bunday hodim topilmadi');
+            return $this->redirect(['nonactive']);
+        }
+
+    }
 
 }
 
 
-
-
-/*
-
-_latlng:  {lat: 41.5604886, lng: 60.6252776}
-
-
- */
