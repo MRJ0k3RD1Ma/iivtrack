@@ -124,7 +124,7 @@ class UserController extends Controller
                 1=>'Erkak',
             ];
 
-            $res = CallResult::find()->where(['call_id'=>$model->id])->all();
+            $res = CallResult::find()->where(['call_id'=>$model->id])->orderBy(['id'=>SORT_DESC])->all();
             $result = [];
             foreach ($res as $item){
                 $result [] = [
@@ -403,7 +403,7 @@ class UserController extends Controller
                         0=>'Ayol',
                         1=>'Erkak',
                     ];
-                    $res = CallResult::find()->where(['call_id'=>$model->id])->all();
+                    $res = CallResult::find()->where(['call_id'=>$model->id])->orderBy(['id'=>SORT_DESC])->all();
                     $result = [];
                     foreach ($res as $item){
                         $result [] = [
