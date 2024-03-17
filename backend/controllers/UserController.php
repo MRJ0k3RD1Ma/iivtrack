@@ -146,7 +146,7 @@ class UserController extends Controller
         }
     }
 
-    public function actionToday($page = 1)
+    public function actionRunning($page = 1)
     {
 
         $model = Call::find()
