@@ -136,6 +136,10 @@ class UserController extends Controller
             if(count($res) > 0){
                 $u = true;
             }
+            $report_yuborish = true;
+            if($model->status < 3){
+                $report_yuborish = false;
+            }
             return [
                 'success'=>true,
                 'has_data'=>true,
@@ -151,6 +155,7 @@ class UserController extends Controller
                     'created'=>$model->created,
                     'map'=>'https://www.google.com/maps/search/?api=1&query='.$model->address0->lat.','.$model->address0->long,
                     'has_result'=>$u,
+                    'send_result'=>$report_yuborish,
                     'result'=>$result
                 ]
             ];
@@ -410,6 +415,12 @@ class UserController extends Controller
                     if(count($res) > 0){
                         $u = true;
                     }
+
+                    $report_yuborish = true;
+                    if($model->status < 3){
+                        $report_yuborish = false;
+                    }
+
                     return [
                         'success'=>true,
                         'message'=>'Ushbu murojaatga javob yuborildi',
@@ -426,6 +437,7 @@ class UserController extends Controller
                             'created'=>$model->created,
                             'map'=>'https://www.google.com/maps/search/?api=1&query='.$model->address0->lat.','.$model->address0->long,
                             'has_result'=>$u,
+                            'send_result'=>$report_yuborish,
                             'result'=>$result
                         ]
                     ];
