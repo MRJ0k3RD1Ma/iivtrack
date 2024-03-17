@@ -181,7 +181,12 @@ class UserController extends Controller
                 'id'=>$item->id,
                 'address'=>$item->address,
                 'map'=>'https://www.google.com/maps/search/?api=1&query='.$adr->lat.','.$adr->long,
-                'code'=>$item->code
+                'code'=>$item->code,
+                'name'=>$item->name,
+                'phone'=>$item->phone,
+                'type'=>$item->type->name,
+                'detail'=>$item->detail,
+                'created'=>$item->created,
             ];
         }
         return [
@@ -231,7 +236,12 @@ class UserController extends Controller
                 'id'=>$item->id,
                 'address'=>$item->address,
                 'map'=>'https://www.google.com/maps/search/?api=1&query='.$adr->lat.','.$adr->long,
-                'code'=>$item->code
+                'code'=>$item->code,
+                'name'=>$item->name,
+                'phone'=>$item->phone,
+                'type'=>$item->type->name,
+                'detail'=>$item->detail,
+                'created'=>$item->created,
             ];
         }
         return [
@@ -279,7 +289,12 @@ class UserController extends Controller
                 'id'=>$item->id,
                 'address'=>$item->address,
                 'map'=>'https://www.google.com/maps/search/?api=1&query='.$adr->lat.','.$adr->long,
-                'code'=>$item->code
+                'code'=>$item->code,
+                'name'=>$item->name,
+                'phone'=>$item->phone,
+                'type'=>$item->type->name,
+                'detail'=>$item->detail,
+                'created'=>$item->created,
             ];
         }
         return [
@@ -326,7 +341,12 @@ class UserController extends Controller
                 'id'=>$item->id,
                 'address'=>$item->address,
                 'map'=>'https://www.google.com/maps/search/?api=1&query='.$adr->lat.','.$adr->long,
-                'code'=>$item->code
+                'code'=>$item->code,
+                'name'=>$item->name,
+                'phone'=>$item->phone,
+                'type'=>$item->type->name,
+                'detail'=>$item->detail,
+                'created'=>$item->created,
             ];
         }
         return [
