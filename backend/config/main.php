@@ -67,6 +67,7 @@ return [
                         'GET week'=>'week',
                         'GET month'=>'month',
                         'GET today'=>'today',
+                        'GET running'=>'running',
                     ]
                 ],
             ],
