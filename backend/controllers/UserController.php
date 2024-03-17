@@ -177,7 +177,7 @@ class UserController extends Controller
         $data = [];
         foreach ($models as $item){
             $adr = $item->address0;
-            $data = [
+            $data[] = [
                 'id'=>$item->id,
                 'address'=>$item->address,
                 'map'=>'https://www.google.com/maps/search/?api=1&query='.$adr->lat.','.$adr->long,
@@ -232,7 +232,7 @@ class UserController extends Controller
         $data = [];
         foreach ($models as $item){
             $adr = $item->address0;
-            $data = [
+            $data[] = [
                 'id'=>$item->id,
                 'address'=>$item->address,
                 'map'=>'https://www.google.com/maps/search/?api=1&query='.$adr->lat.','.$adr->long,
@@ -285,7 +285,7 @@ class UserController extends Controller
         $data = [];
         foreach ($models as $item){
             $adr = $item->address0;
-            $data = [
+            $data[] = [
                 'id'=>$item->id,
                 'address'=>$item->address,
                 'map'=>'https://www.google.com/maps/search/?api=1&query='.$adr->lat.','.$adr->long,
@@ -337,7 +337,7 @@ class UserController extends Controller
         $data = [];
         foreach ($models as $item){
             $adr = $item->address0;
-            $data = [
+            $data[] = [
                 'id'=>$item->id,
                 'address'=>$item->address,
                 'map'=>'https://www.google.com/maps/search/?api=1&query='.$adr->lat.','.$adr->long,
