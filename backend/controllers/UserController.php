@@ -5,6 +5,7 @@ namespace backend\controllers;
 
 use backend\models\User;
 use common\models\Call;
+use common\models\CallResult;
 use common\models\UserHistory;
 use Yii;
 use yii\data\Pagination;
@@ -122,6 +123,19 @@ class UserController extends Controller
                 0=>'Ayol',
                 1=>'Erkak',
             ];
+
+            $res = CallResult::find()->where(['call_id'=>$model->id])->all();
+            $result = [];
+            foreach ($res as $item){
+                $result [] = [
+                    'id'=>$item->id,
+                    'result'=>$item->result,
+                ];
+            }
+            $u = false;
+            if(count($res) > 0){
+                $u = true;
+            }
             return [
                 'success'=>true,
                 'has_data'=>true,
@@ -135,7 +149,9 @@ class UserController extends Controller
                     'type'=>$model->type->name,
                     'detail'=>$model->detail,
                     'created'=>$model->created,
-                    'map'=>'https://www.google.com/maps/search/?api=1&query='.$model->address0->lat.','.$model->address0->long
+                    'map'=>'https://www.google.com/maps/search/?api=1&query='.$model->address0->lat.','.$model->address0->long,
+                    'has_result'=>$u,
+                    'result'=>$result
                 ]
             ];
         }else{
@@ -359,5 +375,79 @@ class UserController extends Controller
 
         ];
     }
+
+    public function actionReport($id)
+    {
+        if($model = Call::findOne($id)){
+            if($model->status < 3){
+                $c = new CallResult();
+                $c->user_id = Yii::$app->user->id;
+                $c->id = CallResult::find()->where(['call_id'=>$model->id])->max('id');
+                if(!$c->id){
+                    $c->id = 0;
+                }
+                $c->id ++;
+                $c->call_id = $model->id;
+
+                if($post = $this->request->post()){
+                    $c->result = $post['result'];
+                    $c->lat = $post['lat'];
+                    $c->long = $post['long'];
+                    $c->save(false);
+                    $gender = [
+                        0=>'Ayol',
+                        1=>'Erkak',
+                    ];
+                    $res = CallResult::find()->where(['call_id'=>$model->id])->all();
+                    $result = [];
+                    foreach ($res as $item){
+                        $result [] = [
+                            'id'=>$item->id,
+                            'result'=>$item->result,
+                        ];
+                    }
+                    $u = false;
+                    if(count($res) > 0){
+                        $u = true;
+                    }
+                    return [
+                        'success'=>true,
+                        'message'=>'Ushbu murojaatga javob yuborildi',
+                        'has_data'=>true,
+                        'data'=>[
+                            'id'=>$model->id,
+                            'address'=>$model->address,
+                            'code'=>$model->code,
+                            'name'=>$model->name,
+                            'phone'=>$model->phone,
+                            'gender'=>$gender[$model->gender],
+                            'type'=>$model->type->name,
+                            'detail'=>$model->detail,
+                            'created'=>$model->created,
+                            'map'=>'https://www.google.com/maps/search/?api=1&query='.$model->address0->lat.','.$model->address0->long,
+                            'has_result'=>$u,
+                            'result'=>$result
+                        ]
+                    ];
+                }
+            }else{
+                $txt = "Ushbu chaqiruv bajarilgan";
+                if($model->status == 3){
+                    $txt = "Uchbu chaqiruvga javob berilgan va tasdiqlanishu kutilmoqda";
+                }
+                return [
+                    'success'=>false,
+                    'message'=>$txt
+                ];
+            }
+
+        }else{
+            return [
+                'success'=>false,
+                'message'=>'Bunday chaqiruv topilmadi'
+            ];
+        }
+    }
+
 
 }

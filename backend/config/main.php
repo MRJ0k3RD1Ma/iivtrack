@@ -68,6 +68,7 @@ return [
                         'GET month'=>'month',
                         'GET today'=>'today',
                         'GET running'=>'running',
+                        'POST report'=>'report',
                     ]
                 ],
             ],
