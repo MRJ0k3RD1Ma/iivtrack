@@ -146,7 +146,54 @@ class UserController extends Controller
         }
     }
 
+    public function actionToday($page = 1)
+    {
+        $_7 = date('Y-m-d');
+        $model = Call::find()
+            ->filterWhere(['like','created',$_7])
+//            ->andWhere(['user_id'=>Yii::$app->user->id])
+            ->orderBy(['id' => SORT_DESC]);
 
+        $limit = 10;
+        $offset = $limit * ($page - 1);
+        $models = $model->offset($offset)
+            ->limit($limit)
+            ->all();
+        $count = $model->count();
+        if($count==0){
+            return [
+                'success'=>false,
+                'message'=>'Chaqiruv topilmadi'
+            ];
+        }
+        $next = -1;
+        $prev = -1;
+        if($page > 1){
+            $prev = $page - 1;
+        }
+        if($offset+$limit < $count){
+            $next = $page + 1;
+        }
+        $data = [];
+        foreach ($models as $item){
+            $adr = $item->address0;
+            $data = [
+                'id'=>$item->id,
+                'address'=>$item->address,
+                'map'=>'https://www.google.com/maps/search/?api=1&query='.$adr->lat.','.$adr->long,
+                'code'=>$item->code
+            ];
+        }
+        return [
+            'success'=>true,
+            'totalcount'=>$count,
+            'page'=>$page,
+            'prev'=>$prev,
+            'next'=>$next,
+            'data'=>$data,
+
+        ];
+    }
     public function actionWeek($page = 1)
     {
         $_7 = date('Y-m-d',strtotime('-7 days'));
@@ -225,7 +272,7 @@ class UserController extends Controller
         $data = [];
         foreach ($models as $item){
             $adr = $item->address0;
-            $data[$item->id] = [
+            $data = [
                 'id'=>$item->id,
                 'address'=>$item->address,
                 'map'=>'https://www.google.com/maps/search/?api=1&query='.$adr->lat.','.$adr->long,
