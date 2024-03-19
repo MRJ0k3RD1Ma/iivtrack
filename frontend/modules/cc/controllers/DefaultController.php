@@ -205,7 +205,7 @@ class DefaultController extends Controller
             }
             $txt .= '<br>'.@$item->hudud.'<br>'.@$item->username.'<br>'.$item->pozivnoy;
             if($item->active = 2){
-                $item->active = 1;
+                $item->active = 0;
             }
             $markers[] = [$item->name.$txt,$item->lat, $item->long,$item->active,$type,$item->id,$radius,$elat,$elong];
         }
