@@ -138,8 +138,19 @@ class DefaultController extends Controller
         $model = Address::find()->all();
         $markers = [];
 
+        $time = date('H:i');
+        $time = explode($time,':');
+        $u = ['<>','active',2];
+        if($time[0] == 8 and $time[1] >= 30){
+                $u = ' 1 ';
+        }elseif($time[0] > 8 and $time[0] <= 20){
+            $u = ' 1 ';
+        }
 
-        $model = User::find()->where(['is not','active_date',null])->andWhere(['is not','lat',null])->andWhere(['is not','long',null])->all();
+
+        $model = User::find()->where(['is not','active_date',null])
+            ->andWhere($u)
+            ->andWhere(['is not','lat',null])->andWhere(['is not','long',null])->all();
 
         foreach ($model as $item){
 
@@ -193,6 +204,9 @@ class DefaultController extends Controller
 
             }
             $txt .= '<br>'.@$item->hudud.'<br>'.@$item->username.'<br>'.$item->pozivnoy;
+            if($item->active = 2){
+                $item->active = 1;
+            }
             $markers[] = [$item->name.$txt,$item->lat, $item->long,$item->active,$type,$item->id,$radius,$elat,$elong];
         }
 
@@ -234,8 +248,6 @@ class DefaultController extends Controller
             $date = date('Y-m-d');
         }
         $locations = [];
-
-
 
 
         if($model){
