@@ -103,41 +103,48 @@ class SiteController extends Controller
         /* @var $item User*/
         $date = date('Y-m-d H:i:s');
 
+        date_default_timezone_set('Asia/Tashkent');
 
         foreach ($model as $item){
-            if(strtotime($date) - strtotime($item->active_date) >= 60){
 
-                $time = date('H:i');
-                $time = explode(':',$time);
-                $u = false;
-                if($time[0] == 8){
-                    if($time[1] >= 30){
-                        $u = true;
-                    }
-                }elseif($time[0] > 8 and $time[0] <= 20){
+            $time = date('H:i');
+            $time = explode(':',$time);
+            $time[0] = intval($time[0]);
+            $time[1] = intval($time[1]);
+
+            $u = false;
+            if($time[0] == 8){
+                if($time[1] >= 30){
                     $u = true;
-                }else{
-                    $one = Shift::findOne(['user_id'=>$item->id,'date'=>date('Y-m-d',strtotime('-1 day'))]);
-                    $two = Shift::findOne(['user_id'=>$item->id,'date'=>date('Y-m-d')]);
-                    if($time[0] < 8 and $one){
-                        $u = true;
-                    }elseif($time[0] <= 23
-                        and $time[1] <= 59
-                        and $two){
-                        $u = true;
-                    }
                 }
+            }elseif($time[0] > 8 and $time[0] <= 20){
+                $u = true;
+            }else{
+                $one = Shift::findOne(['user_id'=>$item->id,'date'=>date('Y-m-d',strtotime('-1 day'))]);
+                $two = Shift::findOne(['user_id'=>$item->id,'date'=>date('Y-m-d')]);
+                if($time[0] < 8 and $one){
+                    $u = true;
+                }elseif($time[0] <= 23
+                    and $time[1] <= 59
+                    and $two){
+                    $u = true;
+                }
+            }
 
-                if(!$u){
-                    $item->active = 2;
-                    $item->save(false);
-                }else{
+            if(!$u){
+                $item->active = 2;
+                $item->save(false);
+                echo "noo";
+            }else{
+                if(strtotime($date) - strtotime($item->active_date) >= 60){
                     $item->active = 0;
                     $item->save(false);
+                    echo "okkk";
                 }
 
-
             }
+
+
         }
     }
 

@@ -137,6 +137,7 @@ class DefaultController extends Controller
     {
         $model = Address::find()->all();
         $markers = [];
+        date_default_timezone_set('Asia/Tashkent');
 
         $time = date('H:i');
         $time = explode(':',$time);
@@ -154,7 +155,6 @@ class DefaultController extends Controller
 
         foreach ($model as $item){
 
-            date_default_timezone_set('Asia/Tashkent');
 
             $event_user = EventUser::find()
                 ->where('event_id in (select event.id from event where event.status = 2 and "'.date('Y-m-d').'" BETWEEN event.date_start AND event.date_end )')
