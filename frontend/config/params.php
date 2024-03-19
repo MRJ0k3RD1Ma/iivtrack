@@ -12,6 +12,7 @@ return [
         2=>'Tungi guruh',
     ],
     'active'=>[
+        2=>'Ish vaqti emas',
         1=>'Onlayn',
         0=>'Oflayn'
     ],

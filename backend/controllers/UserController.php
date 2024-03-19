@@ -6,6 +6,7 @@ namespace backend\controllers;
 use backend\models\User;
 use common\models\Call;
 use common\models\CallResult;
+use common\models\Shift;
 use common\models\UserHistory;
 use Yii;
 use yii\data\Pagination;
@@ -58,6 +59,32 @@ class UserController extends Controller
     public function actionTrack($lat,$long)
     {
         $user = User::findOne(Yii::$app->user->id);
+        $time = date('H:i');
+        $time = explode($time,':');
+        $u = false;
+        if($time[0] == 8){
+            if($time[1] >= 30){
+                $u = true;
+            }
+        }elseif($time[0] > 8 and $time[0] <= 20){
+            $u = true;
+        }else{
+            $one = Shift::findOne(['user_id'=>$user->id,'date'=>date('Y-m-d',strtotime('-1 day'))]);
+            $two = Shift::findOne(['user_id'=>$user->id,'date'=>date('Y-m-d')]);
+            if($time[0] < 8 and $one){
+                $u = true;
+            }elseif($time[0] <= 23 and $time[1] <= 59 and $two){
+                $u = true;
+            }
+        }
+
+        if(!$u){
+            return [
+                'success'=>true,
+                'has_data'=>false,
+            ];
+        }
+
         $user->lat = $lat;
         $user->long = $long;
         $user->active_date = date('Y-m-d H:i:s');
@@ -84,8 +111,8 @@ class UserController extends Controller
                     0=>'Ayol',
                     1=>'Erkak',
                 ];
-               // $model->status = 2;
-               // $model->save(false);
+                $model->status = 2;
+                $model->save(false);
                 return [
                     'success'=>true,
                     'has_data'=>true,
