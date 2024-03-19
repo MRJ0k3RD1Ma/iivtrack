@@ -60,7 +60,7 @@ class UserController extends Controller
     {
         $user = User::findOne(Yii::$app->user->id);
         $time = date('H:i');
-        $time = explode($time,':');
+        $time = explode(':',$time);
         $u = false;
         if($time[0] == 8){
             if($time[1] >= 30){

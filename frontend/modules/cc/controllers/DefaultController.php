@@ -139,7 +139,7 @@ class DefaultController extends Controller
         $markers = [];
 
         $time = date('H:i');
-        $time = explode($time,':');
+        $time = explode(':',$time);
         $u = ['<>','active',2];
         if($time[0] == 8 and $time[1] >= 30){
                 $u = ' 1 ';

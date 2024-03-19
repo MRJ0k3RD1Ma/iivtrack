@@ -108,7 +108,7 @@ class SiteController extends Controller
             if(strtotime($date) - strtotime($item->active_date) >= 60){
 
                 $time = date('H:i');
-                $time = explode($time,':');
+                $time = explode(':',$time);
                 $u = false;
                 if($time[0] == 8){
                     if($time[1] >= 30){
@@ -121,7 +121,9 @@ class SiteController extends Controller
                     $two = Shift::findOne(['user_id'=>$item->id,'date'=>date('Y-m-d')]);
                     if($time[0] < 8 and $one){
                         $u = true;
-                    }elseif($time[0] <= 23 and $time[1] <= 59 and $two){
+                    }elseif($time[0] <= 23
+                        and $time[1] <= 59
+                        and $two){
                         $u = true;
                     }
                 }
