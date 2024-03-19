@@ -77,7 +77,7 @@ class UserController extends Controller
 
         if($user->save(false)){
             if($model = Call::find()
-//                ->where(['user_id'=>$user->id])
+                ->where(['user_id'=>$user->id])
                 ->andWhere(['status'=>1])
                 ->one()){
                 $gender = [
@@ -172,7 +172,7 @@ class UserController extends Controller
 
         $model = Call::find()
             ->where(['<','status',3])
-//            ->andWhere(['user_id'=>Yii::$app->user->id])
+            ->andWhere(['user_id'=>Yii::$app->user->id])
             ->orderBy(['id' => SORT_DESC]);
 
         $limit = 10;
@@ -227,7 +227,7 @@ class UserController extends Controller
         $_7 = date('Y-m-d');
         $model = Call::find()
             ->filterWhere(['like','created',$_7])
-//            ->andWhere(['user_id'=>Yii::$app->user->id])
+            ->andWhere(['user_id'=>Yii::$app->user->id])
             ->orderBy(['id' => SORT_DESC]);
 
         $limit = 10;
@@ -280,7 +280,7 @@ class UserController extends Controller
         $_7 = date('Y-m-d',strtotime('-7 days'));
         $model = Call::find()
             ->where(['>=','created',$_7])
-//            ->andWhere(['user_id'=>Yii::$app->user->id])
+            ->andWhere(['user_id'=>Yii::$app->user->id])
             ->orderBy(['id' => SORT_DESC]);
 
         $limit = 10;
@@ -332,7 +332,7 @@ class UserController extends Controller
     {
         $model = Call::find()
             ->filterWhere(['like','created',date('Y-m')])
-//            ->andWhere(['user_id'=>Yii::$app->user->id])
+            ->andWhere(['user_id'=>Yii::$app->user->id])
             ->orderBy(['id' => SORT_DESC]);
 
         $limit = 10;
