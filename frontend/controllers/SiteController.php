@@ -3,6 +3,7 @@
 namespace frontend\controllers;
 
 use common\models\Event;
+use common\models\Shift;
 use common\models\User;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
@@ -101,12 +102,39 @@ class SiteController extends Controller
         $model = User::find()->where(['>','active',0])->all();
         /* @var $item User*/
         $date = date('Y-m-d H:i:s');
+
+
         foreach ($model as $item){
             if(strtotime($date) - strtotime($item->active_date) >= 60){
-                $item->active = 0;
-                if($item->save(false)){
-                    echo "OK";
+
+                $time = date('H:i');
+                $time = explode($time,':');
+                $u = false;
+                if($time[0] == 8){
+                    if($time[1] >= 30){
+                        $u = true;
+                    }
+                }elseif($time[0] > 8 and $time[0] <= 20){
+                    $u = true;
+                }else{
+                    $one = Shift::findOne(['user_id'=>$item->id,'date'=>date('Y-m-d',strtotime('-1 day'))]);
+                    $two = Shift::findOne(['user_id'=>$item->id,'date'=>date('Y-m-d')]);
+                    if($time[0] < 8 and $one){
+                        $u = true;
+                    }elseif($time[0] <= 23 and $time[1] <= 59 and $two){
+                        $u = true;
+                    }
                 }
+
+                if(!$u){
+                    $item->active = 2;
+                    $item->save(false);
+                }else{
+                    $item->active = 0;
+                    $item->save(false);
+                }
+
+
             }
         }
     }
