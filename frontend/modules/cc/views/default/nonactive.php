@@ -20,7 +20,7 @@
                 </thead>
                 <tbody>
                 <?php foreach ($model as $key=>$item): ?>
-                    <tr class="<?= $item->active == 1 ? 'bg-success' : 'bg-warning'?>">
+                    <tr class="<?php if($item->active != 2){?><?= $item->active == 1 ? 'bg-success' : 'bg-warning'?><?php }?>">
                         <td><?= $key+1?></td>
                         <td><a href="<?= Yii::$app->urlManager->createUrl(['/cc/default/view','id'=>$item->id])?>"><?= $item->name ?></a></td>
                         <td><?= $item->username ?></td>
