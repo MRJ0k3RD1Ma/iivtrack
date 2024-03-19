@@ -7,6 +7,10 @@ return [
         3=>'Tasdiqlanishi kutilmoqda',
         4=>'Tugallangan'
     ],
+    'shift'=>[
+        1=>'Tezkor tergov guruhi',
+        2=>'Tungi guruh',
+    ],
     'active'=>[
         1=>'Onlayn',
         0=>'Oflayn'

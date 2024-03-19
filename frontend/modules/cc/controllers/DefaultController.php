@@ -7,6 +7,7 @@ use common\models\Call;
 use common\models\DistrictView;
 use common\models\Event;
 use common\models\EventUser;
+use common\models\Shift;
 use common\models\User;
 use common\models\UserHistory;
 use frontend\components\Sms;
@@ -270,6 +271,62 @@ class DefaultController extends Controller
         }
 
     }
+
+
+    public function actionShiftone($date = null)
+    {
+        if(!$date ){
+            $date = date('Y-m-d');
+        }
+
+        $model = new Shift();
+        $model->date = date('Y-m-d');
+        $model->shift_id = 1;
+        if($model->load($this->request->post())){
+            if($model->save()){
+                Yii::$app->session->setFlash("success",'Ushbu hodim tezkor guruhga qo`shildi');
+            }else{
+                Yii::$app->session->setFlash("error",'Ushbu hodim tezkor guruhga qo`shishda xatolik');
+            }
+            return $this->redirect(['shiftone']);
+        }
+        $data = User::find()->where('id in (select user_id from shift where  shift_id = 1 and date = "'.$date.'")')->all();
+        return $this->render('shiftone',[
+            'model'=>$model,
+            'data'=>$data,
+            'date'=>$date
+        ]);
+
+
+    }
+
+    public function actionShifttwo($date = null)
+    {
+        if(!$date ){
+            $date = date('Y-m-d');
+        }
+
+        $model = new Shift();
+        $model->date = date('Y-m-d');
+        $model->shift_id = 2;
+        if($model->load($this->request->post())){
+            if($model->save()){
+                Yii::$app->session->setFlash("success",'Ushbu hodim tungi guruhga qo`shildi');
+            }else{
+                Yii::$app->session->setFlash("error",'Ushbu hodim tungi guruhga qo`shishda xatolik');
+            }
+            return $this->redirect(['shiftone']);
+        }
+        $data = User::find()->where('id in (select user_id from shift where shift_id = 2 and date = "'.$date.'")')->all();
+        return $this->render('shifttwo',[
+            'model'=>$model,
+            'data'=>$data,
+            'date'=>$date
+        ]);
+
+
+    }
+
 
 }
 

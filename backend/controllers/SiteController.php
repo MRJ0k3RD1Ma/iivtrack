@@ -84,6 +84,7 @@ class SiteController extends Controller
 
                 return [
                     'token' => (string) $token,
+//                    'change'=>Yii::$app->user->identity->status == 1 ? true : false,
                 ];
             }else{
                 return [$model->getFirstErrors()];

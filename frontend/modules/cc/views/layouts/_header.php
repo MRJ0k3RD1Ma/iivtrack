@@ -37,13 +37,28 @@
                 </button>
             </div>
             <?php }?>
-
             <div class="dropdown d-none d-sm-inline-block">
-                <button type="button" class="btn header-item" onclick="location.href = '<?= Yii::$app->urlManager->createUrl(['/cc/default/nonactive'])?>'">
+                <button type="button" class="btn header-item"
+                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Hodimlar
                 </button>
+                <div class="dropdown-menu dropdown-menu-end">
 
+                    <!-- item-->
+                    <a href="<?= Yii::$app->urlManager->createUrl(['/cc/default/nonactive'])?>" class="dropdown-item notify-item language">
+                        Hodimlar ro'yhati
+                    </a>
+                    <!-- item-->
+                    <a href="<?= Yii::$app->urlManager->createUrl(['/cc/default/shiftone'])?>" class="dropdown-item notify-item language">
+                         Tezkor tergov guruhi
+                    </a>
+                    <!-- item-->
+                    <a href="<?= Yii::$app->urlManager->createUrl(['/cc/default/shifttwo'])?>" class="dropdown-item notify-item language">
+                        Tungi guruh
+                    </a>
+                </div>
             </div>
+
             <div class="dropdown d-none d-sm-inline-block">
                 <button type="button" class="btn header-item"
                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
