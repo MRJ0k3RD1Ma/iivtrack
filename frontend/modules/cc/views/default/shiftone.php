@@ -10,7 +10,11 @@ $this->title = "Tezkor tergov guruhi ro`yhati";
 
 <div class="card">
     <div class="card-body">
-
+        <div class="row">
+            <div class="col-md-2">
+                <input type="date" value="<?= $date?>" class="form-control" id="date">
+            </div>
+        </div>
         <div class="row">
             <div class="col-md-9">
                 <div class="table-responsive">
@@ -22,21 +26,19 @@ $this->title = "Tezkor tergov guruhi ro`yhati";
                             <th>Tel</th>
                             <th>Hudud</th>
                             <th>Позивной</th>
-                            <th>So'ngi aktivlik</th>
-                            <th>Status</th>
+                            <?php if($date == date('Y-m-d')){?><th></th><?php }?>
                         </tr>
                         </thead>
                         <tbody>
                         <?php foreach ($data as $key=>$item): ?>
-                            <tr class="<?= $item->active == 1 ? 'bg-success' : 'bg-warning'?>">
+                            <tr>
                                 <td><?= $key+1?></td>
                                 <td><a href="<?= Yii::$app->urlManager->createUrl(['/cc/default/view','id'=>$item->id])?>"><?= $item->name ?></a></td>
                                 <td><?= $item->username ?></td>
                                 <td><?= $item->hudud ?></td>
                                 <td><?= $item->pozivnoy ?></td>
-                                <td><?= $item->active_date ?></td>
-                                <td><?= Yii::$app->params['active'][$item->active] ?></td>
-
+                                <?php if($date == date('Y-m-d')){?><td><a class="btn btn-danger"
+                                                                          href="<?= Yii::$app->urlManager->createUrl(['/cc/default/shiftremove', 'user_id' => $item->id, 'shift_id' => 1]) ?>"><span class="fa fa-trash"></span></a></td><?php }?>
                             </tr>
                         <?php endforeach;?>
                         </tbody>
@@ -61,3 +63,12 @@ $this->title = "Tezkor tergov guruhi ro`yhati";
         </div>
     </div>
 </div>
+
+<?php
+$url = Yii::$app->urlManager->createUrl(['/cc/default/shiftone']);
+$this->registerJs("
+        $('#date').change(function(){
+            location.href = '{$url}?date='+$('#date').val()
+        })
+    ")
+?>

@@ -315,7 +315,7 @@ class DefaultController extends Controller
             }else{
                 Yii::$app->session->setFlash("error",'Ushbu hodim tungi guruhga qo`shishda xatolik');
             }
-            return $this->redirect(['shiftone']);
+            return $this->redirect(['shifttwo']);
         }
         $data = User::find()->where('id in (select user_id from shift where shift_id = 2 and date = "'.$date.'")')->all();
         return $this->render('shifttwo',[
@@ -325,6 +325,20 @@ class DefaultController extends Controller
         ]);
 
 
+    }
+
+
+    public function actionShiftremove($user_id,$shift_id)
+    {
+        $model = Shift::find()->where(['date'=>date('Y-m-d'),'user_id'=>$user_id,'shift_id'=>$shift_id])->one();
+        if($model){
+            $model->delete();
+            Yii::$app->session->setFlash('success','Ushbu hodim guruhdan o`chirildi');
+        }else{
+            Yii::$app->session->setFlash('error','Bunday hodim topilmadi');
+        }
+        $r = $shift_id == 1 ? 'one' : 'two';
+        return $this->redirect(['shift'.$r]);
     }
 
 

@@ -40,9 +40,9 @@ class Shift extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'date' => 'Date',
-            'user_id' => 'User ID',
-            'shift_id' => 'Shift ID',
+            'date' => 'Sana',
+            'user_id' => 'Hodim',
+            'shift_id' => 'Guruh',
         ];
     }
 }
