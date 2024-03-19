@@ -79,12 +79,13 @@ class UserController extends Controller
         }
 
         if(!$u){
+            $user->active = 2;
+            $user->save(false);
             return [
                 'success'=>true,
                 'has_data'=>false,
             ];
         }
-
         $user->lat = $lat;
         $user->long = $long;
         $user->active_date = date('Y-m-d H:i:s');
