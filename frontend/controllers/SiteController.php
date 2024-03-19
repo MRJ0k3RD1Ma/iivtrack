@@ -99,7 +99,7 @@ class SiteController extends Controller
 
     public function actionActivePolice()
     {
-        $model = User::find()->where(['>','active',0])->all();
+        $model = User::find()->all();
         /* @var $item User*/
         $date = date('Y-m-d H:i:s');
 
