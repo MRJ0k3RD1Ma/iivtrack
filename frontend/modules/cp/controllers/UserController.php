@@ -70,6 +70,8 @@ class UserController extends Controller
     {
         $model = new User();
         $model->scenario = "insert";
+        $model->password = "123";
+        $model->role_id = 20;
         if ($this->request->isPost) {
             if ($model->load($this->request->post())) {
                 $model->setPassword($model->password);
