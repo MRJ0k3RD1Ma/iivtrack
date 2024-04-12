@@ -17,6 +17,7 @@
                         <thead>
                         <tr>
                             <th>#</th>
+                            <th>Rasm</th>
                             <th>FIO</th>
                             <th>Tel</th>
                             <th>Hudud</th>
@@ -28,6 +29,7 @@
                         <?php foreach ($data as $key=>$item): ?>
                             <tr>
                                 <td><?= $key+1?></td>
+                                <td><img src="/upload/<?= $item->image ?>" alt="rasm" style="width: 100px; height: auto"></td>
                                 <td><a href="<?= Yii::$app->urlManager->createUrl(['/cc/default/view','id'=>$item->id])?>"><?= $item->name ?></a></td>
                                 <td><?= $item->username ?></td>
                                 <td><?= $item->hudud ?></td>
