@@ -90,7 +90,7 @@ class UserController extends Controller
         $user->long = $long;
         $user->active_date = date('Y-m-d H:i:s');
         $user->active = 1;
-
+        $user->is_sms_send = 0;
         $his = new UserHistory();
         $his->year = date('Y');
         $his->month = date('m');

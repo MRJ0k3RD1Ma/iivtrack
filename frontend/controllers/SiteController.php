@@ -5,6 +5,7 @@ namespace frontend\controllers;
 use common\models\Event;
 use common\models\Shift;
 use common\models\User;
+use frontend\components\Sms;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
 use Yii;
@@ -136,8 +137,11 @@ class SiteController extends Controller
                 $item->save(false);
                 echo "noo";
             }else{
-                if(strtotime($date) - strtotime($item->active_date) >= 60){
+                if(strtotime($date) - strtotime($item->active_date) >= 300){
                     $item->active = 0;
+                    $item->is_send_sms = 1;
+                    $res = Sms::send($item->username,$item->name." sizning qayerda ekanligingiz haqidagi ma'lumot kelmay qoldi. Iltimos dasturni tekshirib ko'ring.");
+
                     $item->save(false);
                     echo "okkk";
                 }
@@ -147,6 +151,7 @@ class SiteController extends Controller
 
         }
     }
+
 
     /**
      * Displays homepage.

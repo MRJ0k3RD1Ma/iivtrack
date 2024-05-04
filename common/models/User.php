@@ -52,7 +52,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     {
         return [
             [['created', 'updated','active_date'], 'safe'],
-            [['status', 'role_id','active'], 'integer'],
+            [['status', 'role_id','active','is_sms_send'], 'integer'],
             [['image'],'file','extensions'=>['jpg','png','jpeg']],
             [['name', 'auth_key', 'token', 'code','image','lat','long','pozivnoy','hudud'], 'string', 'max' => 255],
             [['password', 'access_token'], 'string', 'max' => 500],
