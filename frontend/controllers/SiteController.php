@@ -139,8 +139,10 @@ class SiteController extends Controller
             }else{
                 if(strtotime($date) - strtotime($item->active_date) >= 300){
                     $item->active = 0;
+                    if($item->is_send_sms == 0){
+                        $res = Sms::send($item->username,$item->name." sizning qayerda ekanligingiz haqidagi ma'lumot kelmay qoldi. Iltimos dasturni tekshirib ko'ring.");
+                    }
                     $item->is_send_sms = 1;
-                    $res = Sms::send($item->username,$item->name." sizning qayerda ekanligingiz haqidagi ma'lumot kelmay qoldi. Iltimos dasturni tekshirib ko'ring.");
 
                     $item->save(false);
                     echo "okkk";
