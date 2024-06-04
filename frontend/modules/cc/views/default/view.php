@@ -21,8 +21,32 @@ $this->title = "Hodimning borgan joylari";
     </div>
 
 
-    <div class="col-md-12 map">
+    <div class="col-md-10 map">
         <div id="map"></div>
+    </div>
+    <div class="col-md-2">
+            <h4>Holat o'zgarishlari</h4>
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <td>#</td>
+                        <td>Vaqti</td>
+                        <td>Holat</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php $his = \common\models\UserActiveHistory::find()->where(['user_id'=>$model->id])->andFilterWhere(['like','active',$date])->orderBy(['active'=>SORT_ASC])->all();
+                        foreach ($his as $key=>$item):?>
+                        <tr>
+                            <td><?= $key+1?></td>
+                            <td><?= $item->active ?></td>
+                            <td><?= Yii::$app->params['active_type'][$item->type]?></td>
+                        </tr>
+                    <?php endforeach;?>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 

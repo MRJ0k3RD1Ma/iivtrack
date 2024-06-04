@@ -18,6 +18,7 @@ use yii\filters\Cors;
 use yii\helpers\Url;
 use yii\rest\Controller;
 use yii\web\Response;
+use common\models\UserActiveHistory;
 
 
 class UserController extends Controller
@@ -79,6 +80,15 @@ class UserController extends Controller
         }
 
         if(!$u){
+            if($user->active != 2){
+                $active = new UserActiveHistory();
+                $active->user_id = $user->id;
+                $active->active = date('Y-m-d H:i:s');
+                $active->type = 2;
+                $active->lat = $user->lat;
+                $active->long = $user->long;
+                $active->save(false);
+            }
             $user->active = 2;
             $user->save(false);
             return [
@@ -89,6 +99,15 @@ class UserController extends Controller
         $user->lat = $lat;
         $user->long = $long;
         $user->active_date = date('Y-m-d H:i:s');
+        if($user->active != 1){
+            $active = new UserActiveHistory();
+            $active->user_id = $user->id;
+            $active->active = date('Y-m-d H:i:s');
+            $active->type = 1;
+            $active->lat = $user->lat;
+            $active->long = $user->long;
+            $active->save(false);
+        }
         $user->active = 1;
         $user->is_sms_send = 0;
         $his = new UserHistory();

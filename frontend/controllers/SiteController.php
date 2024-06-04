@@ -19,6 +19,7 @@ use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
+use common\models\UserActiveHistory;
 
 /**
  * Site controller
@@ -133,14 +134,32 @@ class SiteController extends Controller
             }
 
             if(!$u){
+                if($item->active != 2){
+                    $active = new UserActiveHistory();
+                    $active->user_id = $item->id;
+                    $active->active = date('Y-m-d H:i:s');
+                    $active->type = 2;
+                    $active->lat = $item->lat;
+                    $active->long = $item->long;
+                    $active->save(false);
+                }
                 $item->active = 2;
                 $item->save(false);
                 echo "noo";
             }else{
                 if(strtotime($date) - strtotime($item->active_date) >= 300){
+                    if($item->active != 0){
+                        $active = new UserActiveHistory();
+                        $active->user_id = $item->id;
+                        $active->active = date('Y-m-d H:i:s');
+                        $active->type = 0;
+                        $active->lat = $item->lat;
+                        $active->long = $item->long;
+                        $active->save(false);
+                    }
                     $item->active = 0;
                     if($item->is_sms_send == 0){
-                        $res = Sms::send($item->username,$item->name." sizning qayerda ekanligingiz haqidagi ma'lumot kelmay qoldi. Iltimos dasturni tekshirib ko'ring.");
+                        // $res = Sms::send($item->username,$item->name." sizning qayerda ekanligingiz haqidagi ma'lumot kelmay qoldi. Iltimos dasturni tekshirib ko'ring. sayt:mnazorat.uz");
                     }
                     $item->is_sms_send = 1;
 

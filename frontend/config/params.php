@@ -49,6 +49,11 @@ return [
         0=>'Ayol',
         1=>'Erkak'
     ],
+    'active_type'=>[
+        '0'=>'Oflayn',
+        '1'=>'Onlayn',
+        2=>'Ish vaqti emas',
+    ],
     'sms'=>[
         'email'=>'online.software.it.v2@mail.ru',
         'password'=>'5AQc6WqxisH7KSc7xKvR0yz8yYo7reFOkVhaKeJ7',

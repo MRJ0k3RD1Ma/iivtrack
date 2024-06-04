@@ -65,8 +65,8 @@ class DefaultController extends Controller
             $code = substr(date('Y'),2,2).'/'.$code_id;
             $model->code = $code;
             $model->code_id = $code_id;
-            $res = Sms::send($model->phone,'Sizning chaqiruvingizga asosan sizga profilaktika inspektori '.$model->user->name.' yuborildi. Tel:'. $model->user->username);
-            $res = Sms::send($model->user->username,$model->address.' manzilda yashovchi '.$model->name.' tomonidan '.$model->type->name.' sabab bilan chaqiruv. Tel:'.$model->phone);
+            $res = Sms::send($model->phone,'Sizning chaqiruvingizga asosan sizga profilaktika inspektori '.$model->user->name.' yuborildi. Tel:'. $model->user->username." sayt:mnazorat.uz");
+            $res = Sms::send($model->user->username,$model->address.' manzilda yashovchi '.$model->name.' tomonidan '.$model->type->name.' sabab bilan chaqiruv. Tel:'.$model->phone." sayt:mnazorat.uz");
 
 
             if($model->save()){
@@ -143,7 +143,7 @@ class DefaultController extends Controller
         $time = explode(':',$time);
         $u = ['<>','active',2];
         if($time[0] == 8 and $time[1] >= 30){
-                $u = ' 1 ';
+            $u = ' 1 ';
         }elseif($time[0] > 8 and $time[0] <= 20){
             $u = ' 1 ';
         }

@@ -44,13 +44,16 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <h4>Tezkor tergov guruhiga hodim qo`shish</h4>
+                <h4>Tungi guruhga hodim qo`shish</h4>
                 <?php $form = \yii\widgets\ActiveForm::begin()?>
 
                 <p>Sana: <?= date('d.m.Y')?></p>
 
-                <?= $form->field($model,'user_id')->dropDownList(\yii\helpers\ArrayHelper::map(\common\models\User::find()->where('id not in (select user_id from shift where shift_id = 2 and date = "'.date('Y-m-d').'")')->all(),'id','name')) ?>
+                <?= $form->field($model,'user_id')->dropDownList(\yii\helpers\ArrayHelper::map(\common\models\User::find()
+                    ->where('id not in (select user_id from shift where shift_id = 2 and date = "'.date('Y-m-d').'")')->all(),'id','name')
+                    ,['class'=>'form-control select2']) ?>
 
+                <br>
 
                 <button class="btn btn-success" type="submit">Saqlash</button>
 

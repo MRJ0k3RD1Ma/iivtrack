@@ -54,8 +54,11 @@ $this->title = "Tezkor tergov guruhi ro`yhati";
 
                     <p>Sana: <?= date('d.m.Y')?></p>
 
-                    <?= $form->field($model,'user_id')->dropDownList(\yii\helpers\ArrayHelper::map(User::find()->where('id not in (select user_id from shift where shift_id = 2 and date = "'.date('Y-m-d').'")')->all(),'id','name')) ?>
+                    <?= $form->field($model,'user_id')->dropDownList(\yii\helpers\ArrayHelper::map(User::find()
+                        ->where('id not in (select user_id from shift where shift_id = 2 and date = "'.date('Y-m-d').'")')->all(),'id','name')
+                        ,['class'=>'form-control select2']) ?>
 
+                <br>
 
                 <button class="btn btn-success" type="submit">Saqlash</button>
 
