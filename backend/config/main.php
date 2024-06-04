@@ -55,6 +55,7 @@ return [
                 'auth'=>'site/login',
                 'refresh-token'=>'site/refresh-token',
                 'site/check'=>'site/check',
+                'site/balans'=>'site/balans',
                 'OPTIONS' => 'site/index',
                 [
                     'class' => 'yii\rest\UrlRule',

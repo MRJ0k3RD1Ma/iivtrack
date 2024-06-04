@@ -4,6 +4,7 @@ namespace backend\controllers;
 
 use backend\models\LoginForm;
 use backend\models\User;
+use common\models\Balans;
 use Yii;
 use yii\filters\ContentNegotiator;
 use yii\filters\Cors;
@@ -143,5 +144,14 @@ class SiteController extends Controller
         return ['nbf'=>$decode->nbf,'time'=>time(),
             'check'=>$decode->nbf < time()];
 
+    }
+
+    public function actionBalans()
+    {
+        if(Yii::$app->params['localpasscode'] == Yii::$app->request->post('pascode')){
+
+        }else{
+            throw new HttpException(404, 'Page not found');
+        }
     }
 }
