@@ -148,30 +148,3 @@ $this->registerJs("
     ")
 
 ?>
-
-<?php if(false){?>
-<!--    Xaritaga yurgan yo'lni chizish-->
-    <script type="text/javascript">
-        window.onload=function(){
-            var map = L.map("map");
-            L.tileLayer("http://{s}.tile.osm.org/{z}/{x}/{y}.png").addTo(map);
-            map.setView([48.85, 2.35], 12);
-            var myPolyline = L.polyline([
-                [48.86, 2.34],
-                [48.85, 2.35]
-            ]).addTo(map).bindPopup("popup").openPopup();
-            var count = 1;
-            document.getElementById("button").addEventListener("click", function (event) {
-                event.preventDefault();
-                myPolyline.addLatLng([
-                    48.85 - (count + Math.random()) * 0.01,
-                    2.35 + (count + Math.random()) * 0.01
-                ]);
-                count += 1;
-            });
-        }
-
-    </script>
-
-
-<?php }?>
