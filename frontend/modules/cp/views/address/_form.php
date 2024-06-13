@@ -10,26 +10,72 @@ use yii\widgets\ActiveForm;
 
 <div class="address-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <div class="row">
+        <div class="col-md-9 map">
 
-    <?= $form->field($model, 'address')->textInput(['maxlength' => true]) ?>
+            <div id="map"></div>
 
-    <?= $form->field($model, 'lat')->textInput(['maxlength' => true]) ?>
+        </div>
+        <div class="col-md-3">
+            <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'long')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'address')->textInput(['maxlength' => true]) ?>
+            <div style="display: none">
+            <?= $form->field($model, 'lat')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'created')->textInput() ?>
+            <?= $form->field($model, 'long')->textInput(['maxlength' => true]) ?>
+            </div>
+            <div class="form-group">
+                <?= Html::submitButton('Saqlash', ['class' => 'btn btn-success']) ?>
+            </div>
 
-    <?= $form->field($model, 'updated')->textInput() ?>
+            <?php ActiveForm::end(); ?>
 
-    <?= $form->field($model, 'user_id')->textInput() ?>
 
-    <?= $form->field($model, 'soato_id')->textInput() ?>
-
-    <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+            <button class="btn btn-danger remove" type="button">Remove marker</button>
+        </div>
     </div>
 
-    <?php ActiveForm::end(); ?>
-
 </div>
+
+
+<?php
+    //
+    $this->registerJs("
+        // init map
+    var map = L.map('map').setView([41.552269, 60.631571], 12);
+    var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href=\"http://www.openstreetmap.org/copyright\">OpenStreetMap</a>'
+    });
+    osm.addTo(map);
+    var singleMarker;
+    map.on('click',function(e){
+        $('#address-lat').val(e.latlng.lat);
+        $('#address-long').val(e.latlng.lng);
+        var myIcon = L.icon({
+            iconUrl: '/icon/marker-blue.png',
+            iconSize: [26, 36],
+            iconAnchor: [13, 36],
+            popupAnchor: [-3, -76],
+            shadowAnchor: [15, 35]
+        });
+        if(singleMarker){
+            map.removeLayer(singleMarker)
+        }
+        singleMarker = L.marker([e.latlng.lat, e.latlng.lng],{icon: myIcon});
+        singleMarker._leaflet_id = 'a10';
+        singleMarker.addTo(map);
+        console.log(singleMarker)
+    })
+    
+    
+    $('.remove').click(function(){
+        
+        if (map.hasLayerId('a10')) {
+            alert('topildi')
+        }
+    })
+    ")
+
+?>

@@ -2,16 +2,17 @@
 
 namespace frontend\modules\cp\controllers;
 
-use common\models\Address;
-use common\models\search\AddressSearch;
+use common\models\Call;
+use common\models\CallResult;
+use common\models\search\CallSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use Yii;
 /**
- * AddressController implements the CRUD actions for Address model.
+ * CallController implements the CRUD actions for Call model.
  */
-class AddressController extends Controller
+class CallController extends Controller
 {
     /**
      * @inheritDoc
@@ -32,13 +33,14 @@ class AddressController extends Controller
     }
 
     /**
-     * Lists all Address models.
+     * Lists all Call models.
      *
      * @return string
      */
     public function actionIndex()
     {
-        $searchModel = new AddressSearch();
+        $searchModel = new CallSearch();
+
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
@@ -48,36 +50,57 @@ class AddressController extends Controller
     }
 
     /**
-     * Displays a single Address model.
-     * @param string $address Address
+     * Displays a single Call model.
+     * @param int $id ID
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($address)
+    public function actionView($id)
     {
+        $model = $this->findModel($id);
+        $result = new CallResult();
+        $results = CallResult::find()->where(['call_id'=>$id])->orderBy(['id'=>SORT_DESC])->all();
+
+        if($result->load($this->request->post())){
+            $result->status = 4;
+            $result->call_id = $model->id;
+            $result->user_id = Yii::$app->user->id;
+            $rid = CallResult::find()->where(['user_id'=>$result->user_id,'call_id'=>$result->call_id])->max('id');
+            if(!$rid){
+                $rid  =0;
+            }
+            $rid ++;
+            $result->id = $rid;
+            $result->consept_id = $result->user_id;
+            if($result->save()){
+                $model->status = 4;
+                $model->save(false);
+                Yii::$app->session->setFlash('success','Chaqiruv muvoffaqiyatli tugallandi');
+            }else{
+                Yii::$app->session->setFlash('error','Chaqiruv tugallashda xatolik');
+            }
+        }
+
+
         return $this->render('view', [
-            'model' => $this->findModel($address),
+            'model' => $model,
+            'result'=>$result,
+            'results'=>$results
         ]);
     }
 
     /**
-     * Creates a new Address model.
+     * Creates a new Call model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
     public function actionCreate()
     {
-        $model = new Address();
+        $model = new Call();
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post())) {
-                $model->user_id  = Yii::$app->user->id;
-                if($model->save()){
-                    Yii::$app->session->setFlash('success','Lokatsiya qo`shildi');
-                }else{
-                    Yii::$app->session->setFlash('error','Lokatsiya qo`shishda xatolik');
-                }
-                return $this->redirect(['/cc/']);
+            if ($model->load($this->request->post()) && $model->save()) {
+                return $this->redirect(['view', 'id' => $model->id]);
             }
         } else {
             $model->loadDefaultValues();
@@ -89,18 +112,18 @@ class AddressController extends Controller
     }
 
     /**
-     * Updates an existing Address model.
+     * Updates an existing Call model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param string $address Address
+     * @param int $id ID
      * @return string|\yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($address)
+    public function actionUpdate($id)
     {
-        $model = $this->findModel($address);
+        $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'address' => $model->address]);
+            return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [
@@ -109,32 +132,35 @@ class AddressController extends Controller
     }
 
     /**
-     * Deletes an existing Address model.
+     * Deletes an existing Call model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param string $address Address
+     * @param int $id ID
      * @return \yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($address)
+    public function actionDelete($id)
     {
-        $this->findModel($address)->delete();
+        $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
     }
 
     /**
-     * Finds the Address model based on its primary key value.
+     * Finds the Call model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param string $address Address
-     * @return Address the loaded model
+     * @param int $id ID
+     * @return Call the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($address)
+    protected function findModel($id)
     {
-        if (($model = Address::findOne(['address' => $address])) !== null) {
+        if (($model = Call::findOne(['id' => $id])) !== null) {
             return $model;
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
+
+
 }

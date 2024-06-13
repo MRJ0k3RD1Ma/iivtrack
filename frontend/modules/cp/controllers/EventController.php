@@ -2,16 +2,17 @@
 
 namespace frontend\modules\cp\controllers;
 
-use common\models\Address;
-use common\models\search\AddressSearch;
+use common\models\Event;
+use common\models\EventUser;
+use common\models\search\EventSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use Yii;
 /**
- * AddressController implements the CRUD actions for Address model.
+ * EventController implements the CRUD actions for Event model.
  */
-class AddressController extends Controller
+class EventController extends Controller
 {
     /**
      * @inheritDoc
@@ -32,13 +33,13 @@ class AddressController extends Controller
     }
 
     /**
-     * Lists all Address models.
+     * Lists all Event models.
      *
      * @return string
      */
     public function actionIndex()
     {
-        $searchModel = new AddressSearch();
+        $searchModel = new EventSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
@@ -48,36 +49,48 @@ class AddressController extends Controller
     }
 
     /**
-     * Displays a single Address model.
-     * @param string $address Address
+     * Displays a single Event model.
+     * @param int $id ID
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($address)
+    public function actionView($id)
     {
+
+        $user = new EventUser();
+        if($user->load($this->request->post())){
+            $user->event_id = $id;
+            $nid = EventUser::find()->where(['event_id'=>$id])->max('id');
+            if(!$nid){
+                $nid = 0;
+            }
+            $nid++;
+            $user->id = $nid;
+            if($user->save()){
+                Yii::$app->session->setFlash('success','Qo`shildi');
+            }else{
+                Yii::$app->session->setFlash('error','xatolik');
+            }
+            return $this->redirect(['view','id'=>$id]);
+        }
         return $this->render('view', [
-            'model' => $this->findModel($address),
+            'model' => $this->findModel($id),
+            'user'=>$user
         ]);
     }
 
     /**
-     * Creates a new Address model.
+     * Creates a new Event model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
     public function actionCreate()
     {
-        $model = new Address();
+        $model = new Event();
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post())) {
-                $model->user_id  = Yii::$app->user->id;
-                if($model->save()){
-                    Yii::$app->session->setFlash('success','Lokatsiya qo`shildi');
-                }else{
-                    Yii::$app->session->setFlash('error','Lokatsiya qo`shishda xatolik');
-                }
-                return $this->redirect(['/cc/']);
+            if ($model->load($this->request->post()) && $model->save()) {
+                return $this->redirect(['view', 'id' => $model->id]);
             }
         } else {
             $model->loadDefaultValues();
@@ -89,18 +102,18 @@ class AddressController extends Controller
     }
 
     /**
-     * Updates an existing Address model.
+     * Updates an existing Event model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param string $address Address
+     * @param int $id ID
      * @return string|\yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($address)
+    public function actionUpdate($id)
     {
-        $model = $this->findModel($address);
+        $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'address' => $model->address]);
+            return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [
@@ -109,32 +122,45 @@ class AddressController extends Controller
     }
 
     /**
-     * Deletes an existing Address model.
+     * Deletes an existing Event model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param string $address Address
+     * @param int $id ID
      * @return \yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($address)
+    public function actionDelete($id)
     {
-        $this->findModel($address)->delete();
+        $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
     }
 
     /**
-     * Finds the Address model based on its primary key value.
+     * Finds the Event model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param string $address Address
-     * @return Address the loaded model
+     * @param int $id ID
+     * @return Event the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($address)
+    protected function findModel($id)
     {
-        if (($model = Address::findOne(['address' => $address])) !== null) {
+        if (($model = Event::findOne(['id' => $id])) !== null) {
             return $model;
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
+
+    public function actionChangestatus($id)
+    {
+        $model = $this->findModel($id);
+        if($model->status < 3){
+            $model->status++;
+            $model->save(false);
+        }
+        return $this->redirect(['view','id'=>$id]);
+    }
+
+
 }

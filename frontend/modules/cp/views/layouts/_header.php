@@ -14,7 +14,7 @@
                                 </span>
                 </a>
 
-                <a href="<?= Yii::$app->urlManager->createUrl(['/cc/'])?>" class="logo logo-light">
+                <a href="<?= Yii::$app->urlManager->createUrl(['/cp/'])?>" class="logo logo-light">
                                 <span class="logo-sm">
                                     <img src="/logo.png" alt="" height="30">
                                 </span>
@@ -27,6 +27,99 @@
         </div>
 
         <div class="d-flex">
+                <?php if(Yii::$app->controller->id == 'default' and Yii::$app->controller->action->id == 'index'){?>
+                    <div class="dropdown d-none d-sm-inline-block">
+                        <button type="button" class="btn header-item" onclick="location.href = '<?= Yii::$app->urlManager->createUrl(['/cp/default/nonactive'])?>'">
+                            <span id="aktiv-hodim">0</span>/<span id="barcha-hodim"><?= \common\models\User::find()->count('id')?></span>
+                        </button>
+                    </div>
+                <?php }?>
+                <div class="dropdown d-none d-sm-inline-block">
+                    <button type="button" class="btn header-item"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Hodimlar
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-end">
+
+                        <!-- item-->
+                        <a href="<?= Yii::$app->urlManager->createUrl(['/cp/default/nonactive'])?>" class="dropdown-item notify-item language">
+                            Hodimlar ro'yhati
+                        </a>
+                        <!-- item-->
+                        <a href="<?= Yii::$app->urlManager->createUrl(['/cp/default/shiftone'])?>" class="dropdown-item notify-item language">
+                            Tezkor tergov guruhi
+                        </a>
+                        <!-- item-->
+                        <a href="<?= Yii::$app->urlManager->createUrl(['/cp/default/shifttwo'])?>" class="dropdown-item notify-item language">
+                            Tungi guruh
+                        </a>
+
+                        <a href="<?= Yii::$app->urlManager->createUrl(['/cp/user/'])?>" class="dropdown-item notify-item language">
+                            Ma'lumotlarni yangilash
+                        </a>
+                    </div>
+                </div>
+
+                <div class="dropdown d-none d-sm-inline-block">
+                    <button type="button" class="btn header-item"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Tadbirlar
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-end">
+
+                        <!-- item-->
+                        <a href="<?= Yii::$app->urlManager->createUrl(['/cp/default/event'])?>" class="dropdown-item notify-item language">
+                            <span class="fa fa-plus"></span> Tadbir qo'shish
+                        </a>
+                        <!-- item-->
+                        <a href="<?= Yii::$app->urlManager->createUrl(['/cp/event/'])?>" class="dropdown-item notify-item language">
+                            <span class="fa fa-location-arrow"></span> Jarayonda
+                        </a>
+                        <!-- item-->
+                        <a href="<?= Yii::$app->urlManager->createUrl(['/cp/event/'])?>" class="dropdown-item notify-item language">
+                            <span class="fa fa-plus"></span> Barchasi
+                        </a>
+                    </div>
+                </div>
+                <div class="dropdown d-none d-sm-inline-block">
+                    <button type="button" class="btn header-item"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="fa fa-phone-square"></span> Chaqiruvlar
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-end">
+
+                        <!-- item-->
+                        <a href="<?= Yii::$app->urlManager->createUrl(['/cp'])?>" class="dropdown-item notify-item language">
+                            <span class="fa fa-plus"></span> Yangi chaqiruv
+                        </a>
+                        <!-- item-->
+                        <a href="<?= Yii::$app->urlManager->createUrl(['/cp/call'])?>" class="dropdown-item notify-item language">
+                            <span class="fa fa-location-arrow"></span> Chaqiruvlar
+                        </a>
+                        <!-- item-->
+                        <a href="<?= Yii::$app->urlManager->createUrl(['/cp/call-type'])?>" class="dropdown-item notify-item language">
+                            <span class="fa fa-list"></span> Chaqiruv turlari
+                        </a>
+                    </div>
+                </div>
+                <div class="dropdown d-none d-sm-inline-block">
+                    <button type="button" class="btn header-item"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="fa fa-location-arrow"></span> Manzillar
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-end">
+
+                        <!-- item-->
+                        <a href="<?= Yii::$app->urlManager->createUrl(['/cp/address/create'])?>" class="dropdown-item notify-item language">
+                            <span class="fa fa-plus"></span> Manzil qo'shish
+                        </a>
+                        <!-- item-->
+                        <a href="<?= Yii::$app->urlManager->createUrl(['/cp/address/index'])?>" class="dropdown-item notify-item language">
+                            <span class="fa fa-location-arrow"></span> Manzillar ro'yhati
+                        </a>
+
+                    </div>
+                </div>
 
 
             <div class="dropdown d-inline-block">

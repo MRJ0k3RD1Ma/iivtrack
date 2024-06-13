@@ -29,19 +29,27 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'address',
+//            'address',
+            [
+                'attribute'=>'address',
+                'value'=>function($d){
+                    $url = "https://www.google.com/maps/search/?api=1&query={$d->lat},{$d->long}";
+                    return "<a href='{$url}' target='_blank'>{$d->address}</a>";
+                },
+                'format'=>'raw'
+            ],
             'lat',
             'long',
             'created',
             'updated',
             //'user_id',
             //'soato_id',
-            [
-                'class' => ActionColumn::className(),
-                'urlCreator' => function ($action, Address $model, $key, $index, $column) {
-                    return Url::toRoute([$action, 'address' => $model->address]);
-                 }
-            ],
+//            [
+//                'class' => ActionColumn::className(),
+//                'urlCreator' => function ($action, Address $model, $key, $index, $column) {
+//                    return Url::toRoute([$action, 'address' => $model->address]);
+//                 }
+//            ],
         ],
     ]); ?>
 
