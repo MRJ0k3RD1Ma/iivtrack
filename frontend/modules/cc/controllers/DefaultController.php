@@ -13,7 +13,7 @@ use common\models\UserHistory;
 use frontend\components\Sms;
 use yii\web\Controller;
 use yii\web\UploadedFile;
-use function common\models\Soato;
+use \common\models\Soato;
 use Yii;
 /**
  * Default controller for the `cp` module
@@ -207,7 +207,7 @@ class DefaultController extends Controller
             if($item->active == 2){
                 $item->active = 0;
             }
-            $markers[] = ["<img src='/upload/{$item->image}' style='width: 100%; height: auto;' />".'<br>'.$item->name.$txt,$item->lat, $item->long,$item->active,$type,$item->id,$radius,$elat,$elong];
+            $markers[] = ["<img src='/upload/{$item->image}' style='width: 100%; height: auto;' />".'<br>'.$item->name.$txt.'<br>'.$item->active_date,$item->lat, $item->long,$item->active,$type,$item->id,$radius,$elat,$elong];
         }
 
         return json_encode($markers);
