@@ -220,7 +220,15 @@ class DefaultController extends Controller
         if($model->load($this->request->post())){
             $model->user_id = Yii::$app->user->id;
             $model->status = 1;
+
+            echo "<pre>";
+            var_dump($model);
+            exit;
+
             if($model->save()){
+
+                // event_dots qo'sish kerak.
+
                 Yii::$app->session->setFlash('success','Tadbir joyi muvoffaqiyatli saqlandi');
                 return $this->redirect(['/cp/event/view','id'=>$model->id]);
             }else{

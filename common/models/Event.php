@@ -27,6 +27,7 @@ use Yii;
  */
 class Event extends \yii\db\ActiveRecord
 {
+    public $dots;
     /**
      * {@inheritdoc}
      */
@@ -41,9 +42,9 @@ class Event extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['type_id','date_start', 'date_end','detail','radius', 'lat', 'long'], 'required'],
+            [['type_id','date_start', 'date_end','detail'], 'required'],
             [['id', 'user_id', 'type_id', 'status'], 'integer'],
-            [['date_start', 'date_end', 'created', 'updated'], 'safe'],
+            [['date_start', 'date_end', 'created', 'updated','dots'], 'safe'],
             [['detail'], 'string'],
             [['radius', 'address', 'lat', 'long'], 'string', 'max' => 255],
             [['id'], 'unique'],
