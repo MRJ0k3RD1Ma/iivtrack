@@ -59,7 +59,7 @@ $this->title = "Tezkor tergov guruhi ro`yhati";
                         ,['class'=>'form-control select2']) ?>
 
                 <br>
-
+                
                 <button class="btn btn-success" type="submit">Saqlash</button>
 
 

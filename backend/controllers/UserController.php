@@ -60,6 +60,8 @@ class UserController extends Controller
     public function actionTrack($lat,$long)
     {
         $user = User::findOne(Yii::$app->user->id);
+        $user->last_lat = $user->lat;
+        $user->last_long = $user->long;
         $time = date('H:i');
         $time = explode(':',$time);
         $u = false;
@@ -67,7 +69,7 @@ class UserController extends Controller
             if($time[1] >= 30){
                 $u = true;
             }
-        }elseif($time[0] > 8 and $time[0] <= 20){
+        }elseif($time[0] > 8 and $time[0] < 20){
             $u = true;
         }else{
             $one = Shift::findOne(['user_id'=>$user->id,'date'=>date('Y-m-d',strtotime('-1 day'))]);
@@ -78,7 +80,25 @@ class UserController extends Controller
                 $u = true;
             }
         }
+ if($user->role_id == 18){
+            // send request to urganchshypx.mnazorat.uz
+            $curl = curl_init();
 
+            curl_setopt_array($curl, array(
+                CURLOPT_URL => 'https://urganchshypx.mnazorat.uz/api/track?phone='.$user->username.'&lat='.$lat.'&long='.$long,
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_ENCODING => '',
+                CURLOPT_MAXREDIRS => 10,
+                CURLOPT_TIMEOUT => 0,
+                CURLOPT_FOLLOWLOCATION => true,
+                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                CURLOPT_CUSTOMREQUEST => 'GET',
+            ));
+
+            $response = curl_exec($curl);
+
+            curl_close($curl);
+        }
         if(!$u){
             if($user->active != 2){
                 $active = new UserActiveHistory();
@@ -120,7 +140,9 @@ class UserController extends Controller
         $his->user_id = $user->id;
         $his->lat = $user->lat;
         $his->long = $user->long;
-        $his->save(false);
+        if($his->save(false)){
+            $asabim = 10;
+        }
 
         if($user->save(false)){
             if($model = Call::find()

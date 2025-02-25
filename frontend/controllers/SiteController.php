@@ -134,7 +134,7 @@ class SiteController extends Controller
             }
 
             if(!$u){
-                if($item->active != 2){
+                 if($item->active != 2){
                     $active = new UserActiveHistory();
                     $active->user_id = $item->id;
                     $active->active = date('Y-m-d H:i:s');
@@ -159,7 +159,7 @@ class SiteController extends Controller
                     }
                     $item->active = 0;
                     if($item->is_sms_send == 0){
-                        // $res = Sms::send($item->username,$item->name." sizning qayerda ekanligingiz haqidagi ma'lumot kelmay qoldi. Iltimos dasturni tekshirib ko'ring. sayt:mnazorat.uz");
+                       // $res = Sms::send($item->username,$item->name." sizning qayerda ekanligingiz haqidagi ma'lumot kelmay qoldi. Iltimos dasturni tekshirib ko'ring. sayt:mnazorat.uz");
                     }
                     $item->is_sms_send = 1;
 

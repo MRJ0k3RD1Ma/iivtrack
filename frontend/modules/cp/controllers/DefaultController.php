@@ -220,15 +220,7 @@ class DefaultController extends Controller
         if($model->load($this->request->post())){
             $model->user_id = Yii::$app->user->id;
             $model->status = 1;
-
-            echo "<pre>";
-            var_dump($model);
-            exit;
-
             if($model->save()){
-
-                // event_dots qo'sish kerak.
-
                 Yii::$app->session->setFlash('success','Tadbir joyi muvoffaqiyatli saqlandi');
                 return $this->redirect(['/cp/event/view','id'=>$model->id]);
             }else{
@@ -360,6 +352,52 @@ class DefaultController extends Controller
         $r = $shift_id == 1 ? 'one' : 'two';
         return $this->redirect(['shift'.$r]);
     }
+
+    public function actionSync()
+    {
+        $model = User::find()->where(['role_id'=>18])->all();
+        /* @var $user User*/
+        echo "<pre>";
+        foreach ($model as $user){
+            $data = [
+                'id'=>$user->id,
+                'name'=>$user->name,
+                'username'=>$user->username,
+                'role_id'=>$user->role_id,
+                'password'=>$user->password,
+                'status'=>$user->status,
+                'image'=>$user->image,
+                'hudud'=>$user->hudud,
+                'pozivnoy'=>$user->pozivnoy,
+            ];
+            $curl = curl_init();
+
+            curl_setopt_array($curl, array(
+                CURLOPT_URL => 'https://urganchshypx.mnazorat.uz/api/sync',
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_ENCODING => '',
+                CURLOPT_MAXREDIRS => 10,
+                CURLOPT_TIMEOUT => 0,
+                CURLOPT_FOLLOWLOCATION => true,
+                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                CURLOPT_CUSTOMREQUEST => 'GET',
+                CURLOPT_POSTFIELDS =>json_encode($data),
+                CURLOPT_HTTPHEADER => array(
+                    'Content-Type: application/json'
+                ),
+            ));
+
+            $response = curl_exec($curl);
+
+            curl_close($curl);
+            echo $user->name.'-'.$user->username.'<br>';
+            var_dump($response);
+            echo "<br>";
+        }
+
+        exit;
+    }
+
 
 
 }

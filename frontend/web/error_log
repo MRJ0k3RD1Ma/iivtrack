@@ -1,0 +1,1126 @@
+[29-Feb-2024 08:02:44 Asia/Tashkent] An Error occurred while handling another error:
+yii\web\ForbiddenHttpException: Login Required in /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/User.php:461
+Stack trace:
+#0 /home/xorazmmt/public_html/vendor/yiisoft/yii2/filters/AccessControl.php(156): yii\web\User->loginRequired()
+#1 /home/xorazmmt/public_html/vendor/yiisoft/yii2/filters/AccessControl.php(140): yii\filters\AccessControl->denyAccess(Object(yii\web\User))
+#2 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/ActionFilter.php(77): yii\filters\AccessControl->beforeAction(Object(yii\web\ErrorAction))
+#3 [internal function]: yii\base\ActionFilter->beforeFilter(Object(yii\base\ActionEvent))
+#4 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Component.php(633): call_user_func(Array, Object(yii\base\ActionEvent))
+#5 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Controller.php(297): yii\base\Component->trigger('beforeAction', Object(yii\base\ActionEvent))
+#6 /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/Controller.php(219): yii\base\Controller->beforeAction(Object(yii\web\ErrorAction))
+#7 /home/xorazmmt/public_html/frontend/controllers/SiteController.php(63): yii\web\Controller->beforeAction(Object(yii\web\ErrorAction))
+#8 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Controller.php(176): frontend\controllers\SiteController->beforeAction(Object(yii\web\ErrorAction))
+#9 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Module.php(552): yii\base\Controller->runAction('error', Array)
+#10 /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/ErrorHandler.php(109): yii\base\Module->runAction('site/error')
+#11 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/ErrorHandler.php(152): yii\web\ErrorHandler->renderException(Object(yii\web\NotFoundHttpException))
+#12 [internal function]: yii\base\ErrorHandler->handleException(Object(yii\web\NotFoundHttpException))
+#13 {main}
+Previous exception:
+yii\base\InvalidRouteException: Unable to resolve the request "humans.txt". in /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Module.php:561
+Stack trace:
+#0 /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/Application.php(103): yii\base\Module->runAction('humans.txt', Array)
+#1 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /home/xorazmmt/public_html/frontend/web/index.php(18): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Page not found. in /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/Application.php:115
+Stack trace:
+#0 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /home/xorazmmt/public_html/frontend/web/index.php(18): yii\base\Application->run()
+#2 {main}
+$_SERVER = [
+    'PATH' => '/usr/local/bin:/usr/bin:/bin',
+    'TEMP' => '/tmp',
+    'TMP' => '/tmp',
+    'TMPDIR' => '/tmp',
+    'PWD' => '/',
+    'HTTP_ACCEPT' => 'text/plain',
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US',
+    'CONTENT_LENGTH' => '0',
+    'HTTP_HOST' => 'bestit.uz',
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.5005.63 Safari/537.36',
+    'HTTP_CACHE_CONTROL' => 'no-cache',
+    'HTTP_X_FORWARDED_HOST' => 'bestit.uz',
+    'HTTP_X_FORWARDED_PORT' => '80',
+    'HTTP_X_FORWARDED_PROTO' => 'http',
+    'HTTP_X_FORWARDED_SERVER' => 'bestit.uz',
+    'HTTP_X_REAL_IP' => '::ffff:93.158.90.32',
+    'REDIRECT_UNIQUE_ID' => 'Zd_z1Jte3z6R7DM8uagaeAAABJc',
+    'REDIRECT_SCRIPT_URL' => '/humans.txt',
+    'REDIRECT_SCRIPT_URI' => 'http://bestit.uz/humans.txt',
+    'REDIRECT_APP' => 'frontend',
+    'REDIRECT_STATUS' => '200',
+    'UNIQUE_ID' => 'Zd_z1Jte3z6R7DM8uagaeAAABJc',
+    'SCRIPT_URL' => '/humans.txt',
+    'SCRIPT_URI' => 'http://bestit.uz/humans.txt',
+    'SERVER_SIGNATURE' => '',
+    'SERVER_SOFTWARE' => 'Apache',
+    'SERVER_NAME' => 'bestit.uz',
+    'SERVER_ADDR' => '83.69.139.168',
+    'SERVER_PORT' => '80',
+    'REMOTE_ADDR' => '93.158.90.32',
+    'DOCUMENT_ROOT' => '/home/xorazmmt/public_html',
+    'REQUEST_SCHEME' => 'http',
+    'CONTEXT_PREFIX' => '',
+    'CONTEXT_DOCUMENT_ROOT' => '/home/xorazmmt/public_html',
+    'SERVER_ADMIN' => 'webmaster@xorazm-mtb.uz',
+    'SCRIPT_FILENAME' => '/home/xorazmmt/public_html/frontend/web/index.php',
+    'REMOTE_PORT' => '42082',
+    'REDIRECT_URL' => '/humans.txt',
+    'SERVER_PROTOCOL' => 'HTTP/1.1',
+    'REQUEST_METHOD' => 'GET',
+    'QUERY_STRING' => '',
+    'REQUEST_URI' => '/humans.txt',
+    'SCRIPT_NAME' => '/frontend/web/index.php',
+    'PHP_SELF' => '/frontend/web/index.php',
+    'REQUEST_TIME_FLOAT' => 1709175764.888292,
+    'REQUEST_TIME' => 1709175764,
+]
+[29-Feb-2024 08:02:45 Asia/Tashkent] An Error occurred while handling another error:
+yii\web\ForbiddenHttpException: Login Required in /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/User.php:461
+Stack trace:
+#0 /home/xorazmmt/public_html/vendor/yiisoft/yii2/filters/AccessControl.php(156): yii\web\User->loginRequired()
+#1 /home/xorazmmt/public_html/vendor/yiisoft/yii2/filters/AccessControl.php(140): yii\filters\AccessControl->denyAccess(Object(yii\web\User))
+#2 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/ActionFilter.php(77): yii\filters\AccessControl->beforeAction(Object(yii\web\ErrorAction))
+#3 [internal function]: yii\base\ActionFilter->beforeFilter(Object(yii\base\ActionEvent))
+#4 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Component.php(633): call_user_func(Array, Object(yii\base\ActionEvent))
+#5 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Controller.php(297): yii\base\Component->trigger('beforeAction', Object(yii\base\ActionEvent))
+#6 /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/Controller.php(219): yii\base\Controller->beforeAction(Object(yii\web\ErrorAction))
+#7 /home/xorazmmt/public_html/frontend/controllers/SiteController.php(63): yii\web\Controller->beforeAction(Object(yii\web\ErrorAction))
+#8 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Controller.php(176): frontend\controllers\SiteController->beforeAction(Object(yii\web\ErrorAction))
+#9 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Module.php(552): yii\base\Controller->runAction('error', Array)
+#10 /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/ErrorHandler.php(109): yii\base\Module->runAction('site/error')
+#11 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/ErrorHandler.php(152): yii\web\ErrorHandler->renderException(Object(yii\web\NotFoundHttpException))
+#12 [internal function]: yii\base\ErrorHandler->handleException(Object(yii\web\NotFoundHttpException))
+#13 {main}
+Previous exception:
+yii\base\InvalidRouteException: Unable to resolve the request "ads.txt". in /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Module.php:561
+Stack trace:
+#0 /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/Application.php(103): yii\base\Module->runAction('ads.txt', Array)
+#1 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /home/xorazmmt/public_html/frontend/web/index.php(18): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Page not found. in /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/Application.php:115
+Stack trace:
+#0 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /home/xorazmmt/public_html/frontend/web/index.php(18): yii\base\Application->run()
+#2 {main}
+$_SERVER = [
+    'PATH' => '/usr/local/bin:/usr/bin:/bin',
+    'TEMP' => '/tmp',
+    'TMP' => '/tmp',
+    'TMPDIR' => '/tmp',
+    'PWD' => '/',
+    'HTTP_ACCEPT' => 'text/plain',
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US',
+    'CONTENT_LENGTH' => '0',
+    'HTTP_HOST' => 'bestit.uz',
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.5005.63 Safari/537.36',
+    'HTTP_CACHE_CONTROL' => 'no-cache',
+    'HTTP_X_FORWARDED_HOST' => 'bestit.uz',
+    'HTTP_X_FORWARDED_PORT' => '80',
+    'HTTP_X_FORWARDED_PROTO' => 'http',
+    'HTTP_X_FORWARDED_SERVER' => 'bestit.uz',
+    'HTTP_X_REAL_IP' => '::ffff:93.158.90.40',
+    'REDIRECT_UNIQUE_ID' => 'Zd_z1Zte3z6R7DM8uagahwAABIY',
+    'REDIRECT_SCRIPT_URL' => '/ads.txt',
+    'REDIRECT_SCRIPT_URI' => 'http://bestit.uz/ads.txt',
+    'REDIRECT_APP' => 'frontend',
+    'REDIRECT_STATUS' => '200',
+    'UNIQUE_ID' => 'Zd_z1Zte3z6R7DM8uagahwAABIY',
+    'SCRIPT_URL' => '/ads.txt',
+    'SCRIPT_URI' => 'http://bestit.uz/ads.txt',
+    'SERVER_SIGNATURE' => '',
+    'SERVER_SOFTWARE' => 'Apache',
+    'SERVER_NAME' => 'bestit.uz',
+    'SERVER_ADDR' => '83.69.139.168',
+    'SERVER_PORT' => '80',
+    'REMOTE_ADDR' => '93.158.90.40',
+    'DOCUMENT_ROOT' => '/home/xorazmmt/public_html',
+    'REQUEST_SCHEME' => 'http',
+    'CONTEXT_PREFIX' => '',
+    'CONTEXT_DOCUMENT_ROOT' => '/home/xorazmmt/public_html',
+    'SERVER_ADMIN' => 'webmaster@xorazm-mtb.uz',
+    'SCRIPT_FILENAME' => '/home/xorazmmt/public_html/frontend/web/index.php',
+    'REMOTE_PORT' => '42092',
+    'REDIRECT_URL' => '/ads.txt',
+    'SERVER_PROTOCOL' => 'HTTP/1.1',
+    'REQUEST_METHOD' => 'GET',
+    'QUERY_STRING' => '',
+    'REQUEST_URI' => '/ads.txt',
+    'SCRIPT_NAME' => '/frontend/web/index.php',
+    'PHP_SELF' => '/frontend/web/index.php',
+    'REQUEST_TIME_FLOAT' => 1709175765.142319,
+    'REQUEST_TIME' => 1709175765,
+]
+[29-Feb-2024 14:28:54 Asia/Tashkent] PHP Fatal error:  Uncaught yii\base\ErrorException: session_write_close(): write failed: Disk quota exceeded (122) in /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/Session.php:220
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleError(2, 'session_write_c...', '/home/xorazmmt/...', 220, Array)
+#1 /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/Session.php(220): session_write_close()
+#2 [internal function]: yii\web\Session->close()
+#3 {main}
+  thrown in /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/Session.php on line 220
+[29-Feb-2024 17:29:00 Asia/Tashkent] PHP Fatal error:  Uncaught yii\base\ErrorException: session_write_close(): write failed: Disk quota exceeded (122) in /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/Session.php:220
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleError(2, 'session_write_c...', '/home/xorazmmt/...', 220, Array)
+#1 /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/Session.php(220): session_write_close()
+#2 [internal function]: yii\web\Session->close()
+#3 {main}
+  thrown in /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/Session.php on line 220
+[29-Feb-2024 17:29:03 Asia/Tashkent] PHP Fatal error:  Uncaught yii\base\ErrorException: session_write_close(): write failed: Disk quota exceeded (122) in /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/Session.php:220
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleError(2, 'session_write_c...', '/home/xorazmmt/...', 220, Array)
+#1 /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/Session.php(220): session_write_close()
+#2 [internal function]: yii\web\Session->close()
+#3 {main}
+  thrown in /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/Session.php on line 220
+[29-Feb-2024 17:52:26 Asia/Tashkent] PHP Fatal error:  Uncaught yii\base\ErrorException: session_write_close(): write failed: Disk quota exceeded (122) in /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/Session.php:220
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleError(2, 'session_write_c...', '/home/xorazmmt/...', 220, Array)
+#1 /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/Session.php(220): session_write_close()
+#2 [internal function]: yii\web\Session->close()
+#3 {main}
+  thrown in /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/Session.php on line 220
+[29-Feb-2024 17:52:26 Asia/Tashkent] PHP Fatal error:  Uncaught yii\base\ErrorException: session_write_close(): write failed: Disk quota exceeded (122) in /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/Session.php:220
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleError(2, 'session_write_c...', '/home/xorazmmt/...', 220, Array)
+#1 /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/Session.php(220): session_write_close()
+#2 [int[11-Mar-2024 03:20:20 Asia/Tashkent] An Error occurred while handling another error:
+yii\web\ForbiddenHttpException: Login Required in /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/User.php:461
+Stack trace:
+#0 /home/xorazmmt/public_html/vendor/yiisoft/yii2/filters/AccessControl.php(156): yii\web\User->loginRequired()
+#1 /home/xorazmmt/public_html/vendor/yiisoft/yii2/filters/AccessControl.php(140): yii\filters\AccessControl->denyAccess(Object(yii\web\User))
+#2 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/ActionFilter.php(77): yii\filters\AccessControl->beforeAction(Object(yii\web\ErrorAction))
+#3 [internal function]: yii\base\ActionFilter->beforeFilter(Object(yii\base\ActionEvent))
+#4 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Component.php(633): call_user_func(Array, Object(yii\base\ActionEvent))
+#5 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Controller.php(297): yii\base\Component->trigger('beforeAction', Object(yii\base\ActionEvent))
+#6 /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/Controller.php(219): yii\base\Controller->beforeAction(Object(yii\web\ErrorAction))
+#7 /home/xorazmmt/public_html/frontend/controllers/SiteController.php(65): yii\web\Controller->beforeAction(Object(yii\web\ErrorAction))
+#8 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Controller.php(176): frontend\controllers\SiteController->beforeAction(Object(yii\web\ErrorAction))
+#9 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Module.php(552): yii\base\Controller->runAction('error', Array)
+#10 /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/ErrorHandler.php(109): yii\base\Module->runAction('site/error')
+#11 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/ErrorHandler.php(152): yii\web\ErrorHandler->renderException(Object(yii\web\NotFoundHttpException))
+#12 [internal function]: yii\base\ErrorHandler->handleException(Object(yii\web\NotFoundHttpException))
+#13 {main}
+Previous exception:
+yii\base\InvalidRouteException: Unable to resolve the request "humans.txt". in /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Module.php:561
+Stack trace:
+#0 /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/Application.php(103): yii\base\Module->runAction('humans.txt', Array)
+#1 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /home/xorazmmt/public_html/frontend/web/index.php(18): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Page not found. in /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/Application.php:115
+Stack trace:
+#0 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /home/xorazmmt/public_html/frontend/web/index.php(18): yii\base\Application->run()
+#2 {main}
+$_SERVER = [
+    'PATH' => '/usr/local/bin:/usr/bin:/bin',
+    'TEMP' => '/tmp',
+    'TMP' => '/tmp',
+    'TMPDIR' => '/tmp',
+    'PWD' => '/',
+    'HTTP_ACCEPT' => 'text/plain',
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US',
+    'CONTENT_LENGTH' => '0',
+    'HTTP_HOST' => 'bestit.uz',
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:103.0) Gecko/20100101 Firefox/103.0',
+    'HTTP_CACHE_CONTROL' => 'no-cache',
+    'HTTP_X_FORWARDED_HOST' => 'bestit.uz',
+    'HTTP_X_FORWARDED_PORT' => '80',
+    'HTTP_X_FORWARDED_PROTO' => 'http',
+    'HTTP_X_FORWARDED_SERVER' => 'bestit.uz',
+    'HTTP_X_REAL_IP' => '::ffff:192.36.109.129',
+    'REDIRECT_UNIQUE_ID' => 'Ze4yJH8BvKAE7aHCxMsohAAAA8E',
+    'REDIRECT_SCRIPT_URL' => '/humans.txt',
+    'REDIRECT_SCRIPT_URI' => 'http://bestit.uz/humans.txt',
+    'REDIRECT_APP' => 'frontend',
+    'REDIRECT_STATUS' => '200',
+    'UNIQUE_ID' => 'Ze4yJH8BvKAE7aHCxMsohAAAA8E',
+    'SCRIPT_URL' => '/humans.txt',
+    'SCRIPT_URI' => 'http://bestit.uz/humans.txt',
+    'SERVER_SIGNATURE' => '',
+    'SERVER_SOFTWARE' => 'Apache',
+    'SERVER_NAME' => 'bestit.uz',
+    'SERVER_ADDR' => '83.69.139.168',
+    'SERVER_PORT' => '80',
+    'REMOTE_ADDR' => '192.36.109.129',
+    'DOCUMENT_ROOT' => '/home/xorazmmt/public_html',
+    'REQUEST_SCHEME' => 'http',
+    'CONTEXT_PREFIX' => '',
+    'CONTEXT_DOCUMENT_ROOT' => '/home/xorazmmt/public_html',
+    'SERVER_ADMIN' => 'webmaster@xorazm-mtb.uz',
+    'SCRIPT_FILENAME' => '/home/xorazmmt/public_html/frontend/web/index.php',
+    'REMOTE_PORT' => '33744',
+    'REDIRECT_URL' => '/humans.txt',
+    'SERVER_PROTOCOL' => 'HTTP/1.1',
+    'REQUEST_METHOD' => 'GET',
+    'QUERY_STRING' => '',
+    'REQUEST_URI' => '/humans.txt',
+    'SCRIPT_NAME' => '/frontend/web/index.php',
+    'PHP_SELF' => '/frontend/web/index.php',
+    'REQUEST_TIME_FLOAT' => 1710109220.310281,
+    'REQUEST_TIME' => 1710109220,
+]
+[11-Mar-2024 03:20:20 Asia/Tashkent] An Error occurred while handling another error:
+yii\web\ForbiddenHttpException: Login Required in /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/User.php:461
+Stack trace:
+#0 /home/xorazmmt/public_html/vendor/yiisoft/yii2/filters/AccessControl.php(156): yii\web\User->loginRequired()
+#1 /home/xorazmmt/public_html/vendor/yiisoft/yii2/filters/AccessControl.php(140): yii\filters\AccessControl->denyAccess(Object(yii\web\User))
+#2 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/ActionFilter.php(77): yii\filters\AccessControl->beforeAction(Object(yii\web\ErrorAction))
+#3 [internal function]: yii\base\ActionFilter->beforeFilter(Object(yii\base\ActionEvent))
+#4 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Component.php(633): call_user_func(Array, Object(yii\base\ActionEvent))
+#5 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Controller.php(297): yii\base\Component->trigger('beforeAction', Object(yii\base\ActionEvent))
+#6 /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/Controller.php(219): yii\base\Controller->beforeAction(Object(yii\web\ErrorAction))
+#7 /home/xorazmmt/public_html/frontend/controllers/SiteController.php(65): yii\web\Controller->beforeAction(Object(yii\web\ErrorAction))
+#8 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Controller.php(176): frontend\controllers\SiteController->beforeAction(Object(yii\web\ErrorAction))
+#9 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Module.php(552): yii\base\Controller->runAction('error', Array)
+#10 /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/ErrorHandler.php(109): yii\base\Module->runAction('site/error')
+#11 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/ErrorHandler.php(152): yii\web\ErrorHandler->renderException(Object(yii\web\NotFoundHttpException))
+#12 [internal function]: yii\base\ErrorHandler->handleException(Object(yii\web\NotFoundHttpException))
+#13 {main}
+Previous exception:
+yii\base\InvalidRouteException: Unable to resolve the request "ads.txt". in /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Module.php:561
+Stack trace:
+#0 /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/Application.php(103): yii\base\Module->runAction('ads.txt', Array)
+#1 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /home/xorazmmt/public_html/frontend/web/index.php(18): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Page not found. in /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/Application.php:115
+Stack trace:
+#0 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /home/xorazmmt/public_html/frontend/web/index.php(18): yii\base\Application->run()
+#2 {main}
+$_SERVER = [
+    'PATH' => '/usr/local/bin:/usr/bin:/bin',
+    'TEMP' => '/tmp',
+    'TMP' => '/tmp',
+    'TMPDIR' => '/tmp',
+    'PWD' => '/',
+    'HTTP_ACCEPT' => 'text/plain',
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US',
+    'CONTENT_LENGTH' => '0',
+    'HTTP_HOST' => 'bestit.uz',
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:103.0) Gecko/20100101 Firefox/103.0',
+    'HTTP_CACHE_CONTROL' => 'no-cache',
+    'HTTP_X_FORWARDED_HOST' => 'bestit.uz',
+    'HTTP_X_FORWARDED_PORT' => '80',
+    'HTTP_X_FORWARDED_PROTO' => 'http',
+    'HTTP_X_FORWARDED_SERVER' => 'bestit.uz',
+    'HTTP_X_REAL_IP' => '::ffff:192.36.109.90',
+    'REDIRECT_UNIQUE_ID' => 'Ze4yJH8BvKAE7aHCxMsohQAAA8U',
+    'REDIRECT_SCRIPT_URL' => '/ads.txt',
+    'REDIRECT_SCRIPT_URI' => 'http://bestit.uz/ads.txt',
+    'REDIRECT_APP' => 'frontend',
+    'REDIRECT_STATUS' => '200',
+    'UNIQUE_ID' => 'Ze4yJH8BvKAE7aHCxMsohQAAA8U',
+    'SCRIPT_URL' => '/ads.txt',
+    'SCRIPT_URI' => 'http://bestit.uz/ads.txt',
+    'SERVER_SIGNATURE' => '',
+    'SERVER_SOFTWARE' => 'Apache',
+    'SERVER_NAME' => 'bestit.uz',
+    'SERVER_ADDR' => '83.69.139.168',
+    'SERVER_PORT' => '80',
+    'REMOTE_ADDR' => '192.36.109.90',
+    'DOCUMENT_ROOT' => '/home/xorazmmt/public_html',
+    'REQUEST_SCHEME' => 'http',
+    'CONTEXT_PREFIX' => '',
+    'CONTEXT_DOCUMENT_ROOT' => '/home/xorazmmt/public_html',
+    'SERVER_ADMIN' => 'webmaster@xorazm-mtb.uz',
+    'SCRIPT_FILENAME' => '/home/xorazmmt/public_html/frontend/web/index.php',
+    'REMOTE_PORT' => '33748',
+    'REDIRECT_URL' => '/ads.txt',
+    'SERVER_PROTOCOL' => 'HTTP/1.1',
+    'REQUEST_METHOD' => 'GET',
+    'QUERY_STRING' => '',
+    'REQUEST_URI' => '/ads.txt',
+    'SCRIPT_NAME' => '/frontend/web/index.php',
+    'PHP_SELF' => '/frontend/web/index.php',
+    'REQUEST_TIME_FLOAT' => 1710109220.544047,
+    'REQUEST_TIME' => 1710109220,
+]
+[22-Mar-2024 16:49:36 Asia/Tashkent] An Error occurred while handling another error:
+yii\web\ForbiddenHttpException: Login Required in /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/User.php:461
+Stack trace:
+#0 /home/xorazmmt/public_html/vendor/yiisoft/yii2/filters/AccessControl.php(156): yii\web\User->loginRequired()
+#1 /home/xorazmmt/public_html/vendor/yiisoft/yii2/filters/AccessControl.php(140): yii\filters\AccessControl->denyAccess(Object(yii\web\User))
+#2 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/ActionFilter.php(77): yii\filters\AccessControl->beforeAction(Object(yii\web\ErrorAction))
+#3 [internal function]: yii\base\ActionFilter->beforeFilter(Object(yii\base\ActionEvent))
+#4 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Component.php(633): call_user_func(Array, Object(yii\base\ActionEvent))
+#5 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Controller.php(297): yii\base\Component->trigger('beforeAction', Object(yii\base\ActionEvent))
+#6 /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/Controller.php(219): yii\base\Controller->beforeAction(Object(yii\web\ErrorAction))
+#7 /home/xorazmmt/public_html/frontend/controllers/SiteController.php(66): yii\web\Controller->beforeAction(Object(yii\web\ErrorAction))
+#8 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Controller.php(176): frontend\controllers\SiteController->beforeAction(Object(yii\web\ErrorAction))
+#9 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Module.php(552): yii\base\Controller->runAction('error', Array)
+#10 /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/ErrorHandler.php(109): yii\base\Module->runAction('site/error')
+#11 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/ErrorHandler.php(152): yii\web\ErrorHandler->renderException(Object(yii\web\NotFoundHttpException))
+#12 [internal function]: yii\base\ErrorHandler->handleException(Object(yii\web\NotFoundHttpException))
+#13 {main}
+Previous exception:
+yii\base\InvalidRouteException: Unable to resolve the request "humans.txt". in /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Module.php:561
+Stack trace:
+#0 /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/Application.php(103): yii\base\Module->runAction('humans.txt', Array)
+#1 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /home/xorazmmt/public_html/frontend/web/index.php(18): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Page not found. in /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/Application.php:115
+Stack trace:
+#0 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /home/xorazmmt/public_html/frontend/web/index.php(18): yii\base\Application->run()
+#2 {main}
+$_SERVER = [
+    'PATH' => '/usr/local/bin:/usr/bin:/bin',
+    'TEMP' => '/tmp',
+    'TMP' => '/tmp',
+    'TMPDIR' => '/tmp',
+    'PWD' => '/',
+    'HTTP_ACCEPT' => 'text/plain',
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US',
+    'CONTENT_LENGTH' => '0',
+    'HTTP_HOST' => 'bestit.uz',
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.3.1 Safari/605.1.1',
+    'HTTP_CACHE_CONTROL' => 'no-cache',
+    'HTTP_X_FORWARDED_HOST' => 'bestit.uz',
+    'HTTP_X_FORWARDED_PORT' => '80',
+    'HTTP_X_FORWARDED_PROTO' => 'http',
+    'HTTP_X_FORWARDED_SERVER' => 'bestit.uz',
+    'HTTP_X_REAL_IP' => '::ffff:141.138.208.43',
+    'REDIRECT_UNIQUE_ID' => 'Zf1wUPwL0lHgWQkro9YHywAABQA',
+    'REDIRECT_SCRIPT_URL' => '/humans.txt',
+    'REDIRECT_SCRIPT_URI' => 'http://bestit.uz/humans.txt',
+    'REDIRECT_APP' => 'frontend',
+    'REDIRECT_STATUS' => '200',
+    'UNIQUE_ID' => 'Zf1wUPwL0lHgWQkro9YHywAABQA',
+    'SCRIPT_URL' => '/humans.txt',
+    'SCRIPT_URI' => 'http://bestit.uz/humans.txt',
+    'SERVER_SIGNATURE' => '',
+    'SERVER_SOFTWARE' => 'Apache',
+    'SERVER_NAME' => 'bestit.uz',
+    'SERVER_ADDR' => '83.69.139.168',
+    'SERVER_PORT' => '80',
+    'REMOTE_ADDR' => '141.138.208.43',
+    'DOCUMENT_ROOT' => '/home/xorazmmt/public_html',
+    'REQUEST_SCHEME' => 'http',
+    'CONTEXT_PREFIX' => '',
+    'CONTEXT_DOCUMENT_ROOT' => '/home/xorazmmt/public_html',
+    'SERVER_ADMIN' => 'webmaster@xorazm-mtb.uz',
+    'SCRIPT_FILENAME' => '/home/xorazmmt/public_html/frontend/web/index.php',
+    'REMOTE_PORT' => '9330',
+    'REDIRECT_URL' => '/humans.txt',
+    'SERVER_PROTOCOL' => 'HTTP/1.1',
+    'REQUEST_METHOD' => 'GET',
+    'QUERY_STRING' => '',
+    'REQUEST_URI' => '/humans.txt',
+    'SCRIPT_NAME' => '/frontend/web/index.php',
+    'PHP_SELF' => '/frontend/web/index.php',
+    'REQUEST_TIME_FLOAT' => 1711108176.635359,
+    'REQUEST_TIME' => 1711108176,
+]
+[22-Mar-2024 16:49:36 Asia/Tashkent] An Error occurred while handling another error:
+yii\web\ForbiddenHttpException: Login Required in /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/User.php:461
+Stack trace:
+#0 /home/xorazmmt/public_html/vendor/yiisoft/yii2/filters/AccessControl.php(156): yii\web\User->loginRequired()
+#1 /home/xorazmmt/public_html/vendor/yiisoft/yii2/filters/AccessControl.php(140): yii\filters\AccessControl->denyAccess(Object(yii\web\User))
+#2 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/ActionFilter.php(77): yii\filters\AccessControl->beforeAction(Object(yii\web\ErrorAction))
+#3 [internal function]: yii\base\ActionFilter->beforeFilter(Object(yii\base\ActionEvent))
+#4 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Component.php(633): call_user_func(Array, Object(yii\base\ActionEvent))
+#5 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Controller.php(297): yii\base\Component->trigger('beforeAction', Object(yii\base\ActionEvent))
+#6 /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/Controller.php(219): yii\base\Controller->beforeAction(Object(yii\web\ErrorAction))
+#7 /home/xorazmmt/public_html/frontend/controllers/SiteController.php(66): yii\web\Controller->beforeAction(Object(yii\web\ErrorAction))
+#8 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Controller.php(176): frontend\controllers\SiteController->beforeAction(Object(yii\web\ErrorAction))
+#9 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Module.php(552): yii\base\Controller->runAction('error', Array)
+#10 /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/ErrorHandler.php(109): yii\base\Module->runAction('site/error')
+#11 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/ErrorHandler.php(152): yii\web\ErrorHandler->renderException(Object(yii\web\NotFoundHttpException))
+#12 [internal function]: yii\base\ErrorHandler->handleException(Object(yii\web\NotFoundHttpException))
+#13 {main}
+Previous exception:
+yii\base\InvalidRouteException: Unable to resolve the request "ads.txt". in /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Module.php:561
+Stack trace:
+#0 /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/Application.php(103): yii\base\Module->runAction('ads.txt', Array)
+#1 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /home/xorazmmt/public_html/frontend/web/index.php(18): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Page not found. in /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/Application.php:115
+Stack trace:
+#0 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /home/xorazmmt/public_html/frontend/web/index.php(18): yii\base\Application->run()
+#2 {main}
+$_SERVER = [
+    'PATH' => '/usr/local/bin:/usr/bin:/bin',
+    'TEMP' => '/tmp',
+    'TMP' => '/tmp',
+    'TMPDIR' => '/tmp',
+    'PWD' => '/',
+    'HTTP_ACCEPT' => 'text/plain',
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US',
+    'CONTENT_LENGTH' => '0',
+    'HTTP_HOST' => 'bestit.uz',
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.3.1 Safari/605.1.1',
+    'HTTP_CACHE_CONTROL' => 'no-cache',
+    'HTTP_X_FORWARDED_HOST' => 'bestit.uz',
+    'HTTP_X_FORWARDED_PORT' => '80',
+    'HTTP_X_FORWARDED_PROTO' => 'http',
+    'HTTP_X_FORWARDED_SERVER' => 'bestit.uz',
+    'HTTP_X_REAL_IP' => '::ffff:130.255.166.166',
+    'REDIRECT_UNIQUE_ID' => 'Zf1wUAnxUzFn8DkXr9cM1AAABI4',
+    'REDIRECT_SCRIPT_URL' => '/ads.txt',
+    'REDIRECT_SCRIPT_URI' => 'http://bestit.uz/ads.txt',
+    'REDIRECT_APP' => 'frontend',
+    'REDIRECT_STATUS' => '200',
+    'UNIQUE_ID' => 'Zf1wUAnxUzFn8DkXr9cM1AAABI4',
+    'SCRIPT_URL' => '/ads.txt',
+    'SCRIPT_URI' => 'http://bestit.uz/ads.txt',
+    'SERVER_SIGNATURE' => '',
+    'SERVER_SOFTWARE' => 'Apache',
+    'SERVER_NAME' => 'bestit.uz',
+    'SERVER_ADDR' => '83.69.139.168',
+    'SERVER_PORT' => '80',
+    'REMOTE_ADDR' => '130.255.166.166',
+    'DOCUMENT_ROOT' => '/home/xorazmmt/public_html',
+    'REQUEST_SCHEME' => 'http',
+    'CONTEXT_PREFIX' => '',
+    'CONTEXT_DOCUMENT_ROOT' => '/home/xorazmmt/public_html',
+    'SERVER_ADMIN' => 'webmaster@xorazm-mtb.uz',
+    'SCRIPT_FILENAME' => '/home/xorazmmt/public_html/frontend/web/index.php',
+    'REMOTE_PORT' => '9358',
+    'REDIRECT_URL' => '/ads.txt',
+    'SERVER_PROTOCOL' => 'HTTP/1.1',
+    'REQUEST_METHOD' => 'GET',
+    'QUERY_STRING' => '',
+    'REQUEST_URI' => '/ads.txt',
+    'SCRIPT_NAME' => '/frontend/web/index.php',
+    'PHP_SELF' => '/frontend/web/index.php',
+    'REQUEST_TIME_FLOAT' => 1711108176.846309,
+    'REQUEST_TIME' => 1711108176,
+]
+[28-Mar-2024 06:48:00 Asia/Tashkent] An Error occurred while handling another error:
+yii\web\ForbiddenHttpException: Login Required in /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/User.php:461
+Stack trace:
+#0 /home/xorazmmt/public_html/vendor/yiisoft/yii2/filters/AccessControl.php(156): yii\web\User->loginRequired()
+#1 /home/xorazmmt/public_html/vendor/yiisoft/yii2/filters/AccessControl.php(140): yii\filters\AccessControl->denyAccess(Object(yii\web\User))
+#2 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/ActionFilter.php(77): yii\filters\AccessControl->beforeAction(Object(yii\web\ErrorAction))
+#3 [internal function]: yii\base\ActionFilter->beforeFilter(Object(yii\base\ActionEvent))
+#4 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Component.php(633): call_user_func(Array, Object(yii\base\ActionEvent))
+#5 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Controller.php(297): yii\base\Component->trigger('beforeAction', Object(yii\base\ActionEvent))
+#6 /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/Controller.php(219): yii\base\Controller->beforeAction(Object(yii\web\ErrorAction))
+#7 /home/xorazmmt/public_html/frontend/controllers/SiteController.php(66): yii\web\Controller->beforeAction(Object(yii\web\ErrorAction))
+#8 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Controller.php(176): frontend\controllers\SiteController->beforeAction(Object(yii\web\ErrorAction))
+#9 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Module.php(552): yii\base\Controller->runAction('error', Array)
+#10 /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/ErrorHandler.php(109): yii\base\Module->runAction('site/error')
+#11 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/ErrorHandler.php(152): yii\web\ErrorHandler->renderException(Object(yii\web\NotFoundHttpException))
+#12 [internal function]: yii\base\ErrorHandler->handleException(Object(yii\web\NotFoundHttpException))
+#13 {main}
+Previous exception:
+yii\base\InvalidRouteException: Unable to resolve the request "humans.txt". in /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Module.php:561
+Stack trace:
+#0 /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/Application.php(103): yii\base\Module->runAction('humans.txt', Array)
+#1 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /home/xorazmmt/public_html/frontend/web/index.php(18): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Page not found. in /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/Application.php:115
+Stack trace:
+#0 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /home/xorazmmt/public_html/frontend/web/index.php(18): yii\base\Application->run()
+#2 {main}
+$_SERVER = [
+    'PATH' => '/usr/local/bin:/usr/bin:/bin',
+    'TEMP' => '/tmp',
+    'TMP' => '/tmp',
+    'TMPDIR' => '/tmp',
+    'PWD' => '/',
+    'HTTP_ACCEPT' => 'text/plain',
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US',
+    'CONTENT_LENGTH' => '0',
+    'HTTP_HOST' => 'bestit.uz',
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Android 14; Mobile; rv:123.0) Gecko/123.0 Firefox/123',
+    'HTTP_CACHE_CONTROL' => 'no-cache',
+    'HTTP_X_FORWARDED_HOST' => 'bestit.uz',
+    'HTTP_X_FORWARDED_PORT' => '80',
+    'HTTP_X_FORWARDED_PROTO' => 'http',
+    'HTTP_X_FORWARDED_SERVER' => 'bestit.uz',
+    'HTTP_X_REAL_IP' => '::ffff:141.138.208.43',
+    'REDIRECT_UNIQUE_ID' => 'ZgTMT5Aq8AYS72BLbYZJcgAAAIs',
+    'REDIRECT_SCRIPT_URL' => '/humans.txt',
+    'REDIRECT_SCRIPT_URI' => 'http://bestit.uz/humans.txt',
+    'REDIRECT_APP' => 'frontend',
+    'REDIRECT_STATUS' => '200',
+    'UNIQUE_ID' => 'ZgTMT5Aq8AYS72BLbYZJcgAAAIs',
+    'SCRIPT_URL' => '/humans.txt',
+    'SCRIPT_URI' => 'http://bestit.uz/humans.txt',
+    'SERVER_SIGNATURE' => '',
+    'SERVER_SOFTWARE' => 'Apache',
+    'SERVER_NAME' => 'bestit.uz',
+    'SERVER_ADDR' => '83.69.139.168',
+    'SERVER_PORT' => '80',
+    'REMOTE_ADDR' => '141.138.208.43',
+    'DOCUMENT_ROOT' => '/home/xorazmmt/public_html',
+    'REQUEST_SCHEME' => 'http',
+    'CONTEXT_PREFIX' => '',
+    'CONTEXT_DOCUMENT_ROOT' => '/home/xorazmmt/public_html',
+    'SERVER_ADMIN' => 'webmaster@xorazm-mtb.uz',
+    'SCRIPT_FILENAME' => '/home/xorazmmt/public_html/frontend/web/index.php',
+    'REMOTE_PORT' => '40450',
+    'REDIRECT_URL' => '/humans.txt',
+    'SERVER_PROTOCOL' => 'HTTP/1.1',
+    'REQUEST_METHOD' => 'GET',
+    'QUERY_STRING' => '',
+    'REQUEST_URI' => '/humans.txt',
+    'SCRIPT_NAME' => '/frontend/web/index.php',
+    'PHP_SELF' => '/frontend/web/index.php',
+    'REQUEST_TIME_FLOAT' => 1711590480.248628,
+    'REQUEST_TIME' => 1711590480,
+]
+[28-Mar-2024 06:48:00 Asia/Tashkent] An Error occurred while handling another error:
+yii\web\ForbiddenHttpException: Login Required in /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/User.php:461
+Stack trace:
+#0 /home/xorazmmt/public_html/vendor/yiisoft/yii2/filters/AccessControl.php(156): yii\web\User->loginRequired()
+#1 /home/xorazmmt/public_html/vendor/yiisoft/yii2/filters/AccessControl.php(140): yii\filters\AccessControl->denyAccess(Object(yii\web\User))
+#2 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/ActionFilter.php(77): yii\filters\AccessControl->beforeAction(Object(yii\web\ErrorAction))
+#3 [internal function]: yii\base\ActionFilter->beforeFilter(Object(yii\base\ActionEvent))
+#4 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Component.php(633): call_user_func(Array, Object(yii\base\ActionEvent))
+#5 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Controller.php(297): yii\base\Component->trigger('beforeAction', Object(yii\base\ActionEvent))
+#6 /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/Controller.php(219): yii\base\Controller->beforeAction(Object(yii\web\ErrorAction))
+#7 /home/xorazmmt/public_html/frontend/controllers/SiteController.php(66): yii\web\Controller->beforeAction(Object(yii\web\ErrorAction))
+#8 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Controller.php(176): frontend\controllers\SiteController->beforeAction(Object(yii\web\ErrorAction))
+#9 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Module.php(552): yii\base\Controller->runAction('error', Array)
+#10 /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/ErrorHandler.php(109): yii\base\Module->runAction('site/error')
+#11 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/ErrorHandler.php(152): yii\web\ErrorHandler->renderException(Object(yii\web\NotFoundHttpException))
+#12 [internal function]: yii\base\ErrorHandler->handleException(Object(yii\web\NotFoundHttpException))
+#13 {main}
+Previous exception:
+yii\base\InvalidRouteException: Unable to resolve the request "ads.txt". in /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Module.php:561
+Stack trace:
+#0 /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/Application.php(103): yii\base\Module->runAction('ads.txt', Array)
+#1 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /home/xorazmmt/public_html/frontend/web/index.php(18): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Page not found. in /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/Application.php:115
+Stack trace:
+#0 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /home/xorazmmt/public_html/frontend/web/index.php(18): yii\base\Application->run()
+#2 {main}
+$_SERVER = [
+    'PATH' => '/usr/local/bin:/usr/bin:/bin',
+    'TEMP' => '/tmp',
+    'TMP' => '/tmp',
+    'TMPDIR' => '/tmp',
+    'PWD' => '/',
+    'HTTP_ACCEPT' => 'text/plain',
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US',
+    'CONTENT_LENGTH' => '0',
+    'HTTP_HOST' => 'bestit.uz',
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Android 14; Mobile; rv:123.0) Gecko/123.0 Firefox/123',
+    'HTTP_CACHE_CONTROL' => 'no-cache',
+    'HTTP_X_FORWARDED_HOST' => 'bestit.uz',
+    'HTTP_X_FORWARDED_PORT' => '80',
+    'HTTP_X_FORWARDED_PROTO' => 'http',
+    'HTTP_X_FORWARDED_SERVER' => 'bestit.uz',
+    'HTTP_X_REAL_IP' => '::ffff:130.255.163.47',
+    'REDIRECT_UNIQUE_ID' => 'ZgTMUNlKDWsCbivLwRyA0gAAAE8',
+    'REDIRECT_SCRIPT_URL' => '/ads.txt',
+    'REDIRECT_SCRIPT_URI' => 'http://bestit.uz/ads.txt',
+    'REDIRECT_APP' => 'frontend',
+    'REDIRECT_STATUS' => '200',
+    'UNIQUE_ID' => 'ZgTMUNlKDWsCbivLwRyA0gAAAE8',
+    'SCRIPT_URL' => '/ads.txt',
+    'SCRIPT_URI' => 'http://bestit.uz/ads.txt',
+    'SERVER_SIGNATURE' => '',
+    'SERVER_SOFTWARE' => 'Apache',
+    'SERVER_NAME' => 'bestit.uz',
+    'SERVER_ADDR' => '83.69.139.168',
+    'SERVER_PORT' => '80',
+    'REMOTE_ADDR' => '130.255.163.47',
+    'DOCUMENT_ROOT' => '/home/xorazmmt/public_html',
+    'REQUEST_SCHEME' => 'http',
+    'CONTEXT_PREFIX' => '',
+    'CONTEXT_DOCUMENT_ROOT' => '/home/xorazmmt/public_html',
+    'SERVER_ADMIN' => 'webmaster@xorazm-mtb.uz',
+    'SCRIPT_FILENAME' => '/home/xorazmmt/public_html/frontend/web/index.php',
+    'REMOTE_PORT' => '40486',
+    'REDIRECT_URL' => '/ads.txt',
+    'SERVER_PROTOCOL' => 'HTTP/1.1',
+    'REQUEST_METHOD' => 'GET',
+    'QUERY_STRING' => '',
+    'REQUEST_URI' => '/ads.txt',
+    'SCRIPT_NAME' => '/frontend/web/index.php',
+    'PHP_SELF' => '/frontend/web/index.php',
+    'REQUEST_TIME_FLOAT' => 1711590480.476564,
+    'REQUEST_TIME' => 1711590480,
+]
+[02-Apr-2024 22:05:53 Asia/Tashkent] An Error occurred while handling another error:
+yii\web\ForbiddenHttpException: Login Required in /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/User.php:461
+Stack trace:
+#0 /home/xorazmmt/public_html/vendor/yiisoft/yii2/filters/AccessControl.php(156): yii\web\User->loginRequired()
+#1 /home/xorazmmt/public_html/vendor/yiisoft/yii2/filters/AccessControl.php(140): yii\filters\AccessControl->denyAccess(Object(yii\web\User))
+#2 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/ActionFilter.php(77): yii\filters\AccessControl->beforeAction(Object(yii\web\ErrorAction))
+#3 [internal function]: yii\base\ActionFilter->beforeFilter(Object(yii\base\ActionEvent))
+#4 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Component.php(633): call_user_func(Array, Object(yii\base\ActionEvent))
+#5 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Controller.php(297): yii\base\Component->trigger('beforeAction', Object(yii\base\ActionEvent))
+#6 /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/Controller.php(219): yii\base\Controller->beforeAction(Object(yii\web\ErrorAction))
+#7 /home/xorazmmt/public_html/frontend/controllers/SiteController.php(66): yii\web\Controller->beforeAction(Object(yii\web\ErrorAction))
+#8 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Controller.php(176): frontend\controllers\SiteController->beforeAction(Object(yii\web\ErrorAction))
+#9 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Module.php(552): yii\base\Controller->runAction('error', Array)
+#10 /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/ErrorHandler.php(109): yii\base\Module->runAction('site/error')
+#11 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/ErrorHandler.php(152): yii\web\ErrorHandler->renderException(Object(yii\web\NotFoundHttpException))
+#12 [internal function]: yii\base\ErrorHandler->handleException(Object(yii\web\NotFoundHttpException))
+#13 {main}
+Previous exception:
+yii\base\InvalidRouteException: Unable to resolve the request "humans.txt". in /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Module.php:561
+Stack trace:
+#0 /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/Application.php(103): yii\base\Module->runAction('humans.txt', Array)
+#1 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /home/xorazmmt/public_html/frontend/web/index.php(18): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Page not found. in /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/Application.php:115
+Stack trace:
+#0 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /home/xorazmmt/public_html/frontend/web/index.php(18): yii\base\Application->run()
+#2 {main}
+$_SERVER = [
+    'PATH' => '/usr/local/bin:/usr/bin:/bin',
+    'TEMP' => '/tmp',
+    'TMP' => '/tmp',
+    'TMPDIR' => '/tmp',
+    'PWD' => '/',
+    'HTTP_ACCEPT' => 'text/plain',
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US',
+    'CONTENT_LENGTH' => '0',
+    'HTTP_HOST' => 'bestit.uz',
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.3',
+    'HTTP_CACHE_CONTROL' => 'no-cache',
+    'HTTP_X_FORWARDED_HOST' => 'bestit.uz',
+    'HTTP_X_FORWARDED_PORT' => '80',
+    'HTTP_X_FORWARDED_PROTO' => 'http',
+    'HTTP_X_FORWARDED_SERVER' => 'bestit.uz',
+    'HTTP_X_REAL_IP' => '::ffff:192.36.109.129',
+    'REDIRECT_UNIQUE_ID' => 'Zgw68cuY0byzrlGBXouhGgAAAFc',
+    'REDIRECT_SCRIPT_URL' => '/humans.txt',
+    'REDIRECT_SCRIPT_URI' => 'http://bestit.uz/humans.txt',
+    'REDIRECT_APP' => 'frontend',
+    'REDIRECT_STATUS' => '200',
+    'UNIQUE_ID' => 'Zgw68cuY0byzrlGBXouhGgAAAFc',
+    'SCRIPT_URL' => '/humans.txt',
+    'SCRIPT_URI' => 'http://bestit.uz/humans.txt',
+    'SERVER_SIGNATURE' => '',
+    'SERVER_SOFTWARE' => 'Apache',
+    'SERVER_NAME' => 'bestit.uz',
+    'SERVER_ADDR' => '83.69.139.168',
+    'SERVER_PORT' => '80',
+    'REMOTE_ADDR' => '192.36.109.129',
+    'DOCUMENT_ROOT' => '/home/xorazmmt/public_html',
+    'REQUEST_SCHEME' => 'http',
+    'CONTEXT_PREFIX' => '',
+    'CONTEXT_DOCUMENT_ROOT' => '/home/xorazmmt/public_html',
+    'SERVER_ADMIN' => 'webmaster@xorazm-mtb.uz',
+    'SCRIPT_FILENAME' => '/home/xorazmmt/public_html/frontend/web/index.php',
+    'REMOTE_PORT' => '33812',
+    'REDIRECT_URL' => '/humans.txt',
+    'SERVER_PROTOCOL' => 'HTTP/1.1',
+    'REQUEST_METHOD' => 'GET',
+    'QUERY_STRING' => '',
+    'REQUEST_URI' => '/humans.txt',
+    'SCRIPT_NAME' => '/frontend/web/index.php',
+    'PHP_SELF' => '/frontend/web/index.php',
+    'REQUEST_TIME_FLOAT' => 1712077553.540322,
+    'REQUEST_TIME' => 1712077553,
+]
+[02-Apr-2024 22:05:53 Asia/Tashkent] An Error occurred while handling another error:
+yii\web\ForbiddenHttpException: Login Required in /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/User.php:461
+Stack trace:
+#0 /home/xorazmmt/public_html/vendor/yiisoft/yii2/filters/AccessControl.php(156): yii\web\User->loginRequired()
+#1 /home/xorazmmt/public_html/vendor/yiisoft/yii2/filters/AccessControl.php(140): yii\filters\AccessControl->denyAccess(Object(yii\web\User))
+#2 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/ActionFilter.php(77): yii\filters\AccessControl->beforeAction(Object(yii\web\ErrorAction))
+#3 [internal function]: yii\base\ActionFilter->beforeFilter(Object(yii\base\ActionEvent))
+#4 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Component.php(633): call_user_func(Array, Object(yii\base\ActionEvent))
+#5 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Controller.php(297): yii\base\Component->trigger('beforeAction', Object(yii\base\ActionEvent))
+#6 /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/Controller.php(219): yii\base\Controller->beforeAction(Object(yii\web\ErrorAction))
+#7 /home/xorazmmt/public_html/frontend/controllers/SiteController.php(66): yii\web\Controller->beforeAction(Object(yii\web\ErrorAction))
+#8 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Controller.php(176): frontend\controllers\SiteController->beforeAction(Object(yii\web\ErrorAction))
+#9 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Module.php(552): yii\base\Controller->runAction('error', Array)
+#10 /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/ErrorHandler.php(109): yii\base\Module->runAction('site/error')
+#11 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/ErrorHandler.php(152): yii\web\ErrorHandler->renderException(Object(yii\web\NotFoundHttpException))
+#12 [internal function]: yii\base\ErrorHandler->handleException(Object(yii\web\NotFoundHttpException))
+#13 {main}
+Previous exception:
+yii\base\InvalidRouteException: Unable to resolve the request "ads.txt". in /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Module.php:561
+Stack trace:
+#0 /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/Application.php(103): yii\base\Module->runAction('ads.txt', Array)
+#1 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /home/xorazmmt/public_html/frontend/web/index.php(18): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Page not found. in /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/Application.php:115
+Stack trace:
+#0 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /home/xorazmmt/public_html/frontend/web/index.php(18): yii\base\Application->run()
+#2 {main}
+$_SERVER = [
+    'PATH' => '/usr/local/bin:/usr/bin:/bin',
+    'TEMP' => '/tmp',
+    'TMP' => '/tmp',
+    'TMPDIR' => '/tmp',
+    'PWD' => '/',
+    'HTTP_ACCEPT' => 'text/plain',
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US',
+    'CONTENT_LENGTH' => '0',
+    'HTTP_HOST' => 'bestit.uz',
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.3',
+    'HTTP_CACHE_CONTROL' => 'no-cache',
+    'HTTP_X_FORWARDED_HOST' => 'bestit.uz',
+    'HTTP_X_FORWARDED_PORT' => '80',
+    'HTTP_X_FORWARDED_PROTO' => 'http',
+    'HTTP_X_FORWARDED_SERVER' => 'bestit.uz',
+    'HTTP_X_REAL_IP' => '::ffff:192.36.109.83',
+    'REDIRECT_UNIQUE_ID' => 'Zgw68cuY0byzrlGBXouhIAAAAFM',
+    'REDIRECT_SCRIPT_URL' => '/ads.txt',
+    'REDIRECT_SCRIPT_URI' => 'http://bestit.uz/ads.txt',
+    'REDIRECT_APP' => 'frontend',
+    'REDIRECT_STATUS' => '200',
+    'UNIQUE_ID' => 'Zgw68cuY0byzrlGBXouhIAAAAFM',
+    'SCRIPT_URL' => '/ads.txt',
+    'SCRIPT_URI' => 'http://bestit.uz/ads.txt',
+    'SERVER_SIGNATURE' => '',
+    'SERVER_SOFTWARE' => 'Apache',
+    'SERVER_NAME' => 'bestit.uz',
+    'SERVER_ADDR' => '83.69.139.168',
+    'SERVER_PORT' => '80',
+    'REMOTE_ADDR' => '192.36.109.83',
+    'DOCUMENT_ROOT' => '/home/xorazmmt/public_html',
+    'REQUEST_SCHEME' => 'http',
+    'CONTEXT_PREFIX' => '',
+    'CONTEXT_DOCUMENT_ROOT' => '/home/xorazmmt/public_html',
+    'SERVER_ADMIN' => 'webmaster@xorazm-mtb.uz',
+    'SCRIPT_FILENAME' => '/home/xorazmmt/public_html/frontend/web/index.php',
+    'REMOTE_PORT' => '33868',
+    'REDIRECT_URL' => '/ads.txt',
+    'SERVER_PROTOCOL' => 'HTTP/1.1',
+    'REQUEST_METHOD' => 'GET',
+    'QUERY_STRING' => '',
+    'REQUEST_URI' => '/ads.txt',
+    'SCRIPT_NAME' => '/frontend/web/index.php',
+    'PHP_SELF' => '/frontend/web/index.php',
+    'REQUEST_TIME_FLOAT' => 1712077553.774973,
+    'REQUEST_TIME' => 1712077553,
+]
+[12-Apr-2024 22:13:21 Asia/Tashkent] An Error occurred while handling another error:
+yii\web\ForbiddenHttpException: Login Required in /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/User.php:461
+Stack trace:
+#0 /home/xorazmmt/public_html/vendor/yiisoft/yii2/filters/AccessControl.php(156): yii\web\User->loginRequired()
+#1 /home/xorazmmt/public_html/vendor/yiisoft/yii2/filters/AccessControl.php(140): yii\filters\AccessControl->denyAccess(Object(yii\web\User))
+#2 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/ActionFilter.php(77): yii\filters\AccessControl->beforeAction(Object(yii\web\ErrorAction))
+#3 [internal function]: yii\base\ActionFilter->beforeFilter(Object(yii\base\ActionEvent))
+#4 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Component.php(633): call_user_func(Array, Object(yii\base\ActionEvent))
+#5 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Controller.php(297): yii\base\Component->trigger('beforeAction', Object(yii\base\ActionEvent))
+#6 /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/Controller.php(219): yii\base\Controller->beforeAction(Object(yii\web\ErrorAction))
+#7 /home/xorazmmt/public_html/frontend/controllers/SiteController.php(66): yii\web\Controller->beforeAction(Object(yii\web\ErrorAction))
+#8 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Controller.php(176): frontend\controllers\SiteController->beforeAction(Object(yii\web\ErrorAction))
+#9 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Module.php(552): yii\base\Controller->runAction('error', Array)
+#10 /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/ErrorHandler.php(109): yii\base\Module->runAction('site/error')
+#11 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/ErrorHandler.php(152): yii\web\ErrorHandler->renderException(Object(yii\web\NotFoundHttpException))
+#12 [internal function]: yii\base\ErrorHandler->handleException(Object(yii\web\NotFoundHttpException))
+#13 {main}
+Previous exception:
+yii\base\InvalidRouteException: Unable to resolve the request "humans.txt". in /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Module.php:561
+Stack trace:
+#0 /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/Application.php(103): yii\base\Module->runAction('humans.txt', Array)
+#1 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /home/xorazmmt/public_html/frontend/web/index.php(18): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Page not found. in /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/Application.php:115
+Stack trace:
+#0 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /home/xorazmmt/public_html/frontend/web/index.php(18): yii\base\Application->run()
+#2 {main}
+$_SERVER = [
+    'PATH' => '/usr/local/bin:/usr/bin:/bin',
+    'TEMP' => '/tmp',
+    'TMP' => '/tmp',
+    'TMPDIR' => '/tmp',
+    'PWD' => '/',
+    'HTTP_ACCEPT' => 'text/plain',
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US',
+    'CONTENT_LENGTH' => '0',
+    'HTTP_HOST' => 'bestit.uz',
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_3_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.3.1 Mobile/15E148 Safari/604',
+    'HTTP_CACHE_CONTROL' => 'no-cache',
+    'HTTP_X_FORWARDED_HOST' => 'bestit.uz',
+    'HTTP_X_FORWARDED_PORT' => '80',
+    'HTTP_X_FORWARDED_PROTO' => 'http',
+    'HTTP_X_FORWARDED_SERVER' => 'bestit.uz',
+    'HTTP_X_REAL_IP' => '::ffff:130.255.166.24',
+    'REDIRECT_UNIQUE_ID' => 'ZhlrscfwmXSqNVBKbjBZVAAAANc',
+    'REDIRECT_SCRIPT_URL' => '/humans.txt',
+    'REDIRECT_SCRIPT_URI' => 'http://bestit.uz/humans.txt',
+    'REDIRECT_APP' => 'frontend',
+    'REDIRECT_STATUS' => '200',
+    'UNIQUE_ID' => 'ZhlrscfwmXSqNVBKbjBZVAAAANc',
+    'SCRIPT_URL' => '/humans.txt',
+    'SCRIPT_URI' => 'http://bestit.uz/humans.txt',
+    'SERVER_SIGNATURE' => '',
+    'SERVER_SOFTWARE' => 'Apache',
+    'SERVER_NAME' => 'bestit.uz',
+    'SERVER_ADDR' => '83.69.139.168',
+    'SERVER_PORT' => '80',
+    'REMOTE_ADDR' => '130.255.166.24',
+    'DOCUMENT_ROOT' => '/home/xorazmmt/public_html',
+    'REQUEST_SCHEME' => 'http',
+    'CONTEXT_PREFIX' => '',
+    'CONTEXT_DOCUMENT_ROOT' => '/home/xorazmmt/public_html',
+    'SERVER_ADMIN' => 'webmaster@xorazm-mtb.uz',
+    'SCRIPT_FILENAME' => '/home/xorazmmt/public_html/frontend/web/index.php',
+    'REMOTE_PORT' => '3904',
+    'REDIRECT_URL' => '/humans.txt',
+    'SERVER_PROTOCOL' => 'HTTP/1.1',
+    'REQUEST_METHOD' => 'GET',
+    'QUERY_STRING' => '',
+    'REQUEST_URI' => '/humans.txt',
+    'SCRIPT_NAME' => '/frontend/web/index.php',
+    'PHP_SELF' => '/frontend/web/index.php',
+    'REQUEST_TIME_FLOAT' => 1712942001.94141,
+    'REQUEST_TIME' => 1712942001,
+]
+[12-Apr-2024 22:13:22 Asia/Tashkent] An Error occurred while handling another error:
+yii\web\ForbiddenHttpException: Login Required in /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/User.php:461
+Stack trace:
+#0 /home/xorazmmt/public_html/vendor/yiisoft/yii2/filters/AccessControl.php(156): yii\web\User->loginRequired()
+#1 /home/xorazmmt/public_html/vendor/yiisoft/yii2/filters/AccessControl.php(140): yii\filters\AccessControl->denyAccess(Object(yii\web\User))
+#2 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/ActionFilter.php(77): yii\filters\AccessControl->beforeAction(Object(yii\web\ErrorAction))
+#3 [internal function]: yii\base\ActionFilter->beforeFilter(Object(yii\base\ActionEvent))
+#4 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Component.php(633): call_user_func(Array, Object(yii\base\ActionEvent))
+#5 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Controller.php(297): yii\base\Component->trigger('beforeAction', Object(yii\base\ActionEvent))
+#6 /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/Controller.php(219): yii\base\Controller->beforeAction(Object(yii\web\ErrorAction))
+#7 /home/xorazmmt/public_html/frontend/controllers/SiteController.php(66): yii\web\Controller->beforeAction(Object(yii\web\ErrorAction))
+#8 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Controller.php(176): frontend\controllers\SiteController->beforeAction(Object(yii\web\ErrorAction))
+#9 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Module.php(552): yii\base\Controller->runAction('error', Array)
+#10 /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/ErrorHandler.php(109): yii\base\Module->runAction('site/error')
+#11 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/ErrorHandler.php(152): yii\web\ErrorHandler->renderException(Object(yii\web\NotFoundHttpException))
+#12 [internal function]: yii\base\ErrorHandler->handleException(Object(yii\web\NotFoundHttpException))
+#13 {main}
+Previous exception:
+yii\base\InvalidRouteException: Unable to resolve the request "ads.txt". in /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Module.php:561
+Stack trace:
+#0 /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/Application.php(103): yii\base\Module->runAction('ads.txt', Array)
+#1 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /home/xorazmmt/public_html/frontend/web/index.php(18): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Page not found. in /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/Application.php:115
+Stack trace:
+#0 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /home/xorazmmt/public_html/frontend/web/index.php(18): yii\base\Application->run()
+#2 {main}
+$_SERVER = [
+    'PATH' => '/usr/local/bin:/usr/bin:/bin',
+    'TEMP' => '/tmp',
+    'TMP' => '/tmp',
+    'TMPDIR' => '/tmp',
+    'PWD' => '/',
+    'HTTP_ACCEPT' => 'text/plain',
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US',
+    'CONTENT_LENGTH' => '0',
+    'HTTP_HOST' => 'bestit.uz',
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_3_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.3.1 Mobile/15E148 Safari/604',
+    'HTTP_CACHE_CONTROL' => 'no-cache',
+    'HTTP_X_FORWARDED_HOST' => 'bestit.uz',
+    'HTTP_X_FORWARDED_PORT' => '80',
+    'HTTP_X_FORWARDED_PROTO' => 'http',
+    'HTTP_X_FORWARDED_SERVER' => 'bestit.uz',
+    'HTTP_X_REAL_IP' => '::ffff:130.255.166.51',
+    'REDIRECT_UNIQUE_ID' => 'ZhlrssfwmXSqNVBKbjBZWgAAAMo',
+    'REDIRECT_SCRIPT_URL' => '/ads.txt',
+    'REDIRECT_SCRIPT_URI' => 'http://bestit.uz/ads.txt',
+    'REDIRECT_APP' => 'frontend',
+    'REDIRECT_STATUS' => '200',
+    'UNIQUE_ID' => 'ZhlrssfwmXSqNVBKbjBZWgAAAMo',
+    'SCRIPT_URL' => '/ads.txt',
+    'SCRIPT_URI' => 'http://bestit.uz/ads.txt',
+    'SERVER_SIGNATURE' => '',
+    'SERVER_SOFTWARE' => 'Apache',
+    'SERVER_NAME' => 'bestit.uz',
+    'SERVER_ADDR' => '83.69.139.168',
+    'SERVER_PORT' => '80',
+    'REMOTE_ADDR' => '130.255.166.51',
+    'DOCUMENT_ROOT' => '/home/xorazmmt/public_html',
+    'REQUEST_SCHEME' => 'http',
+    'CONTEXT_PREFIX' => '',
+    'CONTEXT_DOCUMENT_ROOT' => '/home/xorazmmt/public_html',
+    'SERVER_ADMIN' => 'webmaster@xorazm-mtb.uz',
+    'SCRIPT_FILENAME' => '/home/xorazmmt/public_html/frontend/web/index.php',
+    'REMOTE_PORT' => '3910',
+    'REDIRECT_URL' => '/ads.txt',
+    'SERVER_PROTOCOL' => 'HTTP/1.1',
+    'REQUEST_METHOD' => 'GET',
+    'QUERY_STRING' => '',
+    'REQUEST_URI' => '/ads.txt',
+    'SCRIPT_NAME' => '/frontend/web/index.php',
+    'PHP_SELF' => '/frontend/web/index.php',
+    'REQUEST_TIME_FLOAT' => 1712942002.176573,
+    'REQUEST_TIME' => 1712942002,
+]
+[18-Jul-2024 15:47:08 Asia/Tashkent] An Error occurred while handling another error:
+yii\web\ForbiddenHttpException: Login Required in /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/User.php:461
+Stack trace:
+#0 /home/xorazmmt/public_html/vendor/yiisoft/yii2/filters/AccessControl.php(156): yii\web\User->loginRequired()
+#1 /home/xorazmmt/public_html/vendor/yiisoft/yii2/filters/AccessControl.php(140): yii\filters\AccessControl->denyAccess(Object(yii\web\User))
+#2 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/ActionFilter.php(77): yii\filters\AccessControl->beforeAction(Object(yii\web\ErrorAction))
+#3 [internal function]: yii\base\ActionFilter->beforeFilter(Object(yii\base\ActionEvent))
+#4 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Component.php(633): call_user_func(Array, Object(yii\base\ActionEvent))
+#5 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Controller.php(297): yii\base\Component->trigger('beforeAction', Object(yii\base\ActionEvent))
+#6 /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/Controller.php(219): yii\base\Controller->beforeAction(Object(yii\web\ErrorAction))
+#7 /home/xorazmmt/public_html/frontend/controllers/SiteController.php(68): yii\web\Controller->beforeAction(Object(yii\web\ErrorAction))
+#8 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Controller.php(176): frontend\controllers\SiteController->beforeAction(Object(yii\web\ErrorAction))
+#9 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Module.php(552): yii\base\Controller->runAction('error', Array)
+#10 /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/ErrorHandler.php(109): yii\base\Module->runAction('site/error')
+#11 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/ErrorHandler.php(152): yii\web\ErrorHandler->renderException(Object(yii\web\NotFoundHttpException))
+#12 [internal function]: yii\base\ErrorHandler->handleException(Object(yii\web\NotFoundHttpException))
+#13 {main}
+Previous exception:
+yii\base\InvalidRouteException: Unable to resolve the request "favicon.png". in /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Module.php:561
+Stack trace:
+#0 /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/Application.php(103): yii\base\Module->runAction('favicon.png', Array)
+#1 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /home/xorazmmt/public_html/frontend/web/index.php(18): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Page not found. in /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/Application.php:115
+Stack trace:
+#0 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /home/xorazmmt/public_html/frontend/web/index.php(18): yii\base\Application->run()
+#2 {main}
+$_SERVER = [
+    'PATH' => '/usr/local/bin:/usr/bin:/bin',
+    'TEMP' => '/tmp',
+    'TMP' => '/tmp',
+    'TMPDIR' => '/tmp',
+    'PWD' => '/',
+    'HTTP_ACCEPT' => 'application/json, text/plain, */*',
+    'CONTENT_LENGTH' => '0',
+    'HTTP_HOST' => 'kipmonit.uz',
+    'HTTP_USER_AGENT' => 'axios/0.24.0',
+    'HTTP_X_FORWARDED_HOST' => 'kipmonit.uz',
+    'HTTP_X_FORWARDED_PORT' => '443',
+    'HTTP_X_FORWARDED_PROTO' => 'https',
+    'HTTP_X_FORWARDED_SERVER' => 'kipmonit.uz',
+    'HTTP_X_REAL_IP' => '::ffff:94.26.226.128',
+    'HTTP_X_HTTPS' => '1',
+    'REDIRECT_UNIQUE_ID' => 'ZpjyrF-8Cefva7te16pYFgAAAEs',
+    'REDIRECT_SCRIPT_URL' => '/favicon.png',
+    'REDIRECT_SCRIPT_URI' => 'https://kipmonit.uz/favicon.png',
+    'REDIRECT_APP' => 'frontend',
+    'REDIRECT_HTTPS' => 'on',
+    'REDIRECT_STATUS' => '200',
+    'UNIQUE_ID' => 'ZpjyrF-8Cefva7te16pYFgAAAEs',
+    'SCRIPT_URL' => '/favicon.png',
+    'SCRIPT_URI' => 'https://kipmonit.uz/favicon.png',
+    'HTTPS' => 'on',
+    'SERVER_SIGNATURE' => '',
+    'SERVER_SOFTWARE' => 'Apache',
+    'SERVER_NAME' => 'kipmonit.uz',
+    'SERVER_ADDR' => '83.69.139.168',
+    'SERVER_PORT' => '443',
+    'REMOTE_ADDR' => '94.26.226.128',
+    'DOCUMENT_ROOT' => '/home/xorazmmt/public_html',
+    'REQUEST_SCHEME' => 'https',
+    'CONTEXT_PREFIX' => '',
+    'CONTEXT_DOCUMENT_ROOT' => '/home/xorazmmt/public_html',
+    'SERVER_ADMIN' => 'webmaster@xorazm-mtb.uz',
+    'SCRIPT_FILENAME' => '/home/xorazmmt/public_html/frontend/web/index.php',
+    'REMOTE_PORT' => '60656',
+    'REDIRECT_URL' => '/favicon.png',
+    'SERVER_PROTOCOL' => 'HTTP/1.1',
+    'REQUEST_METHOD' => 'GET',
+    'QUERY_STRING' => '',
+    'REQUEST_URI' => '/favicon.png',
+    'SCRIPT_NAME' => '/frontend/web/index.php',
+    'PHP_SELF' => '/frontend/web/index.php',
+    'REQUEST_TIME_FLOAT' => 1721299628.072814,
+    'REQUEST_TIME' => 1721299628,
+]
+[19-Jul-2024 06:45:42 Asia/Tashkent] An Error occurred while handling another error:
+yii\web\ForbiddenHttpException: Login Required in /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/User.php:461
+Stack trace:
+#0 /home/xorazmmt/public_html/vendor/yiisoft/yii2/filters/AccessControl.php(156): yii\web\User->loginRequired()
+#1 /home/xorazmmt/public_html/vendor/yiisoft/yii2/filters/AccessControl.php(140): yii\filters\AccessControl->denyAccess(Object(yii\web\User))
+#2 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/ActionFilter.php(77): yii\filters\AccessControl->beforeAction(Object(yii\web\ErrorAction))
+#3 [internal function]: yii\base\ActionFilter->beforeFilter(Object(yii\base\ActionEvent))
+#4 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Component.php(633): call_user_func(Array, Object(yii\base\ActionEvent))
+#5 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Controller.php(297): yii\base\Component->trigger('beforeAction', Object(yii\base\ActionEvent))
+#6 /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/Controller.php(219): yii\base\Controller->beforeAction(Object(yii\web\ErrorAction))
+#7 /home/xorazmmt/public_html/frontend/controllers/SiteController.php(68): yii\web\Controller->beforeAction(Object(yii\web\ErrorAction))
+#8 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Controller.php(176): frontend\controllers\SiteController->beforeAction(Object(yii\web\ErrorAction))
+#9 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Module.php(552): yii\base\Controller->runAction('error', Array)
+#10 /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/ErrorHandler.php(109): yii\base\Module->runAction('site/error')
+#11 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/ErrorHandler.php(152): yii\web\ErrorHandler->renderException(Object(yii\web\NotFoundHttpException))
+#12 [internal function]: yii\base\ErrorHandler->handleException(Object(yii\web\NotFoundHttpException))
+#13 {main}
+Previous exception:
+yii\base\InvalidRouteException: Unable to resolve the request "favicon.png". in /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Module.php:561
+Stack trace:
+#0 /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/Application.php(103): yii\base\Module->runAction('favicon.png', Array)
+#1 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /home/xorazmmt/public_html/frontend/web/index.php(18): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Page not found. in /home/xorazmmt/public_html/vendor/yiisoft/yii2/web/Application.php:115
+Stack trace:
+#0 /home/xorazmmt/public_html/vendor/yiisoft/yii2/base/Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /home/xorazmmt/public_html/frontend/web/index.php(18): yii\base\Application->run()
+#2 {main}
+$_SERVER = [
+    'PATH' => '/usr/local/bin:/usr/bin:/bin',
+    'TEMP' => '/tmp',
+    'TMP' => '/tmp',
+    'TMPDIR' => '/tmp',
+    'PWD' => '/',
+    'HTTP_ACCEPT' => 'application/json, text/plain, */*',
+    'CONTENT_LENGTH' => '0',
+    'HTTP_HOST' => 'kipmonit.uz',
+    'HTTP_USER_AGENT' => 'axios/0.24.0',
+    'HTTP_X_FORWARDED_HOST' => 'kipmonit.uz',
+    'HTTP_X_FORWARDED_PORT' => '443',
+    'HTTP_X_FORWARDED_PROTO' => 'https',
+    'HTTP_X_FORWARDED_SERVER' => 'kipmonit.uz',
+    'HTTP_X_REAL_IP' => '::ffff:87.249.58.101',
+    'HTTP_X_HTTPS' => '1',
+    'REDIRECT_UNIQUE_ID' => 'ZpnFRnMTqDK7pRSvDccY7QAAAJI',
+    'REDIRECT_SCRIPT_URL' => '/favicon.png',
+    'REDIRECT_SCRIPT_URI' => 'https://kipmonit.uz/favicon.png',
+    'REDIRECT_APP' => 'frontend',
+    'REDIRECT_HTTPS' => 'on',
+    'REDIRECT_STATUS' => '200',
+    'UNIQUE_ID' => 'ZpnFRnMTqDK7pRSvDccY7QAAAJI',
+    'SCRIPT_URL' => '/favicon.png',
+    'SCRIPT_URI' => 'https://kipmonit.uz/favicon.png',
+    'HTTPS' => 'on',
+    'SERVER_SIGNATURE' => '',
+    'SERVER_SOFTWARE' => 'Apache',
+    'SERVER_NAME' => 'kipmonit.uz',
+    'SERVER_ADDR' => '83.69.139.168',
+    'SERVER_PORT' => '443',
+    'REMOTE_ADDR' => '87.249.58.101',
+    'DOCUMENT_ROOT' => '/home/xorazmmt/public_html',
+    'REQUEST_SCHEME' => 'https',
+    'CONTEXT_PREFIX' => '',
+    'CONTEXT_DOCUMENT_ROOT' => '/home/xorazmmt/public_html',
+    'SERVER_ADMIN' => 'webmaster@xorazm-mtb.uz',
+    'SCRIPT_FILENAME' => '/home/xorazmmt/public_html/frontend/web/index.php',
+    'REMOTE_PORT' => '13414',
+    'REDIRECT_URL' => '/favicon.png',
+    'SERVER_PROTOCOL' => 'HTTP/1.1',
+    'REQUEST_METHOD' => 'GET',
+    'QUERY_STRING' => '',
+    'REQUEST_URI' => '/favicon.png',
+    'SCRIPT_NAME' => '/frontend/web/index.php',
+    'PHP_SELF' => '/frontend/web/index.php',
+    'REQUEST_TIME_FLOAT' => 1721353542.783502,
+    'REQUEST_TIME' => 1721353542,
+]

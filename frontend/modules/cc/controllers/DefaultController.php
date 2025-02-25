@@ -207,7 +207,21 @@ class DefaultController extends Controller
             if($item->active == 2){
                 $item->active = 0;
             }
-            $markers[] = ["<img src='/upload/{$item->image}' style='width: 100%; height: auto;' />".'<br>'.$item->name.$txt.'<br>'.$item->active_date,$item->lat, $item->long,$item->active,$type,$item->id,$radius,$elat,$elong];
+            $markers[] = [
+                "text"=>"<img src='/upload/{$item->image}' style='width: 100%; height: auto;' />".'<br>'.$item->name.$txt.'<br>'.$item->active_date,
+                "lat"=>$item->lat,
+                "long"=>$item->long,
+                'last_lat'=>'',
+                'last_long'=>'',
+                "active"=>$item->active,
+                "type"=>$type,
+                "id"=>$item->id,
+                "radius"=>$radius,
+                "elat"=>$elat,
+                "elong"=>$elong,
+                'role_id'=>$item->role_id,
+                'icon'=>$item->role->icon,
+            ];
         }
 
         return json_encode($markers);

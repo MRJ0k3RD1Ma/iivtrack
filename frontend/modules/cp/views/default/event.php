@@ -31,12 +31,12 @@ use yii\widgets\ActiveForm;
 
                 <?= $form->field($model,'address')->textInput()?>
 
-                <div hidden="hidden" class="hidden" style="display: block !important;" id="dots">
+                <div hidden="hidden" class="hidden">
+                    <?= $form->field($model,'radius')->textInput()?>
 
-                    <?= $form->field($model,'dots[0][lat]')->textInput()?>
+                    <?= $form->field($model,'lat')->textInput()?>
 
-                    <?= $form->field($model,'dots[0][long]')->textInput()?>
-
+                    <?= $form->field($model,'long')->textInput()?>
                 </div>
 
                 <button type="submit" class="btn btn-primary">Saqlash</button>
@@ -65,11 +65,11 @@ use yii\widgets\ActiveForm;
        
         var drawControl = new L.Control.Draw({
          draw : {
-            polygon : true,
+            polygon : false,
             polyline : false,
             rectangle : false,
             circlemarker: false,
-            circle: false,
+            circle: true,
             marker: false
           },
           edit: {
@@ -92,15 +92,12 @@ use yii\widgets\ActiveForm;
           
           console.log('Coordinates:');
           
-          if (type == 'marker' || type == 'circle'){
+          if (type == 'marker' || type == 'circle' || type == 'circlemarker'){
             console.log([layer.getLatLng().lat, layer.getLatLng().lng]);
             console.log(layer);
-            
-            // add element and value
-            
             $('#event-lat').val(layer.getLatLng().lat);
             $('#event-long').val(layer.getLatLng().lng);
-            
+            $('#event-radius').val(parseInt(layer.getRadius()));
           }
           else {
             var objects = layer.getLatLngs()[0];
@@ -113,9 +110,12 @@ use yii\widgets\ActiveForm;
            
         });
   
-        map.on('click:clearall', function () {
-          $('#dots').empty();
-        });
+        $('.leaflet-draw-draw-circle').click(function(){
+            map.eachLayer((layer) => {
+             if(layer['_latlng']!=undefined)
+                 layer.remove();
+            });
+        })
   
   
     ")

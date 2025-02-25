@@ -16,8 +16,7 @@ use yii\widgets\ActiveForm;
             <?= $form->field($model,'gender')->dropDownList(Yii::$app->params['gender'])?>
             <?= $form->field($model,'type_id')->dropDownList(\yii\helpers\ArrayHelper::map(\common\models\CallType::find()->all(),'id','name'),['prompt'=>'Murojaat turini tanlang'])?>
             <?= $form->field($model,'detail')->textarea()?>
-            <?= $form->field($model,'user_id')->dropDownList(\yii\helpers\ArrayHelper::map(\common\models\User::find()
-                ->where(['<','role_id',30])->all(),'id','name'),['class'=>'form-control select2'])?>
+            <?= $form->field($model,'user_id')->dropDownList(\yii\helpers\ArrayHelper::map(\common\models\User::find()->where(['<','role_id',30])->all(),'id','name'),['class'=>'form-control select2'])?>
         <br>
 
             <button class="btn btn-primary">Saqlash</button>
@@ -77,6 +76,19 @@ $this->registerJs("
       marker.addTo(map);
     }
     
+    function getBearing(lat1, lon1, lat2, lon2) {
+        var dLon = (lon2 - lon1) * Math.PI / 180;
+        lat1 = lat1 * Math.PI / 180;
+        lat2 = lat2 * Math.PI / 180;
+
+        var y = Math.sin(dLon) * Math.cos(lat2);
+        var x = Math.cos(lat1) * Math.sin(lat2) - Math.sin(lat1) * Math.cos(lat2) * Math.cos(dLon);
+
+        var brng = Math.atan2(y, x) * 180 / Math.PI;
+        return (brng + 360) % 360; // Normalize to 0-360
+    }
+    
+    
     function polices(){
         $.get('{$url}').done(function(data){
             
@@ -89,34 +101,43 @@ $this->registerJs("
             
             for (var i = 0; i < locations.length; i++) {
           
-            var icn = '/icon/police.png';
-            if(locations[i][3] == 0){
-               icn = '/icon/police_green.png';
+            var icn = '/icon/'+locations[i]['icon']+'/police.png?v=1';
+            if(locations[i]['active'] == 0){
+               icn = '/icon/'+locations[i]['icon']+'/police_green.png?v=1';
             }else{
                 aktiv ++;
             }
-            if(locations[i][6] != -1){
-                var _first = new L.latLng(locations[i][1], locations[i][2]);
-                var _second = new L.latLng(locations[i][7], locations[i][8]);
+            if(locations[i]['radius'] != -1){
+                var _first = new L.latLng(locations[i]['lat'], locations[i]['long']);
+                var _second = new L.latLng(locations[i]['elat'], locations[i]['elong']);
            
-                var radius = locations[i][6];
+                var radius = locations[i]['radius'];
                 let distance = map.distance(_first,_second);
                 if(radius < distance){
-                    icn = '/icon/police_red.png';
+                    icn = '/icon/'+locations[i]['icon']+'/police_red.png?v=1';
                 }
             }
-            
             myIcon = L.icon({
                iconUrl: icn,
                iconSize: [34, 46],
                iconAnchor: [17, 46],
                popupAnchor: [-3, -40],
             });
-            marker = new L.marker([locations[i][1], locations[i][2]],{icon: myIcon})
-            .bindPopup(locations[i][0])
-            .addTo(map);
+            if(locations[i]['role_id'] < 20 && locations[i]['last_lat']){
+            
+                marker = new L.marker([locations[i]['lat'], locations[i]['long']],{icon: myIcon,rotationAngle:getBearing(locations[i]['lat'],locations[i]['long'],locations[i]['last_lat'],locations[i]['last_long'])})
+                .bindPopup(locations[i]['text'])
+                .addTo(map);
+                
+            }else{
+                marker = new L.marker([locations[i]['lat'], locations[i]['long']],{icon: myIcon})
+                .bindPopup(locations[i]['text'])
+                .addTo(map);
 
-            markers[locations[i][5]] = marker; 
+            }
+            
+            
+            markers[locations[i]['id']] = marker; 
             
             $('#aktiv-hodim').empty();
             $('#aktiv-hodim').append(aktiv);
@@ -148,3 +169,30 @@ $this->registerJs("
     ")
 
 ?>
+
+<?php if(false){?>
+<!--    Xaritaga yurgan yo'lni chizish-->
+    <script type="text/javascript">
+        window.onload=function(){
+            var map = L.map("map");
+            L.tileLayer("http://{s}.tile.osm.org/{z}/{x}/{y}.png").addTo(map);
+            map.setView([48.85, 2.35], 12);
+            var myPolyline = L.polyline([
+                [48.86, 2.34],
+                [48.85, 2.35]
+            ]).addTo(map).bindPopup("popup").openPopup();
+            var count = 1;
+            document.getElementById("button").addEventListener("click", function (event) {
+                event.preventDefault();
+                myPolyline.addLatLng([
+                    48.85 - (count + Math.random()) * 0.01,
+                    2.35 + (count + Math.random()) * 0.01
+                ]);
+                count += 1;
+            });
+        }
+
+    </script>
+
+
+<?php }?>

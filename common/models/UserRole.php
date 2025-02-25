@@ -10,6 +10,7 @@ use Yii;
  * @property int $id
  * @property string $name
  * @property string|null $url
+ * @property string|null $icon
  * @property int|null $status
  *
  * @property User[] $users
@@ -31,7 +32,7 @@ class UserRole extends \yii\db\ActiveRecord
     {
         return [
             [['status'], 'integer'],
-            [['name', 'url'], 'string', 'max' => 255],
+            [['name','icon', 'url'], 'string', 'max' => 255],
         ];
     }
 
@@ -44,6 +45,7 @@ class UserRole extends \yii\db\ActiveRecord
             'id' => 'ID',
             'name' => 'Nomi',
             'url' => 'Url',
+            'icon' => 'icon',
             'status' => 'Status',
         ];
     }

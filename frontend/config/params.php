@@ -49,7 +49,7 @@ return [
         0=>'Ayol',
         1=>'Erkak'
     ],
-    'active_type'=>[
+     'active_type'=>[
         '0'=>'Oflayn',
         '1'=>'Onlayn',
         2=>'Ish vaqti emas',

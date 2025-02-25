@@ -33,15 +33,7 @@ return [
         'authenticator' => [
             'class' => \yii\filters\auth\HttpBearerAuth::class,
         ],
-        'log' => [
-            'traceLevel' => YII_DEBUG ? 3 : 0,
-            'targets' => [
-                [
-                    'class' => \yii\log\FileTarget::class,
-                    'levels' => ['error', 'warning'],
-                ],
-            ],
-        ],
+        
         'jwt' => [
             'class' => 'backend\components\JwtCom',
             'key' => 'sdfjlskdjgflkdsfhglkwejropkjsdlsdfsd2334213fds',
@@ -55,7 +47,6 @@ return [
                 'auth'=>'site/login',
                 'refresh-token'=>'site/refresh-token',
                 'site/check'=>'site/check',
-                'site/balans'=>'site/balans',
                 'OPTIONS' => 'site/index',
                 [
                     'class' => 'yii\rest\UrlRule',

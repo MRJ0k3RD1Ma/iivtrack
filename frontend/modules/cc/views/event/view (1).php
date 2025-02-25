@@ -90,7 +90,9 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?php $form = ActiveForm::begin()?>
 
                     <?= $form->field($user,'user_id')->dropDownList(\yii\helpers\ArrayHelper::map(\common\models\User::find()
-                        ->where(['status'=>1])->all(),'id','name'))?>
+                        ->where('id not in (select user_id from event_user where event_id='.$model->id.')')
+                        ->andWhere('id not in (select event_user.user_id from event_user where event_user.event_id in (select event.id from event where event.status = 2 and "'.date('Y-m-d').'" BETWEEN event.date_start AND event.date_end ))')
+                        ->all(),'id','name'))?>
 
                     <div class="row">
                         <div class="col-md-6">
