@@ -8,7 +8,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
-
+use Yii;
 /**
  * UserController implements the CRUD actions for User model.
  */
@@ -142,8 +142,14 @@ class UserController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
-
+        $model = $this->findModel($id);
+        $model->status = -1;
+        $model->username = $model->username."_".time();
+        if($model->save(false)){
+            Yii::$app->session->setFlash('success', 'Foydalanuvchi o`chirildi');
+        }else{
+            Yii::$app->session->setFlash('error', 'Foydalanuvchi o`chirilmadi');
+        }
         return $this->redirect(['index']);
     }
 

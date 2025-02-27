@@ -30,7 +30,7 @@
                 <?php if(Yii::$app->controller->id == 'default' and Yii::$app->controller->action->id == 'index'){?>
                     <div class="dropdown d-none d-sm-inline-block">
                         <button type="button" class="btn header-item" onclick="location.href = '<?= Yii::$app->urlManager->createUrl(['/cp/default/nonactive'])?>'">
-                            <span id="aktiv-hodim">0</span>/<span id="barcha-hodim"><?= \common\models\User::find()->count('id')?></span>
+                            <span id="aktiv-hodim">0</span>/<span id="barcha-hodim"><?= \common\models\User::find()->andWhere(['status'=>1])->count('id')?></span>
                         </button>
                     </div>
                 <?php }?>

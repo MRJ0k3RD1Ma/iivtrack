@@ -17,7 +17,7 @@ use yii\widgets\ActiveForm;
             <?= $form->field($model,'type_id')->dropDownList(\yii\helpers\ArrayHelper::map(\common\models\CallType::find()->all(),'id','name'),['prompt'=>'Murojaat turini tanlang'])?>
             <?= $form->field($model,'detail')->textarea()?>
             <?= $form->field($model,'user_id')->dropDownList(\yii\helpers\ArrayHelper::map(\common\models\User::find()
-                ->where(['<','role_id',30])->all(),'id','name'),['class'=>'form-control select2'])?>
+                ->where(['<','role_id',30])->andWhere(['status'=>1])->all(),'id','name'),['class'=>'form-control select2'])?>
         <br>
 
             <button class="btn btn-primary">Saqlash</button>

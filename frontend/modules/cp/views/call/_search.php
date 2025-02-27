@@ -51,7 +51,7 @@ use yii\widgets\ActiveForm;
 
     <div class="row">
         <div class="col-md-3">
-            <?php  echo $form->field($model, 'user_id')->dropDownList(\yii\helpers\ArrayHelper::map(\common\models\User::find()->all(),'id','name'),['prompt'=>'Inspektorni tanlang']) ?>
+            <?php  echo $form->field($model, 'user_id')->dropDownList(\yii\helpers\ArrayHelper::map(\common\models\User::find()->where(['status'=>1])->all(),'id','name'),['prompt'=>'Inspektorni tanlang']) ?>
 
         </div>
         <div class="col-md-3">

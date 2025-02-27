@@ -50,7 +50,7 @@
                 <p>Sana: <?= date('d.m.Y')?></p>
 
                 <?= $form->field($model,'user_id')->dropDownList(\yii\helpers\ArrayHelper::map(\common\models\User::find()
-                    ->where('id not in (select user_id from shift where shift_id = 2 and date = "'.date('Y-m-d').'")')->all(),'id','name')
+                    ->where('id not in (select user_id from shift where shift_id = 2 and date = "'.date('Y-m-d').'")')->andWhere(['status'=>1])->all(),'id','name')
                     ,['class'=>'form-control select2']) ?>
 
                 <br>

@@ -9,7 +9,7 @@ $this->title = "Hodimning borgan joylari";
         <div class="row">
             <div class="col-md-4">
                 <select name="user" id="user" class="form-control select2">
-                    <?php foreach (\common\models\User::find()->all() as $item):?>
+                    <?php foreach (\common\models\User::find()->andWhere(['status'=>1])->all() as $item):?>
                         <option value="<?= $item->id?>" <?= $item->id == $model->id ? 'selected' : '' ?>><?= $item->name ?></option>
                     <?php endforeach;?>
                 </select>

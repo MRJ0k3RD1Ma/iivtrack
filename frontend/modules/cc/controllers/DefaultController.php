@@ -151,7 +151,10 @@ class DefaultController extends Controller
 
         $model = User::find()->where(['is not','active_date',null])
             ->andWhere($u)
-            ->andWhere(['is not','lat',null])->andWhere(['is not','long',null])->all();
+            ->andWhere(['is not','lat',null])
+            ->andWhere(['is not','long',null])
+            ->andWhere(['status'=>1])
+            ->all();
 
         foreach ($model as $item){
 
@@ -251,7 +254,7 @@ class DefaultController extends Controller
 
     public function actionNonactive()
     {
-        $model = User::find()->orderBy(['name'=>SORT_ASC])->all();
+        $model = User::find()->orderBy(['name'=>SORT_ASC])->where(['status'=>1])->all();
         return $this->render('nonactive',['model'=>$model]);
     }
 
@@ -316,7 +319,7 @@ class DefaultController extends Controller
             }
             return $this->redirect(['shiftone']);
         }
-        $data = User::find()->where('id in (select user_id from shift where  shift_id = 1 and date = "'.$date.'")')->all();
+        $data = User::find()->where('id in (select user_id from shift where  shift_id = 1 and date = "'.$date.'")')->andWhere(['status'=>1])->all();
         return $this->render('shiftone',[
             'model'=>$model,
             'data'=>$data,
@@ -343,7 +346,7 @@ class DefaultController extends Controller
             }
             return $this->redirect(['shifttwo']);
         }
-        $data = User::find()->where('id in (select user_id from shift where shift_id = 2 and date = "'.$date.'")')->all();
+        $data = User::find()->where('id in (select user_id from shift where shift_id = 2 and date = "'.$date.'")')->andWhere(['status'=>1])->all();
         return $this->render('shifttwo',[
             'model'=>$model,
             'data'=>$data,
